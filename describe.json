@@ -4,28 +4,32 @@
     "description": "幼年的小猫在说话，温柔语气平和",
     "path": "./public/lib/original/【高清】啊哇猫2嗷呜猫2猫meme绿幕素材.mp4",
     "aspect_ratio": "608x786",
-    "common_level": 1
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "【高清】啊哇猫嗷呜猫猫meme绿幕素材",
     "description": "生病说胡话发高烧难受的时候表情，一般也是可爱的单纯善良傻乎乎的角色用的",
     "path": "./public/lib/original/【高清】啊哇猫嗷呜猫猫meme绿幕素材.mp4",
     "aspect_ratio": "608x1022",
-    "common_level": 1
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "【高清】本公主不想听",
     "description": "不想听，表情冷漠",
     "path": "./public/lib/original/【高清】本公主不想听.mp4",
     "aspect_ratio": "374x632",
-    "common_level": 5
+    "common_level": 5,
+    "is_edited": true
   },
   {
     "title": "【高清】大司马猫meme绿幕素材30秒",
     "description": "嘚瑟，开心得笑",
     "path": "./public/lib/original/【高清】大司马猫meme绿幕素材30秒.mp4",
     "aspect_ratio": "792x1080",
-    "common_level": 1
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "【高清】给女朋友按摩猫猫meme绿幕素材30秒",
@@ -39,7 +43,7 @@
     "description": "该素材展示“【高清】喝AD钙奶猫猫meme绿幕素材30秒”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
     "path": "./public/lib/original/【高清】喝AD钙奶猫猫meme绿幕素材30秒.mp4",
     "aspect_ratio": "436x448",
-    "common_level": 5
+    "common_level": 1
   },
   {
     "title": "【高清】坏笑猫奸笑猫meme绿幕素材30秒",

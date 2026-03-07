@@ -170,7 +170,7 @@
     updateDirtyState(false);
   };
 
-  const createTreeButton = (label, className, onClick) => {
+  const createTreeButton = (label, className, onClick, isEdited) => {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = className;
@@ -178,8 +178,15 @@
 
     const text = document.createElement('span');
     text.className = 'tree-item-label';
-    text.textContent = label;
+    text.textContent = isEdited ? `✓ ${label}` : label;
     button.append(text);
+    if (isEdited) {
+      const badge = document.createElement('span');
+      badge.className = 'tree-item-check';
+      badge.textContent = '✓';
+      badge.setAttribute('aria-label', '已修改');
+      button.append(badge);
+    }
 
     return button;
   };
@@ -205,15 +212,9 @@
           const button = createTreeButton(
             item.title || item.normalizedPath,
             `tree-item ${state.selectedKey === key ? 'active' : ''}`,
-            () => handleSelectItem(key)
+            () => handleSelectItem(key),
+            item.is_edited
           );
-          if (item.is_edited) {
-            const badge = document.createElement('span');
-            badge.className = 'tree-item-check';
-            badge.textContent = '✓';
-            badge.setAttribute('aria-label', '已修改');
-            button.append(badge);
-          }
           branch.append(button);
         });
       } else {
@@ -235,15 +236,9 @@
             const button = createTreeButton(
               itemNode.label,
               `tree-item ${state.selectedKey === key ? 'active' : ''}`,
-              () => handleSelectItem(key)
+              () => handleSelectItem(key),
+              item.is_edited
             );
-            if (item.is_edited) {
-              const badge = document.createElement('span');
-              badge.className = 'tree-item-check';
-              badge.textContent = '✓';
-              badge.setAttribute('aria-label', '已修改');
-              button.append(badge);
-            }
             groupBranch.append(button);
           });
 
