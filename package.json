@@ -10,6 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "studio": "remotion studio src/index.jsx",
     "render:track": "remotion render src/index.jsx CatMemeMain out/track-preview.mp4",
+    "export:fcpxml": "node scripts/export-fcpxml.mjs track.json",
     "catalog:editor": "node scripts/catalog-editor-server.js",
     "test:catalog-editor": "node --test test/catalog-editor-server.test.js"
   },
