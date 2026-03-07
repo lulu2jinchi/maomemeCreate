@@ -6,7 +6,7 @@
     "fps": 30,
     "width": 1080,
     "height": 1920,
-    "durationInFrames": 960,
+    "durationInFrames": 1962,
     "backgroundColor": "#11151c"
   },
   "meta": {
@@ -14,7 +14,7 @@
     "author": "Codex",
     "assetCatalog": "describe.json",
     "imageCatalog": "img-describe.json",
-    "notes": "放慢到 32 秒，每段约 4 秒，字幕停留更久。背景按剧情段落共用，不再每个镜头都换。默认每幕只保留 1 条主声，字幕不做渐入渐出，并尽量贴近对应人物。"
+    "notes": "进一步拉长对白阅读窗口，尤其是多人物多句对白场景会整段延长，避免第三句刚出现就切走。背景按剧情段落共用，默认每幕只保留 1 条主声，字幕不做渐入渐出，并尽量贴近对应人物。 对白字幕会按字数自动延长；多人连续对白时会自动把 scene 撑开。"
   },
   "assets": {
     "image": {
@@ -44,7 +44,7 @@
       "type": "image",
       "assetId": "bg_office_a",
       "from": 0,
-      "duration": 240,
+      "duration": 484,
       "layout": {
         "kind": "background",
         "aspectRatio": "2560x1434",
@@ -82,7 +82,7 @@
       "type": "video",
       "assetId": "boss",
       "from": 0,
-      "duration": 120,
+      "duration": 234,
       "transparent": true,
       "muted": false,
       "layout": {
@@ -102,7 +102,7 @@
       "type": "video",
       "assetId": "sycophant",
       "from": 0,
-      "duration": 120,
+      "duration": 234,
       "transparent": true,
       "muted": true,
       "layout": {
@@ -122,7 +122,7 @@
       "type": "video",
       "assetId": "worker",
       "from": 0,
-      "duration": 120,
+      "duration": 234,
       "transparent": true,
       "muted": true,
       "layout": {
@@ -140,8 +140,8 @@
     {
       "id": "title_scene_1",
       "type": "text",
-      "from": 8,
-      "duration": 70,
+      "from": 10,
+      "duration": 78,
       "content": "《大公司压人那点事》",
       "style": {
         "x": 72,
@@ -161,8 +161,8 @@
     {
       "id": "subtitle_scene_1_a",
       "type": "text",
-      "from": 32,
-      "duration": 52,
+      "from": 36,
+      "duration": 96,
       "content": "活你干，功劳写亲信。",
       "style": {
         "x": 36,
@@ -182,8 +182,8 @@
     {
       "id": "subtitle_scene_1_b",
       "type": "text",
-      "from": 72,
-      "duration": 42,
+      "from": 122,
+      "duration": 100,
       "content": "我熬夜做完，锅还我背？",
       "style": {
         "x": 704,
@@ -204,8 +204,8 @@
       "id": "scene_2_sycophant",
       "type": "video",
       "assetId": "sycophant",
-      "from": 120,
-      "duration": 120,
+      "from": 234,
+      "duration": 250,
       "transparent": true,
       "muted": false,
       "layout": {
@@ -224,8 +224,8 @@
       "id": "scene_2_worker_cry",
       "type": "video",
       "assetId": "worker_cry",
-      "from": 120,
-      "duration": 120,
+      "from": 234,
+      "duration": 250,
       "transparent": true,
       "muted": true,
       "layout": {
@@ -243,8 +243,8 @@
     {
       "id": "title_scene_2",
       "type": "text",
-      "from": 128,
-      "duration": 68,
+      "from": 244,
+      "duration": 76,
       "content": "媚上欺下的，反而混得最顺",
       "style": {
         "x": 72,
@@ -264,8 +264,8 @@
     {
       "id": "subtitle_scene_2_a",
       "type": "text",
-      "from": 156,
-      "duration": 50,
+      "from": 274,
+      "duration": 108,
       "content": "领导放心，我替你压着他们。",
       "style": {
         "x": 52,
@@ -285,8 +285,8 @@
     {
       "id": "subtitle_scene_2_b",
       "type": "text",
-      "from": 196,
-      "duration": 38,
+      "from": 372,
+      "duration": 100,
       "content": "我真能干，可我也真惨。",
       "style": {
         "x": 680,
@@ -307,8 +307,8 @@
       "id": "bg_block_2",
       "type": "image",
       "assetId": "bg_office_c",
-      "from": 240,
-      "duration": 240,
+      "from": 484,
+      "duration": 458,
       "layout": {
         "kind": "background",
         "aspectRatio": "1280x719",
@@ -345,8 +345,8 @@
       "id": "scene_3_worker_cry",
       "type": "video",
       "assetId": "worker_cry",
-      "from": 240,
-      "duration": 120,
+      "from": 484,
+      "duration": 166,
       "transparent": true,
       "muted": false,
       "layout": {
@@ -364,8 +364,8 @@
     {
       "id": "title_scene_3",
       "type": "text",
-      "from": 248,
-      "duration": 64,
+      "from": 494,
+      "duration": 72,
       "content": "真正有能力的，被欺负哭了",
       "style": {
         "x": 72,
@@ -385,8 +385,8 @@
     {
       "id": "subtitle_scene_3_a",
       "type": "text",
-      "from": 286,
-      "duration": 60,
+      "from": 534,
+      "duration": 104,
       "content": "我只是想好好干活啊...",
       "style": {
         "x": 286,
@@ -407,8 +407,8 @@
       "id": "scene_4_worker",
       "type": "video",
       "assetId": "worker",
-      "from": 360,
-      "duration": 120,
+      "from": 650,
+      "duration": 292,
       "transparent": true,
       "muted": true,
       "layout": {
@@ -427,8 +427,8 @@
       "id": "scene_4_union_rep",
       "type": "video",
       "assetId": "union_rep",
-      "from": 360,
-      "duration": 120,
+      "from": 650,
+      "duration": 292,
       "transparent": true,
       "muted": false,
       "layout": {
@@ -447,8 +447,8 @@
       "id": "scene_4_worker_angry",
       "type": "video",
       "assetId": "worker_angry",
-      "from": 360,
-      "duration": 120,
+      "from": 650,
+      "duration": 292,
       "transparent": true,
       "muted": true,
       "layout": {
@@ -466,8 +466,8 @@
     {
       "id": "title_scene_4",
       "type": "text",
-      "from": 368,
-      "duration": 64,
+      "from": 658,
+      "duration": 72,
       "content": "后来，受害者们站到了一起",
       "style": {
         "x": 72,
@@ -487,8 +487,8 @@
     {
       "id": "subtitle_scene_4_a",
       "type": "text",
-      "from": 398,
-      "duration": 46,
+      "from": 686,
+      "duration": 80,
       "content": "你也被坑过？",
       "style": {
         "x": 56,
@@ -508,8 +508,8 @@
     {
       "id": "subtitle_scene_4_b",
       "type": "text",
-      "from": 428,
-      "duration": 40,
+      "from": 756,
+      "duration": 100,
       "content": "那就抱团，自己开公司。",
       "style": {
         "x": 328,
@@ -529,8 +529,8 @@
     {
       "id": "subtitle_scene_4_c",
       "type": "text",
-      "from": 456,
-      "duration": 24,
+      "from": 846,
+      "duration": 84,
       "content": "专帮工友维权！",
       "style": {
         "x": 772,
@@ -551,8 +551,8 @@
       "id": "bg_block_3",
       "type": "image",
       "assetId": "bg_city_a",
-      "from": 480,
-      "duration": 240,
+      "from": 942,
+      "duration": 512,
       "layout": {
         "kind": "background",
         "aspectRatio": "1920x1080",
@@ -582,8 +582,8 @@
       "id": "scene_5_founder",
       "type": "video",
       "assetId": "founder",
-      "from": 480,
-      "duration": 120,
+      "from": 942,
+      "duration": 252,
       "transparent": true,
       "muted": true,
       "layout": {
@@ -602,8 +602,8 @@
       "id": "scene_5_worker_angry",
       "type": "video",
       "assetId": "worker_angry",
-      "from": 480,
-      "duration": 120,
+      "from": 942,
+      "duration": 252,
       "transparent": true,
       "muted": false,
       "layout": {
@@ -621,8 +621,8 @@
     {
       "id": "title_scene_5",
       "type": "text",
-      "from": 488,
-      "duration": 68,
+      "from": 952,
+      "duration": 76,
       "content": "受害者联盟公司，正式成立",
       "style": {
         "x": 72,
@@ -642,8 +642,8 @@
     {
       "id": "subtitle_scene_5_a",
       "type": "text",
-      "from": 518,
-      "duration": 44,
+      "from": 984,
+      "duration": 100,
       "content": "谁被侵权，我们就帮谁。",
       "style": {
         "x": 74,
@@ -663,8 +663,8 @@
     {
       "id": "subtitle_scene_5_b",
       "type": "text",
-      "from": 556,
-      "duration": 40,
+      "from": 1074,
+      "duration": 108,
       "content": "顺手把老东家的业务也接了。",
       "style": {
         "x": 644,
@@ -685,8 +685,8 @@
       "id": "scene_6_founder",
       "type": "video",
       "assetId": "founder",
-      "from": 600,
-      "duration": 120,
+      "from": 1194,
+      "duration": 260,
       "transparent": true,
       "muted": true,
       "layout": {
@@ -705,8 +705,8 @@
       "id": "scene_6_worker",
       "type": "video",
       "assetId": "worker",
-      "from": 600,
-      "duration": 120,
+      "from": 1194,
+      "duration": 260,
       "transparent": true,
       "muted": false,
       "layout": {
@@ -724,8 +724,8 @@
     {
       "id": "title_scene_6",
       "type": "text",
-      "from": 608,
-      "duration": 66,
+      "from": 1204,
+      "duration": 74,
       "content": "做大做强，原有业务全被包了",
       "style": {
         "x": 72,
@@ -745,8 +745,8 @@
     {
       "id": "subtitle_scene_6_a",
       "type": "text",
-      "from": 640,
-      "duration": 46,
+      "from": 1240,
+      "duration": 104,
       "content": "客户、项目、口碑，全过来了。",
       "style": {
         "x": 66,
@@ -766,8 +766,8 @@
     {
       "id": "subtitle_scene_6_b",
       "type": "text",
-      "from": 678,
-      "duration": 34,
+      "from": 1334,
+      "duration": 108,
       "content": "以前压人的公司，只剩空壳。",
       "style": {
         "x": 676,
@@ -788,8 +788,8 @@
       "id": "bg_block_4",
       "type": "image",
       "assetId": "bg_office_b",
-      "from": 720,
-      "duration": 120,
+      "from": 1454,
+      "duration": 244,
       "layout": {
         "kind": "background",
         "aspectRatio": "2560x1434",
@@ -819,8 +819,8 @@
       "id": "scene_7_old_boss",
       "type": "video",
       "assetId": "beggar_boss",
-      "from": 720,
-      "duration": 120,
+      "from": 1454,
+      "duration": 244,
       "transparent": true,
       "muted": false,
       "layout": {
@@ -839,8 +839,8 @@
       "id": "scene_7_sycophant",
       "type": "video",
       "assetId": "sycophant",
-      "from": 720,
-      "duration": 120,
+      "from": 1454,
+      "duration": 244,
       "transparent": true,
       "muted": true,
       "layout": {
@@ -858,8 +858,8 @@
     {
       "id": "title_scene_7",
       "type": "text",
-      "from": 728,
-      "duration": 68,
+      "from": 1464,
+      "duration": 74,
       "content": "原老板破产，气得当场昏过去",
       "style": {
         "x": 72,
@@ -879,8 +879,8 @@
     {
       "id": "subtitle_scene_7_a",
       "type": "text",
-      "from": 760,
-      "duration": 40,
+      "from": 1500,
+      "duration": 88,
       "content": "钱怎么都没了？！",
       "style": {
         "x": 94,
@@ -900,8 +900,8 @@
     {
       "id": "subtitle_scene_7_b",
       "type": "text",
-      "from": 794,
-      "duration": 34,
+      "from": 1578,
+      "duration": 108,
       "content": "老板，这回真没人替你扛了。",
       "style": {
         "x": 664,
@@ -922,8 +922,8 @@
       "id": "bg_block_5",
       "type": "image",
       "assetId": "bg_city_b",
-      "from": 840,
-      "duration": 120,
+      "from": 1698,
+      "duration": 264,
       "layout": {
         "kind": "background",
         "aspectRatio": "1920x1080",
@@ -960,8 +960,8 @@
       "id": "scene_8_success_laugh",
       "type": "video",
       "assetId": "success_laugh",
-      "from": 840,
-      "duration": 120,
+      "from": 1698,
+      "duration": 264,
       "transparent": true,
       "muted": true,
       "layout": {
@@ -980,8 +980,8 @@
       "id": "scene_8_success_smile",
       "type": "video",
       "assetId": "success_smile",
-      "from": 840,
-      "duration": 120,
+      "from": 1698,
+      "duration": 264,
       "transparent": true,
       "muted": false,
       "layout": {
@@ -1000,8 +1000,8 @@
       "id": "scene_8_milk_tea",
       "type": "video",
       "assetId": "milk_tea",
-      "from": 840,
-      "duration": 120,
+      "from": 1698,
+      "duration": 264,
       "transparent": true,
       "muted": true,
       "layout": {
@@ -1019,8 +1019,8 @@
     {
       "id": "title_scene_8",
       "type": "text",
-      "from": 848,
-      "duration": 68,
+      "from": 1708,
+      "duration": 74,
       "content": "以前被压的，现在开心数钱",
       "style": {
         "x": 72,
@@ -1040,8 +1040,8 @@
     {
       "id": "subtitle_scene_8_a",
       "type": "text",
-      "from": 882,
-      "duration": 42,
+      "from": 1744,
+      "duration": 112,
       "content": "维权做成事业，钱一摞一摞来。",
       "style": {
         "x": 324,
@@ -1061,8 +1061,8 @@
     {
       "id": "subtitle_scene_8_b",
       "type": "text",
-      "from": 918,
-      "duration": 34,
+      "from": 1846,
+      "duration": 104,
       "content": "这回轮到我们笑着数钱了。",
       "style": {
         "x": 680,

@@ -254,10 +254,11 @@
   },
   {
     "title": "【高清无水印】企鹅跳舞2犯贱企鹅meme素材30秒",
-    "description": "该素材展示“【高清无水印】企鹅跳舞2犯贱企鹅meme素材30秒”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "犯贱，干了坏事嘚瑟的时候的场景，跳舞",
     "path": "./public/lib/original/【高清无水印】企鹅跳舞2犯贱企鹅meme素材30秒.mp4",
     "aspect_ratio": "1920x1080",
-    "common_level": 5
+    "common_level": 5,
+    "is_edited": true
   },
   {
     "title": "【高清无水印】企鹅跳舞3meme素材30秒",

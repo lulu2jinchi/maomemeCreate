@@ -1,5 +1,5 @@
 node_modules
 .DS_Store
-lib/original
-lib/trimMp4
+public/lib/original
+public/lib/trimMp4
 *.mp4

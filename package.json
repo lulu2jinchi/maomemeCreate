@@ -7,10 +7,12 @@
     "lib": "public/lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --test",
     "studio": "remotion studio src/index.jsx",
-    "render:track": "remotion render src/index.jsx CatMemeMain out/track-preview.mp4",
-    "export:fcpxml": "node scripts/export-fcpxml.mjs track.json",
+    "track:fit-dialogue": "node scripts/fit-dialogue-timing.js track.json",
+    "render:track": "npm run track:fit-dialogue && remotion render src/index.jsx CatMemeMain out/track-preview.mp4",
+    "export:fcpxml": "npm run track:fit-dialogue && node scripts/export-fcpxml.mjs track.json",
+    "export:jianying": "npm run track:fit-dialogue && node scripts/export-jianying-draft.mjs track.json",
     "catalog:editor": "node scripts/catalog-editor-server.js",
     "test:catalog-editor": "node --test test/catalog-editor-server.test.js"
   },
