@@ -1,0 +1,92 @@
+{
+  "schema": "remotion-timeline/v1",
+  "name": "replace-with-your-video-name",
+  "composition": {
+    "id": "MainComposition",
+    "fps": 30,
+    "width": 1080,
+    "height": 1920,
+    "durationInFrames": 900,
+    "backgroundColor": "#000000"
+  },
+  "meta": {
+    "title": "视频标题",
+    "author": "your-name",
+    "assetCatalog": "lib/describe.json"
+  },
+  "assets": {
+    "video": {
+      "clip_1": "lib/your-clip-1.mp4",
+      "clip_2": "lib/your-clip-2.mp4"
+    },
+    "audio": {
+      "bgm_1": "lib/your-bgm.mp3"
+    },
+    "image": {
+      "logo": "lib/your-logo.png"
+    }
+  },
+  "tracks": [
+    {
+      "id": "video_1",
+      "type": "video",
+      "assetId": "clip_1",
+      "from": 0,
+      "duration": 300,
+      "trimStart": 0,
+      "trimEnd": 0,
+      "style": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "fit": "cover",
+        "opacity": 1
+      },
+      "animation": {
+        "enter": "fadeIn",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "text_1",
+      "type": "text",
+      "from": 30,
+      "duration": 120,
+      "content": "你的字幕",
+      "style": {
+        "x": 80,
+        "y": 1500,
+        "maxWidth": 920,
+        "fontFamily": "Noto Sans SC",
+        "fontSize": 56,
+        "fontWeight": 700,
+        "lineHeight": 1.3,
+        "color": "#ffffff",
+        "textAlign": "center"
+      },
+      "animation": {
+        "enter": "slideUp",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "audio_1",
+      "type": "audio",
+      "assetId": "bgm_1",
+      "from": 0,
+      "duration": 900,
+      "trimStart": 0,
+      "trimEnd": 0,
+      "volume": 0.5,
+      "fadeInFrames": 15,
+      "fadeOutFrames": 20
+    }
+  ],
+  "render": {
+    "output": "out/replace-with-your-video-name.mp4",
+    "imageFormat": "jpeg",
+    "crf": 18,
+    "pixelFormat": "yuv420p"
+  }
+}
