@@ -202,6 +202,27 @@ const updateCatalogItem = ({
   return normalizeCatalogItem(currentItem, index, catalog);
 };
 
+const deleteCatalogItem = ({
+  catalogId,
+  index,
+  repoRoot = REPO_ROOT,
+  catalogs = DEFAULT_CATALOGS,
+}) => {
+  const {catalog, filePath, items} = readCatalogFile({catalogId, repoRoot, catalogs});
+
+  assertValidIndex(items, index);
+
+  const deletedItem = items[index];
+  const nextItems = items.filter((_, itemIndex) => itemIndex !== index);
+
+  fs.writeFileSync(filePath, `${JSON.stringify(nextItems, null, 2)}\n`, 'utf8');
+
+  return {
+    deletedItem: normalizeCatalogItem(deletedItem, index, catalog),
+    remainingCount: nextItems.length,
+  };
+};
+
 const resolveWithinRoot = (rootDir, relativePath) => {
   const normalized = normalizePathValue(relativePath);
   const resolvedPath = path.resolve(rootDir, normalized);
@@ -243,6 +264,7 @@ module.exports = {
   MIME_TYPES,
   REPO_ROOT,
   buildCatalogTree,
+  deleteCatalogItem,
   getCatalogDefinition,
   getMimeType,
   loadCatalogData,

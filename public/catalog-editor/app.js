@@ -15,6 +15,7 @@
   const previewRoot = document.getElementById('preview-root');
   const saveState = document.getElementById('save-state');
   const saveButton = document.getElementById('save-button');
+  const deleteButton = document.getElementById('delete-button');
   const descriptionInput = document.getElementById('description-input');
   const editorForm = document.getElementById('editor-form');
   const levelOptions = document.getElementById('level-options');
@@ -45,6 +46,31 @@
     return getItemKey(items[currentIndex + 1]);
   };
 
+  const getDeleteSelectionKey = (currentItem) => {
+    const items = flattenItems(state.catalogs);
+    const currentKey = getItemKey(currentItem);
+    const currentIndex = items.findIndex((item) => getItemKey(item) === currentKey);
+    if (currentIndex < 0) {
+      return null;
+    }
+
+    const nextCandidate = items[currentIndex + 1];
+    if (nextCandidate) {
+      const adjustedIndex =
+        nextCandidate.catalogId === currentItem.catalogId && nextCandidate.index > currentItem.index
+          ? nextCandidate.index - 1
+          : nextCandidate.index;
+      return `${nextCandidate.catalogId}:${adjustedIndex}`;
+    }
+
+    const previousCandidate = items[currentIndex - 1];
+    if (!previousCandidate) {
+      return null;
+    }
+
+    return getItemKey(previousCandidate);
+  };
+
   const setSaveState = (text, tone) => {
     saveState.textContent = text;
     saveState.dataset.tone = tone || 'neutral';
@@ -52,9 +78,13 @@
 
   const updateFormAvailability = () => {
     const disabled = !state.selectedItem || state.isSaving;
+    const canDelete =
+      !!state.selectedItem &&
+      (state.selectedItem.type === 'video' || state.selectedItem.catalogId === 'describe');
     descriptionInput.disabled = disabled;
     levelFieldset.disabled = disabled;
     saveButton.disabled = disabled || !state.isDirty;
+    deleteButton.disabled = disabled || !canDelete;
   };
 
   const syncFormFromSelected = () => {
@@ -293,6 +323,27 @@
     });
   };
 
+  const removeItemFromState = (removedItem) => {
+    state.catalogs = state.catalogs.map((catalog) => {
+      if (catalog.id !== removedItem.catalogId) {
+        return catalog;
+      }
+
+      const items = catalog.items
+        .filter((item) => item.index !== removedItem.index)
+        .map((item) => ({
+          ...item,
+          index: item.index > removedItem.index ? item.index - 1 : item.index,
+        }));
+
+      return {
+        ...catalog,
+        items,
+        tree: buildTreeForCatalog(catalog.id, catalog.label, catalog.type, items),
+      };
+    });
+  };
+
   const buildTreeForCatalog = (catalogId, label, type, items) => {
     if (type === 'video') {
       return {
@@ -395,6 +446,65 @@
     }
   };
 
+  const deleteCurrentItem = async () => {
+    if (
+      !state.selectedItem ||
+      state.isSaving ||
+      (state.selectedItem.type !== 'video' && state.selectedItem.catalogId !== 'describe')
+    ) {
+      return;
+    }
+
+    const confirmed = window.confirm(`确认删除“${state.selectedItem.title || state.selectedItem.path}”吗？这会把它从 JSON 里移除。`);
+    if (!confirmed) {
+      return;
+    }
+
+    state.isSaving = true;
+    const currentItem = state.selectedItem;
+    const nextKey = getDeleteSelectionKey(currentItem);
+    updateFormAvailability();
+    setSaveState('删除中...', 'saving');
+
+    try {
+      const response = await fetch('/api/catalog-item', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          catalogId: currentItem.catalogId,
+          index: currentItem.index,
+        }),
+      });
+
+      const payload = await response.json();
+      if (!response.ok) {
+        throw new Error(payload.error || '删除失败');
+      }
+
+      removeItemFromState(payload.deletedItem);
+      state.isDirty = false;
+
+      if (nextKey) {
+        handleSelectItem(nextKey, {skipDirtyConfirm: true});
+        setSaveState('已删除，已切换到下一个资源', 'saved');
+      } else {
+        state.selectedKey = null;
+        state.selectedItem = null;
+        syncFormFromSelected();
+        renderTree();
+        renderPreview();
+        setSaveState('已删除当前资源', 'saved');
+      }
+    } catch (error) {
+      setSaveState(error.message || '删除失败', 'error');
+    } finally {
+      state.isSaving = false;
+      updateFormAvailability();
+    }
+  };
+
   descriptionInput.addEventListener('input', (event) => {
     state.form.description = event.target.value;
     updateDirtyState(true);
@@ -402,6 +512,10 @@
 
   saveButton.addEventListener('click', () => {
     saveCurrentItem();
+  });
+
+  deleteButton.addEventListener('click', () => {
+    deleteCurrentItem();
   });
 
   window.addEventListener('beforeunload', (event) => {

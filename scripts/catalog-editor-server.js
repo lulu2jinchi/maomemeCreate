@@ -4,6 +4,7 @@ const path = require('path');
 const {URL} = require('url');
 const {
   REPO_ROOT,
+  deleteCatalogItem,
   getMimeType,
   loadCatalogData,
   resolveMediaFilePath,
@@ -101,6 +102,18 @@ const createCatalogEditorServer = ({repoRoot = REPO_ROOT} = {}) => {
         });
 
         sendJson(response, 200, {item: updatedItem});
+        return;
+      }
+
+      if (method === 'DELETE' && pathname === '/api/catalog-item') {
+        const body = await readJsonBody(request);
+        const result = deleteCatalogItem({
+          catalogId: body.catalogId,
+          index: body.index,
+          repoRoot,
+        });
+
+        sendJson(response, 200, result);
         return;
       }
 

@@ -216,6 +216,12 @@ summary::-webkit-details-marker {
   gap: 12px;
 }
 
+.action-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .save-state {
   padding: 7px 12px;
   border-radius: 999px;
@@ -296,6 +302,21 @@ textarea {
 }
 
 .save-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.delete-button {
+  border: 1px solid rgba(179, 58, 43, 0.22);
+  border-radius: 999px;
+  padding: 11px 18px;
+  font-weight: 700;
+  color: #8b271d;
+  background: rgba(179, 58, 43, 0.08);
+  cursor: pointer;
+}
+
+.delete-button:disabled {
   cursor: not-allowed;
   opacity: 0.45;
 }

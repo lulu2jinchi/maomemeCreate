@@ -5,6 +5,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const {
   buildCatalogTree,
+  deleteCatalogItem,
   loadCatalogData,
   resolveMediaFilePath,
   updateCatalogItem,
@@ -122,6 +123,33 @@ test('loadCatalogData exposes edited state for tree rendering', () => {
   assert.equal(treeItem.isEdited, true);
 });
 
+test('deleteCatalogItem removes the selected video entry from catalog', () => {
+  const repoRoot = createTempRepo();
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'describe.json'), 'utf8'));
+  raw.push({
+    title: '视频 B',
+    description: '第二条',
+    path: './clips/demo-b.mp4',
+    aspect_ratio: '720x1280',
+    common_level: 4,
+  });
+  fs.writeFileSync(path.join(repoRoot, 'describe.json'), `${JSON.stringify(raw, null, 2)}\n`, 'utf8');
+  fs.writeFileSync(path.join(repoRoot, 'clips', 'demo-b.mp4'), 'mp4-b', 'utf8');
+
+  const result = deleteCatalogItem({
+    catalogId: 'describe',
+    index: 0,
+    repoRoot,
+  });
+
+  assert.equal(result.deletedItem.title, '视频 A');
+  assert.equal(result.remainingCount, 1);
+
+  const saved = JSON.parse(fs.readFileSync(path.join(repoRoot, 'describe.json'), 'utf8'));
+  assert.equal(saved.length, 1);
+  assert.equal(saved[0].title, '视频 B');
+});
+
 test('server returns 4xx for invalid catalogId, index, and common_level', async () => {
   const repoRoot = createTempRepo();
   const server = createCatalogEditorServer({repoRoot});
@@ -159,6 +187,16 @@ test('server returns 4xx for invalid catalogId, index, and common_level', async 
       common_level: 8,
     });
     assert.equal(invalidLevel.status, 400);
+
+    const invalidDelete = await fetch(`http://127.0.0.1:${port}/api/catalog-item`, {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        catalogId: 'describe',
+        index: 99,
+      }),
+    });
+    assert.equal(invalidDelete.status, 400);
   } finally {
     await new Promise((resolve, reject) => server.close((error) => (error ? reject(error) : resolve())));
   }
