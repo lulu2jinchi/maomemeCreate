@@ -8,7 +8,7 @@
 2. 按故事或脚本生成/修改 `track.json`。
 3. 由 Remotion 读取 `track.json` 并渲染视频。
 
-如果用户明确要求“用抠好绿幕的 mov 文件生成”，则应把 `public/lib/去绿幕透明` 视为优先素材源，优先选择透明 `.mov`，再回退普通 `.mp4`。
+如果用户明确要求“用抠好绿幕的透明素材生成”，则应把 `public/lib/webm` 视为优先素材源，优先选择透明 `.webm`；若确实存在透明 `.mov`，再从 `public/lib/original` 里选用，最后才回退普通 `.mp4`。
 
 后续代理在这个仓库里工作时，默认应该围绕这个链路思考，而不是引入不必要的工程化复杂度。
 
@@ -24,7 +24,7 @@
 - `describe.json`
   - 素材目录。
   - 每项至少包含 `title`、`description`、`path`、`aspect_ratio`、`common_level`。
-  - `path` 可为 `./xxx.mp4`，也可为 `./去绿幕透明/xxx.mov`。
+  - `path` 应写成相对 `public/lib` 的子路径，例如 `./original/xxx.mp4`、`./trimMp4/xxx_去绿幕裁剪.mp4`、`./webm/xxx_去绿幕裁剪.webm`。
   - `common_level` 表示素材常用等级，`1` 为最常用，`5` 为最不常用；做素材筛选、推荐或自动编排时，默认优先考虑等级更高的素材。
 - `img-describe.json`
   - 图片素材目录。
@@ -43,6 +43,7 @@
   - 负责解析 `assets`、`tracks`、文本样式、音视频片段和动画。
 - `public/lib`
   - 实际素材目录。
+  - 当前按子目录区分素材类型：`original/`、`trimMp4/`、`webm/`。
   - `track.json` 中引用素材时，路径应写成 `lib/...`，不要写 `public/lib/...`。
 - `STORY_TO_REMOTION_REQUIREMENTS.md`
   - 当前项目最重要的业务约束文档。
@@ -66,8 +67,9 @@
 
 从 `describe.json` 或透明素材目录匹配到素材后，写入 `track.json` 时应转换成：
 
-- `lib/foo.mp4`
-- `lib/去绿幕透明/foo.mov`
+- `lib/original/foo.mp4`
+- `lib/trimMp4/foo_去绿幕裁剪.mp4`
+- `lib/webm/foo_去绿幕裁剪.webm`
 
 不要保留开头的 `./`，也不要写成绝对路径。
 
@@ -83,14 +85,14 @@
 
 如果用户要求透明人物叠加效果：
 
-- 优先扫描 `public/lib/去绿幕透明`
-- 优先使用 `.mov`
+- 优先扫描 `public/lib/webm`
+- 优先使用 `.webm`，其次才是 `public/lib/original` 中少量透明 `.mov`
 - 视频轨默认优先用 `fit: "contain"`，避免透明主体被裁掉
 - `composition.backgroundColor` 要显式设置
 
 ### 3.1 新增素材时同步维护 `describe.json`
 
-如果往 `public/lib` 新增了视频素材，尤其是新增 `*.mp4`、`*.MP4`、`*.mov` 或 `*.MOV` 文件，必须在同一次任务里同步更新 `describe.json`，不要把“补描述”留到后面。
+如果往 `public/lib` 新增了视频素材，尤其是新增 `original/`、`trimMp4/`、`webm/` 下的 `*.mp4`、`*.MP4`、`*.mov`、`*.MOV`、`*.webm` 或 `*.WEBM` 文件，必须在同一次任务里同步更新 `describe.json`，不要把“补描述”留到后面。
 
 新增条目时至少补齐：
 
@@ -102,13 +104,13 @@
 
 其中：
 
-- `path` 必须写成相对素材名，例如 `./新素材.mp4`
+- `path` 必须写成相对 `public/lib` 的子路径，例如 `./original/新素材.mp4`
 - `title` 默认优先使用素材文件名去掉扩展名后的文本
 - `description` 至少要写出该素材的动作、情绪或适用场景，不能留空
 - 如果暂时拿不准比例，`aspect_ratio` 可以先写 `null`
 - `common_level` 默认可先写 `5`，后续再按使用频率调整；其中 `1` 表示最常用，`5` 表示最不常用
 
-如果代理新增了 `public/lib` 下的素材文件，但没有同步更新 `describe.json`，应视为任务未完成。
+如果代理新增了 `public/lib` 下任一子目录的素材文件，但没有同步更新 `describe.json`，应视为任务未完成。
 
 ### 4. 默认保持竖屏短视频参数
 
@@ -193,7 +195,7 @@ node -e "JSON.parse(require('fs').readFileSync('describe.json','utf8')); console
 - 不要输出带注释或尾逗号的 JSON
 - 不要让 `tracks` 出现空 `assetId` 引用
 - 不要让 `composition.durationInFrames` 小于轨道实际结束帧
-- 不要新增了 `public/lib` 里的 mp4/mov 素材却不更新 `describe.json`
+- 不要新增了 `public/lib` 里的 mp4/mov/webm 素材却不更新 `describe.json`
 - 不要在未确认的情况下覆盖用户已经改过的大型 JSON 文件
 
 ## 一句话判断标准
