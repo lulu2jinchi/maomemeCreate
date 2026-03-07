@@ -154,8 +154,10 @@
     });
   };
 
-  const handleSelectItem = (key) => {
-    if (state.isDirty) {
+  const handleSelectItem = (key, options = {}) => {
+    const {skipDirtyConfirm = false} = options;
+
+    if (state.isDirty && !skipDirtyConfirm) {
       const confirmed = window.confirm('当前条目有未保存修改，确认切换并丢弃吗？');
       if (!confirmed) {
         return;
@@ -375,7 +377,8 @@
 
       const nextKey = getNextItemKey(getItemKey(payload.item));
       if (nextKey) {
-        handleSelectItem(nextKey);
+        state.isDirty = false;
+        handleSelectItem(nextKey, {skipDirtyConfirm: true});
         savedMessage = '已保存，已切换到下一个资源';
       }
     } catch (error) {
