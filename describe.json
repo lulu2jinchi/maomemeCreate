@@ -9,7 +9,7 @@
   },
   {
     "title": "【高清】啊哇猫嗷呜猫猫meme绿幕素材",
-    "description": "生病说胡话发高烧难受的时候表情，一般也是可爱的单纯善良傻乎乎的角色用的",
+    "description": "生病/说胡话/发高烧/难受的时候表情，一般也是可爱的单纯善良傻乎乎的角色用的",
     "path": "./public/lib/original/【高清】啊哇猫嗷呜猫猫meme绿幕素材.mp4",
     "aspect_ratio": "608x1022",
     "common_level": 1,
@@ -33,66 +33,75 @@
   },
   {
     "title": "【高清】给女朋友按摩猫猫meme绿幕素材30秒",
-    "description": "该素材展示“【高清】给女朋友按摩猫猫meme绿幕素材30秒”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "给女朋友按摩",
     "path": "./public/lib/original/【高清】给女朋友按摩猫猫meme绿幕素材30秒.mp4",
     "aspect_ratio": "600x594",
-    "common_level": 5
+    "common_level": 5,
+    "is_edited": true
   },
   {
     "title": "【高清】喝AD钙奶猫猫meme绿幕素材30秒",
-    "description": "该素材展示“【高清】喝AD钙奶猫猫meme绿幕素材30秒”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "小朋友喝饮料，有时候被用作旁观者",
     "path": "./public/lib/original/【高清】喝AD钙奶猫猫meme绿幕素材30秒.mp4",
     "aspect_ratio": "436x448",
-    "common_level": 1
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "【高清】坏笑猫奸笑猫meme绿幕素材30秒",
-    "description": "该素材展示“【高清】坏笑猫奸笑猫meme绿幕素材30秒”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "得意的坏笑",
     "path": "./public/lib/original/【高清】坏笑猫奸笑猫meme绿幕素材30秒.mp4",
     "aspect_ratio": "532x678",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "【高清】尖叫的暹罗",
-    "description": "该素材展示“【高清】尖叫的暹罗”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "尖叫震惊",
     "path": "./public/lib/original/【高清】尖叫的暹罗.mp4",
     "aspect_ratio": "442x670",
-    "common_level": 5
+    "common_level": 5,
+    "is_edited": true
   },
   {
     "title": "【高清】卡点的巴哥",
-    "description": "该素材展示“【高清】卡点的巴哥”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "一群人嘚瑟，发财",
     "path": "./public/lib/original/【高清】卡点的巴哥.mp4",
     "aspect_ratio": "682x276",
-    "common_level": 5
+    "common_level": 5,
+    "is_edited": true
   },
   {
     "title": "【高清】你过来啊",
-    "description": "该素材展示“【高清】你过来啊”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "嘚瑟，挑衅",
     "path": "./public/lib/original/【高清】你过来啊.mp4",
     "aspect_ratio": "444x688",
-    "common_level": 5
+    "common_level": 3,
+    "is_edited": true
   },
   {
     "title": "【高清】女朋友玩手机猫猫meme绿幕素材30秒",
-    "description": "该素材展示“【高清】女朋友玩手机猫猫meme绿幕素材30秒”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "女朋友玩手机",
     "path": "./public/lib/original/【高清】女朋友玩手机猫猫meme绿幕素材30秒.mp4",
     "aspect_ratio": "494x812",
-    "common_level": 5
+    "common_level": 5,
+    "is_edited": true
   },
   {
     "title": "【高清】舒服的巴拉",
-    "description": "该素材展示“【高清】舒服的巴拉”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "舒服，闲适，幸福，休闲",
     "path": "./public/lib/original/【高清】舒服的巴拉.mp4",
     "aspect_ratio": "270x392",
-    "common_level": 5
+    "common_level": 2,
+    "is_edited": true
   },
   {
     "title": "【高清】数钱猫猫meme绿幕素材30秒",
-    "description": "该素材展示“【高清】数钱猫猫meme绿幕素材30秒”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "认真数钱",
     "path": "./public/lib/original/【高清】数钱猫猫meme绿幕素材30秒.mp4",
     "aspect_ratio": "572x536",
-    "common_level": 5
+    "common_level": 3,
+    "is_edited": true
   },
   {
     "title": "【高清】他们朝我扔白菜 我拿白菜炒盘菜猫meme绿幕素材",
@@ -1279,23 +1288,26 @@
   },
   {
     "title": "huh猫接手榴弹（有声）",
-    "description": "该素材展示“huh猫接手榴弹（有声）”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "角色接到了炸弹（可以是坏消息或者是炸裂消息），角色震惊，后面爆炸了",
     "path": "./public/lib/original/huh猫接手榴弹（有声）.mp4",
     "aspect_ratio": "3832x2160",
-    "common_level": 5
+    "common_level": 3,
+    "is_edited": true
   },
   {
     "title": "mur猫（有声）",
-    "description": "该素材展示“mur猫（有声）”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "呆住了愣住了",
     "path": "./public/lib/original/mur猫（有声）.mp4",
     "aspect_ratio": "794x1100",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "oiiai猫（高清版）",
-    "description": "该素材展示“oiiai猫（高清版）”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "旋转的小猫，一般转场出场的时候用",
     "path": "./public/lib/original/oiiai猫（高清版）.mp4",
     "aspect_ratio": "664x562",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   }
 ]
