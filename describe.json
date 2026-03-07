@@ -119,38 +119,43 @@
   },
   {
     "title": "【高清】委屈猫哭泣猫meme绿幕素材30秒",
-    "description": "该素材展示“【高清】委屈猫哭泣猫meme绿幕素材30秒”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "委屈，哭泣，一般是感动或者被欺负，是正面角色",
     "path": "./public/lib/original/【高清】委屈猫哭泣猫meme绿幕素材30秒.mp4",
     "aspect_ratio": "806x1008",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "【高清】小螺号吹口哨猫猫meme绿幕素材30秒",
-    "description": "该素材展示“【高清】小螺号吹口哨猫猫meme绿幕素材30秒”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "",
     "path": "./public/lib/original/【高清】小螺号吹口哨猫猫meme绿幕素材30秒.mp4",
     "aspect_ratio": "304x350",
-    "common_level": 5
+    "common_level": 5,
+    "is_edited": true
   },
   {
     "title": "【高清】修理工猫",
-    "description": "该素材展示“【高清】修理工猫”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "修理工，应该是很有社会风气，很厉害的修理工吧",
     "path": "./public/lib/original/【高清】修理工猫.mp4",
     "aspect_ratio": "380x706",
-    "common_level": 5
+    "common_level": 4,
+    "is_edited": true
   },
   {
     "title": "【高清】摇摇猫蛄蛹猫猫meme绿幕素材30秒",
-    "description": "该素材展示“【高清】摇摇猫蛄蛹猫猫meme绿幕素材30秒”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "可爱 蛄蛹 背影 有活力的氛围",
     "path": "./public/lib/original/【高清】摇摇猫蛄蛹猫猫meme绿幕素材30秒.mp4",
     "aspect_ratio": "498x744",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "【高清无水印】霸气走路大佬猫猫meme绿幕素材30秒",
-    "description": "该素材展示“【高清无水印】霸气走路大佬猫猫meme绿幕素材30秒”的动作或表情，适合用于meme二创、情绪表达和短视频剪辑。",
+    "description": "霸气走路大佬",
     "path": "./public/lib/original/【高清无水印】霸气走路大佬猫猫meme绿幕素材30秒.mp4",
     "aspect_ratio": "720x632",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "【高清无水印】唱歌鼠鼠猫meme绿幕素材30秒",
