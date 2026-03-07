@@ -6,42 +6,39 @@
     "fps": 30,
     "width": 1080,
     "height": 1920,
-    "durationInFrames": 900,
-    "backgroundColor": "#000000"
+    "durationInFrames": 300,
+    "backgroundColor": "#111111"
   },
   "meta": {
     "title": "视频标题",
     "author": "your-name",
-    "assetCatalog": "describe.json"
+    "assetCatalog": "describe.json",
+    "imageCatalog": "img-describe.json",
+    "notes": "标题用黄字黑边；对白用白字黑边；人物脚下必须有黄字黑边角色名；对白尽量口语化、短句化，并放在人物上方空白区。"
   },
   "assets": {
+    "image": {
+      "bg_scene_1": "img/办公室/13366084965613911.jpeg"
+    },
     "video": {
-      "clip_1": "lib/your-clip-1.mp4",
-      "clip_2": "lib/your-clip-2.mp4"
+      "char_1": "lib/webm/your-character-1.webm",
+      "char_2": "lib/webm/your-character-2.webm",
+      "char_3": "lib/webm/your-character-3.webm"
     },
     "audio": {
       "bgm_1": "lib/your-bgm.mp3"
-    },
-    "image": {
-      "logo": "lib/your-logo.png"
     }
   },
   "tracks": [
     {
-      "id": "video_1",
-      "type": "video",
-      "assetId": "clip_1",
+      "id": "bg_scene_1",
+      "type": "image",
+      "assetId": "bg_scene_1",
       "from": 0,
       "duration": 300,
-      "trimStart": 0,
-      "trimEnd": 0,
-      "style": {
-        "x": 0,
-        "y": 0,
-        "width": 1080,
-        "height": 1920,
-        "fit": "cover",
-        "opacity": 1
+      "layout": {
+        "kind": "background",
+        "aspectRatio": "2560x1434"
       },
       "animation": {
         "enter": "fadeIn",
@@ -49,21 +46,103 @@
       }
     },
     {
-      "id": "text_1",
+      "id": "char_left",
+      "type": "video",
+      "assetId": "char_1",
+      "from": 0,
+      "duration": 300,
+      "transparent": true,
+      "layout": {
+        "kind": "character",
+        "groupId": "scene_1_cast",
+        "aspectRatio": "608x786"
+      },
+      "characterLabel": "领导",
+      "animation": {
+        "enter": "fadeIn",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "char_center",
+      "type": "video",
+      "assetId": "char_2",
+      "from": 0,
+      "duration": 300,
+      "transparent": true,
+      "layout": {
+        "kind": "character",
+        "groupId": "scene_1_cast",
+        "aspectRatio": "592x826"
+      },
+      "characterLabel": "打工人",
+      "animation": {
+        "enter": "fadeIn",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "char_right",
+      "type": "video",
+      "assetId": "char_3",
+      "from": 0,
+      "duration": 300,
+      "transparent": true,
+      "layout": {
+        "kind": "character",
+        "groupId": "scene_1_cast",
+        "aspectRatio": "720x632"
+      },
+      "characterLabel": "正义小猫",
+      "animation": {
+        "enter": "fadeIn",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "title_text",
       "type": "text",
-      "from": 30,
-      "duration": 120,
-      "content": "你的字幕",
+      "from": 6,
+      "duration": 72,
+      "content": "《这里写梗图标题》",
       "style": {
-        "x": 80,
-        "y": 1500,
-        "maxWidth": 920,
-        "fontFamily": "Noto Sans SC",
-        "fontSize": 56,
-        "fontWeight": 700,
-        "lineHeight": 1.3,
+        "x": 72,
+        "y": 88,
+        "maxWidth": 936,
+        "fontFamily": "PingFang SC",
+        "fontSize": 90,
+        "fontWeight": 900,
+        "lineHeight": 1.08,
+        "color": "#ffd426",
+        "textAlign": "center",
+        "strokeColor": "#000000",
+        "strokeWidth": 9,
+        "textShadow": "0 2px 6px rgba(0, 0, 0, 0.22)"
+      },
+      "animation": {
+        "enter": "popIn",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "subtitle_1",
+      "type": "text",
+      "from": 20,
+      "duration": 180,
+      "content": "领导：今年起，改十三薪。",
+      "style": {
+        "x": 56,
+        "y": 302,
+        "maxWidth": 360,
+        "fontFamily": "PingFang SC",
+        "fontSize": 60,
+        "fontWeight": 900,
+        "lineHeight": 1.08,
         "color": "#ffffff",
-        "textAlign": "center"
+        "textAlign": "left",
+        "strokeColor": "#000000",
+        "strokeWidth": 8,
+        "textShadow": "0 3px 8px rgba(0, 0, 0, 0.35)"
       },
       "animation": {
         "enter": "slideUp",
@@ -75,7 +154,7 @@
       "type": "audio",
       "assetId": "bgm_1",
       "from": 0,
-      "duration": 900,
+      "duration": 300,
       "trimStart": 0,
       "trimEnd": 0,
       "volume": 0.5,

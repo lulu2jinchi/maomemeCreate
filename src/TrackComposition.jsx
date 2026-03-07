@@ -2,6 +2,7 @@ import React from 'react';
 import {
   AbsoluteFill,
   Audio,
+  Img,
   OffthreadVideo,
   Sequence,
   staticFile,
@@ -10,6 +11,7 @@ import {
   spring,
   useVideoConfig,
 } from 'remotion';
+import {buildCharacterGroups, resolveTrackStyle} from './layout.jsx';
 
 const normalizeAssetPath = (assetPath) => {
   if (!assetPath) {
@@ -47,7 +49,7 @@ const resolveAssetPath = (data, track) => {
   return null;
 };
 
-const toVideoStyle = (style = {}) => ({
+const toLayerStyle = (style = {}) => ({
   position: 'absolute',
   left: style.x ?? 0,
   top: style.y ?? 0,
@@ -55,6 +57,7 @@ const toVideoStyle = (style = {}) => ({
   height: style.height ?? '100%',
   objectFit: style.fit ?? 'cover',
   opacity: style.opacity ?? 1,
+  zIndex: style.zIndex ?? 1,
 });
 
 const toTextStyle = (style = {}) => {
@@ -71,18 +74,77 @@ const toTextStyle = (style = {}) => {
     lineHeight: style.lineHeight ?? 1.25,
     color: style.color ?? '#fff',
     textAlign: style.textAlign ?? 'left',
+    letterSpacing: style.letterSpacing,
+    textShadow: style.textShadow,
     backgroundColor: style.backgroundColor,
     padding: style.padding,
     borderRadius: style.borderRadius,
     opacity: style.opacity ?? 1,
     whiteSpace: 'pre-wrap',
+    zIndex: style.zIndex ?? 100,
   };
 
-  if (style.strokeColor) {
-    textStyle.WebkitTextStroke = `${style.strokeWidth ?? 2}px ${style.strokeColor}`;
+  return textStyle;
+};
+
+const getOutlineShadow = (strokeWidth = 0, strokeColor = '#000000') => {
+  const width = Math.max(0, Math.round(strokeWidth));
+  if (width === 0) {
+    return undefined;
   }
 
-  return textStyle;
+  const shadows = [];
+  for (let x = -width; x <= width; x += 1) {
+    for (let y = -width; y <= width; y += 1) {
+      if (x === 0 && y === 0) {
+        continue;
+      }
+
+      const distance = Math.sqrt((x * x) + (y * y));
+      if (distance <= width + 0.25) {
+        shadows.push(`${x}px ${y}px 0 ${strokeColor}`);
+      }
+    }
+  }
+
+  return shadows.join(', ');
+};
+
+const OutlinedText = ({text, style, animation, frame, fps, durationInFrames}) => {
+  const outlineShadow = getOutlineShadow(style.strokeWidth ?? 0, style.strokeColor ?? '#000000');
+  const animatedStyle = getAnimationStyle(animation, frame, fps, durationInFrames);
+  const baseStyle = toTextStyle(style);
+  const fillStyle = {
+    ...baseStyle,
+    color: style.color ?? '#ffffff',
+    textShadow: style.textShadow,
+  };
+  const outlineStyle = {
+    ...baseStyle,
+    color: style.strokeColor ?? '#000000',
+    textShadow: outlineShadow,
+  };
+
+  return (
+    <>
+      <div
+        style={{
+          ...outlineStyle,
+          ...animatedStyle,
+        }}
+      >
+        {text}
+      </div>
+      <div
+        style={{
+          ...fillStyle,
+          ...animatedStyle,
+        }}
+      >
+        {text}
+      </div>
+    </>
+  );
 };
 
 const getAnimationStyle = (animation, frame, fps, durationInFrames) => {
@@ -163,7 +225,7 @@ const TrackVideo = ({track, data}) => {
     <OffthreadVideo
       src={staticFile(srcPath)}
       style={{
-        ...toVideoStyle(track.style),
+        ...toLayerStyle(track.resolvedStyle ?? track.style),
         ...getAnimationStyle(track.animation, frame, fps, track.duration ?? 1),
       }}
       startFrom={trimStart}
@@ -171,6 +233,70 @@ const TrackVideo = ({track, data}) => {
       volume={track.volume ?? 1}
       muted={track.muted ?? false}
       transparent={track.transparent ?? isTransparentVideo(srcPath)}
+    />
+  );
+};
+
+const TrackRoleLabel = ({track}) => {
+  const {fps, height} = useVideoConfig();
+  const frame = useCurrentFrame();
+  const box = track.resolvedStyle ?? track.style ?? {};
+  const label = track.characterLabel;
+
+  if (!label) {
+    return null;
+  }
+
+  const labelStyle = track.characterLabelStyle ?? {};
+  const labelWidth = Math.max(box.width ?? 220, labelStyle.width ?? 180);
+  const left = (box.x ?? 0) + ((box.width ?? labelWidth) - labelWidth) / 2;
+  const top = Math.min(
+    Math.max((box.y ?? 0) + (box.height ?? 0) + 12, labelStyle.minTop ?? 980),
+    labelStyle.maxTop ?? height - 180,
+  );
+
+  return (
+    <OutlinedText
+      text={label}
+      style={{
+        x: left,
+        y: top,
+        width: labelWidth,
+        fontFamily: labelStyle.fontFamily ?? 'PingFang SC',
+        fontSize: labelStyle.fontSize ?? 46,
+        fontWeight: labelStyle.fontWeight ?? 900,
+        lineHeight: labelStyle.lineHeight ?? 1,
+        color: labelStyle.color ?? '#ffd426',
+        textAlign: 'center',
+        strokeColor: labelStyle.strokeColor ?? '#000000',
+        strokeWidth: labelStyle.strokeWidth ?? 7,
+        textShadow: labelStyle.textShadow ?? '0 2px 6px rgba(0, 0, 0, 0.3)',
+        zIndex: (box.zIndex ?? 20) + 5,
+      }}
+      animation={track.animation}
+      frame={frame}
+      fps={fps}
+      durationInFrames={track.duration ?? 1}
+    />
+  );
+};
+
+const TrackImage = ({track, data}) => {
+  const {fps} = useVideoConfig();
+  const frame = useCurrentFrame();
+  const srcPath = resolveAssetPath(data, track);
+
+  if (!srcPath) {
+    return null;
+  }
+
+  return (
+    <Img
+      src={staticFile(srcPath)}
+      style={{
+        ...toLayerStyle(track.resolvedStyle ?? track.style),
+        ...getAnimationStyle(track.animation, frame, fps, track.duration ?? 1),
+      }}
     />
   );
 };
@@ -222,21 +348,45 @@ const TrackAudio = ({track, data}) => {
 const TrackText = ({track}) => {
   const {fps} = useVideoConfig();
   const frame = useCurrentFrame();
+  const style = track.resolvedStyle ?? track.style;
 
   return (
-    <div
-      style={{
-        ...toTextStyle(track.style),
-        ...getAnimationStyle(track.animation, frame, fps, track.duration ?? 1),
-      }}
-    >
-      {track.content ?? ''}
-    </div>
+    <OutlinedText
+      text={track.content ?? ''}
+      style={style}
+      animation={track.animation}
+      frame={frame}
+      fps={fps}
+      durationInFrames={track.duration ?? 1}
+    />
   );
 };
 
 export const TrackComposition = ({data}) => {
   const tracks = data?.tracks ?? [];
+  const composition = data?.composition ?? {};
+  const characterGroups = buildCharacterGroups(tracks);
+  const resolvedTracks = tracks
+    .map((track, index) => ({
+      ...track,
+      resolvedStyle: resolveTrackStyle({
+        composition,
+        track,
+        allTracks: tracks,
+        trackIndex: index,
+        characterGroups,
+      }),
+      _index: index,
+    }))
+    .sort((left, right) => {
+      const leftZ = left.resolvedStyle?.zIndex ?? 0;
+      const rightZ = right.resolvedStyle?.zIndex ?? 0;
+      if (leftZ !== rightZ) {
+        return leftZ - rightZ;
+      }
+
+      return left._index - right._index;
+    });
 
   return (
     <AbsoluteFill
@@ -244,13 +394,15 @@ export const TrackComposition = ({data}) => {
         backgroundColor: data?.composition?.backgroundColor ?? '#000',
       }}
     >
-      {tracks.map((track, index) => {
+      {resolvedTracks.map((track, index) => {
         const from = Math.max(0, track.from ?? 0);
         const duration = Math.max(1, track.duration ?? 1);
 
         return (
           <Sequence key={track.id ?? `${track.type}-${index}`} from={from} durationInFrames={duration}>
+            {track.type === 'image' ? <TrackImage track={track} data={data} /> : null}
             {track.type === 'video' ? <TrackVideo track={track} data={data} /> : null}
+            {track.type === 'video' ? <TrackRoleLabel track={track} /> : null}
             {track.type === 'audio' ? <TrackAudio track={track} data={data} /> : null}
             {track.type === 'text' ? <TrackText track={track} /> : null}
           </Sequence>
