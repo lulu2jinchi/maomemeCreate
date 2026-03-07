@@ -1,13 +1,13 @@
 # 故事情节自动生成 Remotion 数据需求
 
 ## 1. 目标
-输入一段中文故事情节文本，系统自动从 `lib/describe.json` 中匹配最合适的素材，并生成符合 `remotion-data-template.json` 结构的 JSON，最终写入项目根目录 `track.json`（可直接用于后续渲染）。
+输入一段中文故事情节文本，系统自动从项目根目录的 `describe.json` 中匹配最合适的素材，并生成符合 `remotion-data-template.json` 结构的 JSON，最终写入项目根目录 `track.json`（可直接用于后续渲染）。
 
 ## 2. 输入与输出
 
 ### 输入
 - `story_text`：用户输入的一段故事情节（自然语言）。
-- `asset_catalog`：固定为 `lib/describe.json`。
+- `asset_catalog`：固定为 `describe.json`。
 - `template`：固定参考 `remotion-data-template.json`。
 
 ### 输出
@@ -23,13 +23,14 @@
 ## 3. 数据源约束
 
 ### describe.json 结构
-`lib/describe.json` 每项包含：
+项目根目录文件 `describe.json` 每项包含：
 - `title`
 - `description`
 - `path`（形如 `./xxx.mp4`）
 - `aspect_ratio`
 
 ### 路径规则
+- 素材文件实际存放目录为 `public/lib`。
 - 匹配到素材后，输出到 `assets.video` 时统一写为：`lib/<path去掉./后的文件名>`。
   - 例：`"./苹果猫跑步（有声）.mp4"` -> `"lib/苹果猫跑步（有声）.mp4"`
 
@@ -77,7 +78,7 @@
 - 所有 `tracks[].assetId` 必须在 `assets` 中存在。
 - `tracks[].from >= 0`，`tracks[].duration > 0`。
 - `render.output` 必须输出到 `out/*.mp4`。
-- `meta.assetCatalog` 固定写 `lib/describe.json`。
+- `meta.assetCatalog` 固定写 `describe.json`。
 
 ## 6. 异常与降级策略
 - 若未匹配到足够素材：
@@ -91,7 +92,7 @@
 ## 7. 验收标准（Definition of Done）
 - 输入任意故事文本后，能在项目根目录产出/覆盖 `track.json`。
 - JSON 结构与 `remotion-data-template.json` 兼容。
-- 至少 1 条视频轨素材来自 `lib/describe.json` 且文件真实存在。
+- 至少 1 条视频轨素材来自 `describe.json` 且文件真实存在，输出路径仍为 `lib/...`。
 - 时间轴无重叠错误、无空引用、总时长正确。
 - 可直接作为 Remotion 渲染输入（不需要手改字段名）。
 

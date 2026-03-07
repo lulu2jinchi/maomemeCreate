@@ -12,7 +12,7 @@
   "meta": {
     "title": "视频标题",
     "author": "your-name",
-    "assetCatalog": "lib/describe.json"
+    "assetCatalog": "describe.json"
   },
   "assets": {
     "video": {

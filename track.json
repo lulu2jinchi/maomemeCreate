@@ -12,7 +12,7 @@
   "meta": {
     "title": "猫猫梗图短视频样例",
     "author": "zhamao",
-    "assetCatalog": "lib/describe.json",
+    "assetCatalog": "describe.json",
     "notes": "from/duration/trimStart/trimEnd 都是 frame 单位"
   },
   "assets": {
