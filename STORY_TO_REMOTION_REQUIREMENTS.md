@@ -1,7 +1,7 @@
 # 故事情节自动生成 Remotion 数据需求
 
 ## 1. 目标
-输入一段中文故事情节文本，系统自动从 `lib/describe.json` 中匹配最合适的素材，并输出符合 `remotion-data-template.json` 结构的 JSON（可直接用于后续渲染）。
+输入一段中文故事情节文本，系统自动从 `lib/describe.json` 中匹配最合适的素材，并生成符合 `remotion-data-template.json` 结构的 JSON，最终写入项目根目录 `track.json`（可直接用于后续渲染）。
 
 ## 2. 输入与输出
 
@@ -11,7 +11,7 @@
 - `template`：固定参考 `remotion-data-template.json`。
 
 ### 输出
-- 一个 JSON 对象，字段结构与 `remotion-data-template.json` 一致，至少包含：
+- 将结果写入 `track.json` 文件，内容为一个 JSON 对象，字段结构与 `remotion-data-template.json` 一致，至少包含：
   - `schema`
   - `name`
   - `composition`
@@ -72,6 +72,7 @@
 - 音频轨（若生成）`duration` 不得超过总时长。
 
 ## 5. 输出格式硬性校验
+- 输出文件路径固定为项目根目录 `track.json`。
 - 输出 JSON 必须可被标准 JSON 解析（无注释、无尾逗号）。
 - 所有 `tracks[].assetId` 必须在 `assets` 中存在。
 - `tracks[].from >= 0`，`tracks[].duration > 0`。
@@ -88,7 +89,7 @@
   - 自动压缩为最多 8 个 scene。
 
 ## 7. 验收标准（Definition of Done）
-- 输入任意故事文本后，能产出一个完整 JSON。
+- 输入任意故事文本后，能在项目根目录产出/覆盖 `track.json`。
 - JSON 结构与 `remotion-data-template.json` 兼容。
 - 至少 1 条视频轨素材来自 `lib/describe.json` 且文件真实存在。
 - 时间轴无重叠错误、无空引用、总时长正确。

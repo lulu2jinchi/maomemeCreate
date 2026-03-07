@@ -1,0 +1,189 @@
+{
+  "schema": "remotion-timeline/v1",
+  "name": "cat-meme-story-v1",
+  "composition": {
+    "id": "CatMemeMain",
+    "fps": 30,
+    "width": 1080,
+    "height": 1920,
+    "durationInFrames": 900,
+    "backgroundColor": "#0f0f0f"
+  },
+  "meta": {
+    "title": "猫猫梗图短视频样例",
+    "author": "zhamao",
+    "assetCatalog": "lib/describe.json",
+    "notes": "from/duration/trimStart/trimEnd 都是 frame 单位"
+  },
+  "assets": {
+    "video": {
+      "clip_intro": "lib/苹果猫跑步（有声）.mp4",
+      "clip_middle": "lib/敲碗猫猫（有声）.mp4",
+      "clip_outro": "lib/老吴猫（有声）.mp4"
+    },
+    "audio": {
+      "bgm_main": "lib/Happy米玄津师（有声）.mp4"
+    }
+  },
+  "tracks": [
+    {
+      "id": "video_intro",
+      "type": "video",
+      "assetId": "clip_intro",
+      "from": 0,
+      "duration": 300,
+      "trimStart": 0,
+      "trimEnd": 0,
+      "style": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "fit": "cover",
+        "opacity": 1
+      },
+      "animation": {
+        "enter": "fadeIn",
+        "exit": "none"
+      }
+    },
+    {
+      "id": "video_middle",
+      "type": "video",
+      "assetId": "clip_middle",
+      "from": 300,
+      "duration": 330,
+      "trimStart": 0,
+      "trimEnd": 0,
+      "style": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "fit": "cover",
+        "opacity": 1
+      },
+      "animation": {
+        "enter": "cut",
+        "exit": "cut"
+      }
+    },
+    {
+      "id": "video_outro",
+      "type": "video",
+      "assetId": "clip_outro",
+      "from": 630,
+      "duration": 270,
+      "trimStart": 0,
+      "trimEnd": 0,
+      "style": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920,
+        "fit": "cover",
+        "opacity": 1
+      },
+      "animation": {
+        "enter": "cut",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "title_text",
+      "type": "text",
+      "from": 12,
+      "duration": 120,
+      "content": "今天上班吗？",
+      "style": {
+        "x": 72,
+        "y": 130,
+        "maxWidth": 936,
+        "fontFamily": "Noto Sans SC",
+        "fontSize": 86,
+        "fontWeight": 800,
+        "lineHeight": 1.2,
+        "color": "#ffffff",
+        "textAlign": "center",
+        "strokeColor": "#000000",
+        "strokeWidth": 6
+      },
+      "animation": {
+        "enter": "popIn",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "subtitle_1",
+      "type": "text",
+      "from": 320,
+      "duration": 180,
+      "content": "打工是不可能打工的",
+      "style": {
+        "x": 84,
+        "y": 1590,
+        "maxWidth": 912,
+        "fontFamily": "Noto Sans SC",
+        "fontSize": 62,
+        "fontWeight": 700,
+        "lineHeight": 1.3,
+        "color": "#ffffff",
+        "textAlign": "center",
+        "strokeColor": "#000000",
+        "strokeWidth": 5,
+        "backgroundColor": "rgba(0, 0, 0, 0.35)",
+        "padding": 20,
+        "borderRadius": 18
+      },
+      "animation": {
+        "enter": "slideUp",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "subtitle_2",
+      "type": "text",
+      "from": 650,
+      "duration": 200,
+      "content": "睡醒再说",
+      "style": {
+        "x": 84,
+        "y": 1590,
+        "maxWidth": 912,
+        "fontFamily": "Noto Sans SC",
+        "fontSize": 62,
+        "fontWeight": 700,
+        "lineHeight": 1.3,
+        "color": "#ffffff",
+        "textAlign": "center",
+        "strokeColor": "#000000",
+        "strokeWidth": 5,
+        "backgroundColor": "rgba(0, 0, 0, 0.35)",
+        "padding": 20,
+        "borderRadius": 18
+      },
+      "animation": {
+        "enter": "slideUp",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "bgm_track",
+      "type": "audio",
+      "assetId": "bgm_main",
+      "from": 0,
+      "duration": 900,
+      "trimStart": 0,
+      "trimEnd": 0,
+      "volume": 0.18,
+      "fadeInFrames": 20,
+      "fadeOutFrames": 24
+    }
+  ],
+  "render": {
+    "output": "out/cat-meme-story-v1.mp4",
+    "imageFormat": "jpeg",
+    "crf": 18,
+    "pixelFormat": "yuv420p"
+  }
+}
