@@ -86,6 +86,7 @@ const normalizeCatalogItem = (rawItem, index, catalog) => {
     description: rawItem.description ?? '',
     common_level: rawItem.common_level ?? null,
     aspect_ratio: rawItem.aspect_ratio ?? null,
+    is_edited: rawItem.is_edited === true,
     type: catalog.type,
     group: getGroupName(catalog, normalizedPath),
   };
@@ -102,6 +103,7 @@ const buildCatalogTree = (catalog, items) => {
         label: item.title || item.normalizedPath || `条目 ${item.index + 1}`,
         kind: 'item',
         itemIndex: item.index,
+        isEdited: item.is_edited === true,
       })),
     };
   }
@@ -116,6 +118,7 @@ const buildCatalogTree = (catalog, items) => {
       label: item.normalizedPath.split('/').pop() || item.title || `条目 ${item.index + 1}`,
       kind: 'item',
       itemIndex: item.index,
+      isEdited: item.is_edited === true,
     });
     groups.set(groupName, groupItems);
   });
@@ -191,6 +194,7 @@ const updateCatalogItem = ({
   const currentItem = {...updatedItems[index]};
   currentItem.description = description;
   currentItem.common_level = commonLevel;
+  currentItem.is_edited = true;
   updatedItems[index] = currentItem;
 
   fs.writeFileSync(filePath, `${JSON.stringify(updatedItems, null, 2)}\n`, 'utf8');

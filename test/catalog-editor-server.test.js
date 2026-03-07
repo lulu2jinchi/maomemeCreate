@@ -103,8 +103,23 @@ test('updateCatalogItem only changes description and common_level', () => {
   const saved = JSON.parse(fs.readFileSync(path.join(repoRoot, 'img-describe.json'), 'utf8'));
   assert.equal(saved[0].description, '新图片描述');
   assert.equal(saved[0].common_level, 2);
+  assert.equal(saved[0].is_edited, true);
   assert.equal(saved[0].keep, 'image-extra');
   assert.equal(saved[0].path, './办公室/001.jpeg');
+});
+
+test('loadCatalogData exposes edited state for tree rendering', () => {
+  const repoRoot = createTempRepo();
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'describe.json'), 'utf8'));
+  raw[0].is_edited = true;
+  fs.writeFileSync(path.join(repoRoot, 'describe.json'), `${JSON.stringify(raw, null, 2)}\n`, 'utf8');
+
+  const payload = loadCatalogData({repoRoot});
+  const item = payload.catalogs[0].items[0];
+  const treeItem = payload.catalogs[0].tree.children[0];
+
+  assert.equal(item.is_edited, true);
+  assert.equal(treeItem.isEdited, true);
 });
 
 test('server returns 4xx for invalid catalogId, index, and common_level', async () => {

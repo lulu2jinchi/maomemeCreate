@@ -116,6 +116,10 @@ summary::-webkit-details-marker {
 
 .tree-item {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
   text-align: left;
   padding: 10px 12px;
   border: 1px solid transparent;
@@ -123,6 +127,25 @@ summary::-webkit-details-marker {
   background: transparent;
   color: var(--text);
   cursor: pointer;
+}
+
+.tree-item-label {
+  min-width: 0;
+  flex: 1;
+}
+
+.tree-item-check {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(58, 130, 99, 0.14);
+  color: #256348;
+  font-size: 14px;
+  font-weight: 800;
 }
 
 .tree-item:hover {
@@ -216,30 +239,10 @@ summary::-webkit-details-marker {
   color: var(--danger);
 }
 
-.meta-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  padding: 20px 24px 0;
-}
-
-.meta-row {
-  display: grid;
-  gap: 6px;
-  padding: 14px 16px;
-  border-radius: 16px;
-  background: var(--panel-strong);
-  border: 1px solid var(--line);
-}
-
-.meta-value {
-  word-break: break-all;
-}
-
 .editor-form {
   display: grid;
   gap: 18px;
-  padding: 20px 24px 24px;
+  padding: 24px;
 }
 
 .level-fieldset {
@@ -311,7 +314,4 @@ textarea {
     grid-template-rows: auto auto;
   }
 
-  .meta-grid {
-    grid-template-columns: 1fr;
-  }
 }

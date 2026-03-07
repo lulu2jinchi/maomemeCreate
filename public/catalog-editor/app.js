@@ -13,7 +13,6 @@
 
   const treeRoot = document.getElementById('tree-root');
   const previewRoot = document.getElementById('preview-root');
-  const metaRoot = document.getElementById('meta-root');
   const saveState = document.getElementById('save-state');
   const saveButton = document.getElementById('save-button');
   const descriptionInput = document.getElementById('description-input');
@@ -35,6 +34,16 @@
   const flattenItems = (catalogs) => catalogs.flatMap((catalog) => catalog.items);
 
   const getItemByKey = (key) => flattenItems(state.catalogs).find((item) => getItemKey(item) === key) || null;
+
+  const getNextItemKey = (currentKey) => {
+    const items = flattenItems(state.catalogs);
+    const currentIndex = items.findIndex((item) => getItemKey(item) === currentKey);
+    if (currentIndex < 0 || currentIndex >= items.length - 1) {
+      return null;
+    }
+
+    return getItemKey(items[currentIndex + 1]);
+  };
 
   const setSaveState = (text, tone) => {
     saveState.textContent = text;
@@ -63,40 +72,6 @@
     descriptionInput.value = state.form.description;
     updateLevelInputs();
     updateFormAvailability();
-  };
-
-  const createMetaRow = (label, value) => {
-    const wrap = document.createElement('div');
-    wrap.className = 'meta-row';
-
-    const labelNode = document.createElement('span');
-    labelNode.className = 'meta-label';
-    labelNode.textContent = label;
-
-    const valueNode = document.createElement('span');
-    valueNode.className = 'meta-value';
-    valueNode.textContent = value || '-';
-
-    wrap.append(labelNode, valueNode);
-    return wrap;
-  };
-
-  const renderMeta = () => {
-    metaRoot.innerHTML = '';
-
-    if (!state.selectedItem) {
-      metaRoot.append(createMetaRow('状态', '未选择素材'));
-      return;
-    }
-
-    const item = state.selectedItem;
-    metaRoot.append(
-      createMetaRow('标题', item.title),
-      createMetaRow('路径', item.path),
-      createMetaRow('来源', item.sourceFile),
-      createMetaRow('比例', item.aspect_ratio || '未知'),
-      createMetaRow('类型', item.type === 'image' ? '图片' : '视频')
-    );
   };
 
   const renderMissingPreview = (item, message) => {
@@ -191,7 +166,6 @@
     state.selectedItem = getItemByKey(key);
     syncFormFromSelected();
     renderTree();
-    renderMeta();
     renderPreview();
     updateDirtyState(false);
   };
@@ -199,9 +173,14 @@
   const createTreeButton = (label, className, onClick) => {
     const button = document.createElement('button');
     button.type = 'button';
-    button.textContent = label;
     button.className = className;
     button.addEventListener('click', onClick);
+
+    const text = document.createElement('span');
+    text.className = 'tree-item-label';
+    text.textContent = label;
+    button.append(text);
+
     return button;
   };
 
@@ -228,6 +207,13 @@
             `tree-item ${state.selectedKey === key ? 'active' : ''}`,
             () => handleSelectItem(key)
           );
+          if (item.is_edited) {
+            const badge = document.createElement('span');
+            badge.className = 'tree-item-check';
+            badge.textContent = '✓';
+            badge.setAttribute('aria-label', '已修改');
+            button.append(badge);
+          }
           branch.append(button);
         });
       } else {
@@ -251,6 +237,13 @@
               `tree-item ${state.selectedKey === key ? 'active' : ''}`,
               () => handleSelectItem(key)
             );
+            if (item.is_edited) {
+              const badge = document.createElement('span');
+              badge.className = 'tree-item-check';
+              badge.textContent = '✓';
+              badge.setAttribute('aria-label', '已修改');
+              button.append(badge);
+            }
             groupBranch.append(button);
           });
 
@@ -314,6 +307,7 @@
           label: item.title || item.normalizedPath || `条目 ${item.index + 1}`,
           kind: 'item',
           itemIndex: item.index,
+          isEdited: item.is_edited === true,
         })),
       };
     }
@@ -327,6 +321,7 @@
         label: item.normalizedPath.split('/').pop() || item.title || `条目 ${item.index + 1}`,
         kind: 'item',
         itemIndex: item.index,
+        isEdited: item.is_edited === true,
       });
       groups.set(groupName, groupItems);
     });
@@ -353,6 +348,7 @@
 
     state.isSaving = true;
     let savedSuccessfully = false;
+    let savedMessage = '';
     updateDirtyState(state.isDirty);
     saveButton.disabled = true;
 
@@ -379,15 +375,23 @@
       state.selectedItem = payload.item;
       syncFormFromSelected();
       renderTree();
-      renderMeta();
       renderPreview();
       savedSuccessfully = true;
+
+      const nextKey = getNextItemKey(getItemKey(payload.item));
+      if (nextKey) {
+        handleSelectItem(nextKey);
+        savedMessage = '已保存，已切换到下一个资源';
+      }
     } catch (error) {
       setSaveState(error.message || '保存失败', 'error');
     } finally {
       state.isSaving = false;
       if (savedSuccessfully) {
         updateDirtyState(false);
+        if (savedMessage) {
+          setSaveState(savedMessage, 'saved');
+        }
       }
       updateFormAvailability();
     }
@@ -423,7 +427,6 @@
 
       state.catalogs = payload.catalogs;
       renderTree();
-      renderMeta();
       renderPreview();
       updateFormAvailability();
     } catch (error) {
