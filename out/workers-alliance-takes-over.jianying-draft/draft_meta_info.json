@@ -1,0 +1,426 @@
+{
+  "cloud_draft_cover": false,
+  "cloud_draft_sync": false,
+  "cloud_package_completed_time": "",
+  "draft_cloud_capcut_purchase_info": "",
+  "draft_cloud_last_action_download": false,
+  "draft_cloud_package_type": "",
+  "draft_cloud_purchase_info": "",
+  "draft_cloud_template_id": "",
+  "draft_cloud_tutorial_info": "",
+  "draft_cloud_videocut_purchase_info": "",
+  "draft_cover": "",
+  "draft_deeplink_url": "",
+  "draft_enterprise_info": {
+    "draft_enterprise_extra": "",
+    "draft_enterprise_id": "",
+    "draft_enterprise_name": "",
+    "enterprise_material": []
+  },
+  "draft_fold_path": "/Users/zhamao/project/maomemeCreate/out/workers-alliance-takes-over.jianying-draft",
+  "draft_id": "cbb2bf7d9cad42c09e898f8c332af1eb",
+  "draft_is_ae_produce": false,
+  "draft_is_ai_packaging_used": false,
+  "draft_is_ai_shorts": false,
+  "draft_is_ai_translate": false,
+  "draft_is_article_video_draft": false,
+  "draft_is_cloud_temp_draft": false,
+  "draft_is_from_deeplink": "false",
+  "draft_is_invisible": false,
+  "draft_materials": [
+    {
+      "type": 0,
+      "value": [
+        {
+          "create_time": 1772897505,
+          "duration": 10800000000,
+          "extra_info": "13366084965613911",
+          "file_Path": "/Users/zhamao/project/maomemeCreate/public/img/办公室/13366084965613911.jpeg",
+          "height": 1434,
+          "id": "5526682682c0446b9cdf1ded75c7adf4",
+          "import_time": 1772897505,
+          "import_time_ms": 1772897505056000,
+          "md5": "",
+          "metetype": "photo",
+          "roughcut_time_range": {
+            "duration": 0,
+            "start": 0
+          },
+          "sub_time_range": {
+            "duration": -1,
+            "start": -1
+          },
+          "type": 0,
+          "width": 2560
+        },
+        {
+          "create_time": 1772897505,
+          "duration": 6463000,
+          "extra_info": "G116 痞老板_去绿幕裁剪",
+          "file_Path": "/Users/zhamao/project/maomemeCreate/public/lib/webm/G116 痞老板_去绿幕裁剪.webm",
+          "height": 738,
+          "id": "f861cb05722b4d76bbdc13a733b3d939",
+          "import_time": 1772897505,
+          "import_time_ms": 1772897505056000,
+          "md5": "",
+          "metetype": "video",
+          "roughcut_time_range": {
+            "duration": 0,
+            "start": 0
+          },
+          "sub_time_range": {
+            "duration": -1,
+            "start": -1
+          },
+          "type": 0,
+          "width": 392
+        },
+        {
+          "create_time": 1772897505,
+          "duration": 33212000,
+          "extra_info": "【高清】坏笑猫奸笑猫meme绿幕素材30秒_去绿幕裁剪",
+          "file_Path": "/Users/zhamao/project/maomemeCreate/public/lib/webm/【高清】坏笑猫奸笑猫meme绿幕素材30秒_去绿幕裁剪.webm",
+          "height": 678,
+          "id": "0c11131578f9416f92bac8a0fa67848e",
+          "import_time": 1772897505,
+          "import_time_ms": 1772897505056000,
+          "md5": "",
+          "metetype": "video",
+          "roughcut_time_range": {
+            "duration": 0,
+            "start": 0
+          },
+          "sub_time_range": {
+            "duration": -1,
+            "start": -1
+          },
+          "type": 0,
+          "width": 532
+        },
+        {
+          "create_time": 1772897505,
+          "duration": 5600000,
+          "extra_info": "工作猫猫（有声）_去绿幕裁剪",
+          "file_Path": "/Users/zhamao/project/maomemeCreate/public/lib/webm/工作猫猫（有声）_去绿幕裁剪.webm",
+          "height": 1238,
+          "id": "d749b40e7a884a1e9709ac3c20dd193d",
+          "import_time": 1772897505,
+          "import_time_ms": 1772897505056000,
+          "md5": "",
+          "metetype": "video",
+          "roughcut_time_range": {
+            "duration": 0,
+            "start": 0
+          },
+          "sub_time_range": {
+            "duration": -1,
+            "start": -1
+          },
+          "type": 0,
+          "width": 1552
+        },
+        {
+          "create_time": 1772897505,
+          "duration": 32353000,
+          "extra_info": "【高清】委屈猫哭泣猫meme绿幕素材30秒_去绿幕裁剪",
+          "file_Path": "/Users/zhamao/project/maomemeCreate/public/lib/webm/【高清】委屈猫哭泣猫meme绿幕素材30秒_去绿幕裁剪.webm",
+          "height": 1008,
+          "id": "24340a923f34443ea197601cd5af7620",
+          "import_time": 1772897505,
+          "import_time_ms": 1772897505056000,
+          "md5": "",
+          "metetype": "video",
+          "roughcut_time_range": {
+            "duration": 0,
+            "start": 0
+          },
+          "sub_time_range": {
+            "duration": -1,
+            "start": -1
+          },
+          "type": 0,
+          "width": 806
+        },
+        {
+          "create_time": 1772897505,
+          "duration": 10800000000,
+          "extra_info": "13366085102984929",
+          "file_Path": "/Users/zhamao/project/maomemeCreate/public/img/办公室/13366085102984929.jpeg",
+          "height": 719,
+          "id": "c5b25b0daf424fcf96664be4b9fa20ee",
+          "import_time": 1772897505,
+          "import_time_ms": 1772897505056000,
+          "md5": "",
+          "metetype": "photo",
+          "roughcut_time_range": {
+            "duration": 0,
+            "start": 0
+          },
+          "sub_time_range": {
+            "duration": -1,
+            "start": -1
+          },
+          "type": 0,
+          "width": 1280
+        },
+        {
+          "create_time": 1772897505,
+          "duration": 15667000,
+          "extra_info": "敲碗猫猫（有声）_去绿幕裁剪",
+          "file_Path": "/Users/zhamao/project/maomemeCreate/public/lib/webm/敲碗猫猫（有声）_去绿幕裁剪.webm",
+          "height": 1234,
+          "id": "37af1bfd1dd34002b33028a179e7b968",
+          "import_time": 1772897505,
+          "import_time_ms": 1772897505056000,
+          "md5": "",
+          "metetype": "video",
+          "roughcut_time_range": {
+            "duration": 0,
+            "start": 0
+          },
+          "sub_time_range": {
+            "duration": -1,
+            "start": -1
+          },
+          "type": 0,
+          "width": 1276
+        },
+        {
+          "create_time": 1772897505,
+          "duration": 6800000,
+          "extra_info": "愤怒猫猫（有声）_去绿幕裁剪",
+          "file_Path": "/Users/zhamao/project/maomemeCreate/public/lib/webm/愤怒猫猫（有声）_去绿幕裁剪.webm",
+          "height": 1470,
+          "id": "f26266c14d354528b056225b6bf6618e",
+          "import_time": 1772897505,
+          "import_time_ms": 1772897505056000,
+          "md5": "",
+          "metetype": "video",
+          "roughcut_time_range": {
+            "duration": 0,
+            "start": 0
+          },
+          "sub_time_range": {
+            "duration": -1,
+            "start": -1
+          },
+          "type": 0,
+          "width": 974
+        },
+        {
+          "create_time": 1772897505,
+          "duration": 10800000000,
+          "extra_info": "13366084202467725",
+          "file_Path": "/Users/zhamao/project/maomemeCreate/public/img/城市/13366084202467725.jpeg",
+          "height": 1080,
+          "id": "a93c6f32593a46d1accdf1a898222ad2",
+          "import_time": 1772897505,
+          "import_time_ms": 1772897505056000,
+          "md5": "",
+          "metetype": "photo",
+          "roughcut_time_range": {
+            "duration": 0,
+            "start": 0
+          },
+          "sub_time_range": {
+            "duration": -1,
+            "start": -1
+          },
+          "type": 0,
+          "width": 1920
+        },
+        {
+          "create_time": 1772897505,
+          "duration": 32817000,
+          "extra_info": "【高清无水印】霸气走路大佬猫猫meme绿幕素材30秒_去绿幕裁剪",
+          "file_Path": "/Users/zhamao/project/maomemeCreate/public/lib/webm/【高清无水印】霸气走路大佬猫猫meme绿幕素材30秒_去绿幕裁剪.webm",
+          "height": 632,
+          "id": "c83c7a8375f342d0b89538646d7f7ade",
+          "import_time": 1772897505,
+          "import_time_ms": 1772897505056000,
+          "md5": "",
+          "metetype": "video",
+          "roughcut_time_range": {
+            "duration": 0,
+            "start": 0
+          },
+          "sub_time_range": {
+            "duration": -1,
+            "start": -1
+          },
+          "type": 0,
+          "width": 720
+        },
+        {
+          "create_time": 1772897505,
+          "duration": 10800000000,
+          "extra_info": "13366085050712563",
+          "file_Path": "/Users/zhamao/project/maomemeCreate/public/img/办公室/13366085050712563.jpeg",
+          "height": 1434,
+          "id": "9bccb1e51d5f4a4895e9c65700602017",
+          "import_time": 1772897505,
+          "import_time_ms": 1772897505056000,
+          "md5": "",
+          "metetype": "photo",
+          "roughcut_time_range": {
+            "duration": 0,
+            "start": 0
+          },
+          "sub_time_range": {
+            "duration": -1,
+            "start": -1
+          },
+          "type": 0,
+          "width": 2560
+        },
+        {
+          "create_time": 1772897505,
+          "duration": 4167000,
+          "extra_info": "磕头求饶香蕉猫_去绿幕裁剪",
+          "file_Path": "/Users/zhamao/project/maomemeCreate/public/lib/webm/磕头求饶香蕉猫_去绿幕裁剪.webm",
+          "height": 440,
+          "id": "b134be8edf47481ea37cb9bc18a2fb40",
+          "import_time": 1772897505,
+          "import_time_ms": 1772897505056000,
+          "md5": "",
+          "metetype": "video",
+          "roughcut_time_range": {
+            "duration": 0,
+            "start": 0
+          },
+          "sub_time_range": {
+            "duration": -1,
+            "start": -1
+          },
+          "type": 0,
+          "width": 564
+        },
+        {
+          "create_time": 1772897505,
+          "duration": 10800000000,
+          "extra_info": "13366084207661470",
+          "file_Path": "/Users/zhamao/project/maomemeCreate/public/img/城市/13366084207661470.jpeg",
+          "height": 1069,
+          "id": "7486198e82a24fcab823477937166436",
+          "import_time": 1772897505,
+          "import_time_ms": 1772897505056000,
+          "md5": "",
+          "metetype": "photo",
+          "roughcut_time_range": {
+            "duration": 0,
+            "start": 0
+          },
+          "sub_time_range": {
+            "duration": -1,
+            "start": -1
+          },
+          "type": 0,
+          "width": 1900
+        },
+        {
+          "create_time": 1772897505,
+          "duration": 15167000,
+          "extra_info": "大笑仓鼠_去绿幕裁剪",
+          "file_Path": "/Users/zhamao/project/maomemeCreate/public/lib/webm/大笑仓鼠_去绿幕裁剪.webm",
+          "height": 1280,
+          "id": "a9cceb55ef124b93af81ba16fb73433f",
+          "import_time": 1772897505,
+          "import_time_ms": 1772897505056000,
+          "md5": "",
+          "metetype": "video",
+          "roughcut_time_range": {
+            "duration": 0,
+            "start": 0
+          },
+          "sub_time_range": {
+            "duration": -1,
+            "start": -1
+          },
+          "type": 0,
+          "width": 720
+        },
+        {
+          "create_time": 1772897505,
+          "duration": 35348000,
+          "extra_info": "【高清】大司马猫meme绿幕素材30秒_去绿幕裁剪",
+          "file_Path": "/Users/zhamao/project/maomemeCreate/public/lib/webm/【高清】大司马猫meme绿幕素材30秒_去绿幕裁剪.webm",
+          "height": 1080,
+          "id": "5f949e7395c348bc98c56c0a2abd77c9",
+          "import_time": 1772897505,
+          "import_time_ms": 1772897505056000,
+          "md5": "",
+          "metetype": "video",
+          "roughcut_time_range": {
+            "duration": 0,
+            "start": 0
+          },
+          "sub_time_range": {
+            "duration": -1,
+            "start": -1
+          },
+          "type": 0,
+          "width": 792
+        },
+        {
+          "create_time": 1772897505,
+          "duration": 3133000,
+          "extra_info": "香蕉猫喝奶茶_去绿幕裁剪",
+          "file_Path": "/Users/zhamao/project/maomemeCreate/public/lib/webm/香蕉猫喝奶茶_去绿幕裁剪.webm",
+          "height": 922,
+          "id": "dad6a9b95deb45c79c10d49bc89f0d25",
+          "import_time": 1772897505,
+          "import_time_ms": 1772897505056000,
+          "md5": "",
+          "metetype": "video",
+          "roughcut_time_range": {
+            "duration": 0,
+            "start": 0
+          },
+          "sub_time_range": {
+            "duration": -1,
+            "start": -1
+          },
+          "type": 0,
+          "width": 516
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "value": []
+    },
+    {
+      "type": 2,
+      "value": []
+    },
+    {
+      "type": 3,
+      "value": []
+    },
+    {
+      "type": 6,
+      "value": []
+    },
+    {
+      "type": 7,
+      "value": []
+    },
+    {
+      "type": 8,
+      "value": []
+    }
+  ],
+  "draft_materials_copied_info": [],
+  "draft_name": "受害者联盟公司反杀记",
+  "draft_new_version": "",
+  "draft_removable_storage_device": "",
+  "draft_root_path": "/Users/zhamao/project/maomemeCreate/out",
+  "draft_segment_extra_info": [],
+  "draft_timeline_materials_size_": 0,
+  "draft_type": "",
+  "tm_draft_cloud_completed": "",
+  "tm_draft_cloud_entry_id": 0,
+  "tm_draft_cloud_modified": 0,
+  "tm_draft_removed": 0,
+  "tm_duration": 38400000
+}

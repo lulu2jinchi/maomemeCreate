@@ -102,18 +102,100 @@ const getSlotCenters = (slotCount) => {
   return [0.14, 0.38, 0.62, 0.86];
 };
 
+const getFrameEnd = (track) => {
+  return (track.from ?? 0) + (track.duration ?? 1);
+};
+
+const getOverlapFrames = (left, right) => {
+  const start = Math.max(left.from ?? 0, right.from ?? 0);
+  const end = Math.min(getFrameEnd(left), getFrameEnd(right));
+  return Math.max(0, end - start);
+};
+
+const getBackgroundTracks = (tracks) => {
+  return tracks.filter((item) => getTrackLayoutKind(item) === 'background');
+};
+
+const findActiveBackgroundTrack = (track, allTracks) => {
+  const backgroundTracks = getBackgroundTracks(allTracks);
+  let bestTrack = null;
+  let bestOverlap = 0;
+
+  backgroundTracks.forEach((candidate) => {
+    const overlap = getOverlapFrames(track, candidate);
+    if (overlap > bestOverlap) {
+      bestOverlap = overlap;
+      bestTrack = candidate;
+    }
+  });
+
+  return bestTrack;
+};
+
+const toPixels = (value, total, fallback) => {
+  if (typeof value !== 'number' || Number.isNaN(value)) {
+    return fallback;
+  }
+
+  if (value >= 0 && value <= 1) {
+    return value * total;
+  }
+
+  return value;
+};
+
+const resolveZoneIndex = (zoneCount, slotCount, slotIndex) => {
+  if (zoneCount <= 0) {
+    return null;
+  }
+
+  if (slotCount <= 1) {
+    return Math.floor((zoneCount - 1) / 2);
+  }
+
+  if (slotCount === 2) {
+    return slotIndex === 0 ? 0 : zoneCount - 1;
+  }
+
+  const ratio = slotIndex / Math.max(1, slotCount - 1);
+  return clamp(Math.round(ratio * (zoneCount - 1)), 0, zoneCount - 1);
+};
+
+const resolveCharacterZone = ({
+  backgroundTrack,
+  slotCount,
+  slotIndex,
+}) => {
+  const zones = backgroundTrack?.layout?.characterZones;
+  if (!Array.isArray(zones) || zones.length === 0) {
+    return null;
+  }
+
+  const zoneIndex = resolveZoneIndex(zones.length, slotCount, slotIndex);
+  if (zoneIndex == null) {
+    return null;
+  }
+
+  return zones[zoneIndex] ?? null;
+};
+
 const getCharacterStyle = ({
   composition,
   track,
   group,
   indexInGroup,
+  backgroundTrack,
 }) => {
   const slotCount = clamp(track.layout?.slotCount ?? group.length, 1, 4);
   const slotIndex = clamp(track.layout?.slotIndex ?? indexInGroup, 0, slotCount - 1);
   const centers = getSlotCenters(slotCount);
-  const centerX = centers[slotIndex] ?? 0.5;
   const parsed = parseAspectRatio(track.layout?.aspectRatio ?? track.aspectRatio);
   const ratio = parsed?.ratio ?? 0.9;
+  const zone = resolveCharacterZone({
+    backgroundTrack,
+    slotCount,
+    slotIndex,
+  });
 
   const baseWidthByCount = {
     1: composition.width * 0.5,
@@ -128,8 +210,18 @@ const getCharacterStyle = ({
     4: composition.height * 0.31,
   };
 
-  let width = baseWidthByCount[slotCount] ?? composition.width * 0.22;
-  let baseline = composition.height * 0.79;
+  const defaultCenterX = composition.width * (centers[slotIndex] ?? 0.5);
+  let width = toPixels(
+    zone?.width ?? zone?.widthRatio,
+    composition.width,
+    baseWidthByCount[slotCount] ?? composition.width * 0.22,
+  );
+  let baseline = toPixels(
+    zone?.baselineY,
+    composition.height,
+    composition.height * 0.79,
+  );
+  const centerX = toPixels(zone?.centerX, composition.width, defaultCenterX);
 
   if (ratio <= 0.75) {
     width *= 0.88;
@@ -140,25 +232,32 @@ const getCharacterStyle = ({
   }
 
   let height = width / ratio;
-  const maxHeight = maxHeightByCount[slotCount] ?? composition.height * 0.36;
+  const maxHeight = toPixels(
+    zone?.maxHeight ?? zone?.maxHeightRatio,
+    composition.height,
+    maxHeightByCount[slotCount] ?? composition.height * 0.36,
+  );
   if (height > maxHeight) {
     height = maxHeight;
     width = height * ratio;
   }
 
-  const minX = composition.width * 0.04;
-  const maxX = composition.width - width - minX;
-  const minY = composition.height * 0.2;
-  const maxY = composition.height * 0.78 - height;
+  const minX = toPixels(zone?.minX, composition.width, composition.width * 0.04);
+  const rightPadding = toPixels(zone?.rightPadding, composition.width, minX);
+  const maxX = composition.width - width - rightPadding;
+  const minY = toPixels(zone?.minY, composition.height, composition.height * 0.2);
+  const maxY = toPixels(zone?.maxY, composition.height, composition.height * 0.78 - height);
+  const x = clamp(centerX - width / 2, minX, maxX);
+  const y = clamp(baseline - height, minY, maxY);
 
   return {
-    x: clamp(composition.width * centerX - width / 2, minX, maxX),
-    y: clamp(baseline - height, minY, maxY),
+    x,
+    y,
     width,
     height,
-    fit: 'contain',
+    fit: zone?.fit ?? 'contain',
     opacity: 1,
-    zIndex: 20 + slotIndex,
+    zIndex: zone?.zIndex ?? (20 + slotIndex),
   };
 };
 
@@ -187,6 +286,7 @@ export const resolveTrackStyle = ({
     const key = getCharacterGroupKey(track, trackIndex);
     const group = groups.get(key) ?? [{track, index: trackIndex}];
     const indexInGroup = group.findIndex((item) => item.index === trackIndex);
+    const backgroundTrack = findActiveBackgroundTrack(track, allTracks);
 
     return {
       ...getCharacterStyle({
@@ -194,6 +294,7 @@ export const resolveTrackStyle = ({
         track,
         group,
         indexInGroup: indexInGroup >= 0 ? indexInGroup : 0,
+        backgroundTrack,
       }),
       ...style,
     };
