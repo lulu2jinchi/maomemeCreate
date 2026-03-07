@@ -18,6 +18,14 @@ const normalizeAssetPath = (assetPath) => {
   return assetPath.replace(/\\/g, '/').replace(/^\.\//, '');
 };
 
+const isTransparentVideo = (assetPath) => {
+  if (!assetPath) {
+    return false;
+  }
+
+  return /\.(mov|webm)$/i.test(assetPath);
+};
+
 const resolveAssetPath = (data, track) => {
   if (track.src) {
     return normalizeAssetPath(track.src);
@@ -162,6 +170,7 @@ const TrackVideo = ({track, data}) => {
       endAt={endAt}
       volume={track.volume ?? 1}
       muted={track.muted ?? false}
+      transparent={track.transparent ?? isTransparentVideo(srcPath)}
     />
   );
 };
