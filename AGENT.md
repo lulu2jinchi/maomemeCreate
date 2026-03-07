@@ -8,6 +8,8 @@
 2. 按故事或脚本生成/修改 `track.json`。
 3. 由 Remotion 读取 `track.json` 并渲染视频。
 
+如果用户明确要求“用抠好绿幕的 mov 文件生成”，则应把 `public/lib/去绿幕透明` 视为优先素材源，优先选择透明 `.mov`，再回退普通 `.mp4`。
+
 后续代理在这个仓库里工作时，默认应该围绕这个链路思考，而不是引入不必要的工程化复杂度。
 
 ## 技术栈
@@ -21,8 +23,13 @@
 
 - `describe.json`
   - 素材目录。
-  - 每项至少包含 `title`、`description`、`path`、`aspect_ratio`。
-  - `path` 形如 `./xxx.mp4`。
+  - 每项至少包含 `title`、`description`、`path`、`aspect_ratio`、`common_level`。
+  - `path` 可为 `./xxx.mp4`，也可为 `./去绿幕透明/xxx.mov`。
+  - `common_level` 表示素材常用等级，`1` 为最常用，`5` 为最不常用；做素材筛选、推荐或自动编排时，默认优先考虑等级更高的素材。
+- `img-describe.json`
+  - 图片素材目录。
+  - 每项至少包含 `title`、`description`、`path`、`aspect_ratio`、`common_level`。
+  - `common_level` 含义与 `describe.json` 一致，`1` 为最常用，`5` 为最不常用。
 - `remotion-data-template.json`
   - 生成 `track.json` 时的结构参考模板。
 - `track.json`
@@ -57,9 +64,10 @@
 
 ### 2. 素材路径一律使用 `lib/...`
 
-从 `describe.json` 匹配到 `./foo.mp4` 后，写入 `track.json` 时应转换成：
+从 `describe.json` 或透明素材目录匹配到素材后，写入 `track.json` 时应转换成：
 
 - `lib/foo.mp4`
+- `lib/去绿幕透明/foo.mov`
 
 不要保留开头的 `./`，也不要写成绝对路径。
 
@@ -70,11 +78,19 @@
 - 先检查文件是否真的存在于 `public/lib`
 - 忽略不存在的素材
 - 忽略 `.qkdownloading` 未完成文件
+- 忽略 `.part.mov` 或隐藏临时透明素材
 - 在素材不够时允许复用，但应在 `meta.notes` 说明原因
+
+如果用户要求透明人物叠加效果：
+
+- 优先扫描 `public/lib/去绿幕透明`
+- 优先使用 `.mov`
+- 视频轨默认优先用 `fit: "contain"`，避免透明主体被裁掉
+- `composition.backgroundColor` 要显式设置
 
 ### 3.1 新增素材时同步维护 `describe.json`
 
-如果往 `public/lib` 新增了视频素材，尤其是新增 `*.mp4` 或 `*.MP4` 文件，必须在同一次任务里同步更新 `describe.json`，不要把“补描述”留到后面。
+如果往 `public/lib` 新增了视频素材，尤其是新增 `*.mp4`、`*.MP4`、`*.mov` 或 `*.MOV` 文件，必须在同一次任务里同步更新 `describe.json`，不要把“补描述”留到后面。
 
 新增条目时至少补齐：
 
@@ -82,6 +98,7 @@
 - `description`
 - `path`
 - `aspect_ratio`
+- `common_level`
 
 其中：
 
@@ -89,6 +106,7 @@
 - `title` 默认优先使用素材文件名去掉扩展名后的文本
 - `description` 至少要写出该素材的动作、情绪或适用场景，不能留空
 - 如果暂时拿不准比例，`aspect_ratio` 可以先写 `null`
+- `common_level` 默认可先写 `5`，后续再按使用频率调整；其中 `1` 表示最常用，`5` 表示最不常用
 
 如果代理新增了 `public/lib` 下的素材文件，但没有同步更新 `describe.json`，应视为任务未完成。
 
@@ -175,7 +193,7 @@ node -e "JSON.parse(require('fs').readFileSync('describe.json','utf8')); console
 - 不要输出带注释或尾逗号的 JSON
 - 不要让 `tracks` 出现空 `assetId` 引用
 - 不要让 `composition.durationInFrames` 小于轨道实际结束帧
-- 不要新增了 `public/lib` 里的 mp4 素材却不更新 `describe.json`
+- 不要新增了 `public/lib` 里的 mp4/mov 素材却不更新 `describe.json`
 - 不要在未确认的情况下覆盖用户已经改过的大型 JSON 文件
 
 ## 一句话判断标准
