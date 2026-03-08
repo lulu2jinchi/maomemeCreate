@@ -25,7 +25,8 @@
     "description": "宽阔办公室，前景是空桌面，中后景有双显示器正对窗户；人物适合放在中央办公位。",
     "path": "./办公室/13366084988210268.jpeg",
     "aspect_ratio": "2560x1434",
-    "common_level": 5
+    "common_level": 3,
+    "is_edited": true
   },
   {
     "title": "办公室/13366084990438255",
@@ -74,21 +75,24 @@
     "description": "经理室风格的工位，前景是单人桌和电脑，窗帘从两侧垂下；人物适合坐在桌后中央。",
     "path": "./办公室/13366085021044854.jpeg",
     "aspect_ratio": "2560x1434",
-    "common_level": 5
+    "common_level": 3,
+    "is_edited": true
   },
   {
     "title": "办公室/13366085023899029",
     "description": "窗帘半开的室内办公角，中央沙发和桌椅前有不少留白；人物适合站在中间，或坐在窗边椅子。",
     "path": "./办公室/13366085023899029.jpeg",
     "aspect_ratio": "2560x1434",
-    "common_level": 5
+    "common_level": 3,
+    "is_edited": true
   },
   {
     "title": "办公室/13366085035361973",
     "description": "明快的办公桌前景，电脑在中间，红色窗帘点亮两侧；人物适合坐在桌后。",
     "path": "./办公室/13366085035361973.jpeg",
     "aspect_ratio": "2560x1434",
-    "common_level": 5
+    "common_level": 3,
+    "is_edited": true
   },
   {
     "title": "办公室/13366085037087089",
@@ -193,28 +197,32 @@
     "description": "蓝调夜晚的小街路口，斑马线从下方向中间收束，两侧楼房把视线夹向远处；人物适合放在斑马线中央或右侧路边。",
     "path": "./城市/13366084176108742.jpeg",
     "aspect_ratio": "1920x1080",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "城市/13366084191988179",
     "description": "教室内景，课桌成排朝向黑板，前景到后景都是规整座位；人物适合站在中间过道，或坐在前排靠左的位置。",
     "path": "./城市/13366084191988179.jpeg",
     "aspect_ratio": "1920x1080",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "城市/13366084193607181",
     "description": "昏暗的蓝色室内夜景，窗帘和床铺集中在右半边，中央留出一条通向深处的空间；人物适合站在中间过道或坐在右侧床边。",
     "path": "./城市/13366084193607181.jpeg",
     "aspect_ratio": "1920x1080",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "城市/13366084195203198",
     "description": "傍晚暖色街道，电车轨道和斑马线一起把视线引向远方，楼房分布在道路两侧；人物适合站在路中央偏前，或靠右侧店铺边。",
     "path": "./城市/13366084195203198.jpeg",
     "aspect_ratio": "1920x1080",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "城市/13366084196948124",
@@ -284,28 +292,32 @@
     "description": "大窗前的卧室场景，床铺压在左下角，整面玻璃窗把绿色树影引入室内；人物适合坐在床沿左侧，或站在窗前中央。",
     "path": "./窗口/13366083618635076.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 5,
+    "is_edited": true
   },
   {
     "title": "窗口/13366083636360942",
     "description": "老木屋式室内，整排窗户在后方，地板和窗影把中间区域留得很空；人物适合站在中央地板，或靠左侧窗边。",
     "path": "./窗口/13366083636360942.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 5,
+    "is_edited": true
   },
   {
     "title": "窗口/13366083639122241",
     "description": "旧式卧室窗景，窗台在正中，右侧能看到床和窗帘，构图偏生活化；人物适合站在窗前中央，或坐在右下床边。",
     "path": "./窗口/13366083639122241.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 4,
+    "is_edited": true
   },
   {
     "title": "窗口/13366083640349484",
     "description": "偏暗的窗边卧室，窗格和床铺几乎占满横向画面，室内光影很安静；人物适合放在床前中央，做背光人物也合适。",
     "path": "./窗口/13366083640349484.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 5,
+    "is_edited": true
   },
   {
     "title": "古风/13366084409582546",
@@ -347,7 +359,8 @@
     "description": "门楼与白墙组成的对称院景，前景空地非常开阔，结构简洁；人物适合站在门前中央。",
     "path": "./古风/13366084430607927.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "古风/13366084432082716",
@@ -382,7 +395,8 @@
     "description": "热闹的古镇街市，左右楼阁和挂饰把街道包裹起来，前景像桥边或水街入口；人物适合站在前景桥边，或街道中央。",
     "path": "./古风/13366084681728468.jpeg",
     "aspect_ratio": "1920x1080",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "古风/13366084685436608",
@@ -403,7 +417,8 @@
     "description": "宽阔的古风厅堂，前景圆桌居中，后方是屏风和壁画，空间很适合站人；人物适合站在桌前中央，或右侧过道。",
     "path": "./古风/13366084767375801.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "古风/13366084769575114",
@@ -424,21 +439,24 @@
     "description": "红柱和金色屋梁组成的大殿内景，中央地面空旷，纵深感很强；人物适合站在正中央，或前景左侧。",
     "path": "./古风/13366084773450167.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "古风/13366084775112554",
     "description": "高挑的古风中庭，楼栏和梁架向上围合，视觉中心落在中间；人物适合站在中景中央，或楼梯口位置。",
     "path": "./古风/13366084775112554.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "古风/13366084815236536",
     "description": "白天的古街楼阁仰视图，屋檐高低错落，天空在上方留出大片空间；人物适合放在下方街口。",
     "path": "./古风/13366084815236536.jpeg",
     "aspect_ratio": "2560x1434",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "古风/13366084817536321",
@@ -452,14 +470,16 @@
     "description": "暮色古镇街巷，灯笼悬挂很密，左侧建筑更靠近镜头，氛围偏生活化；人物适合站在左侧店铺前。",
     "path": "./古风/13366084819429155.jpeg",
     "aspect_ratio": "2560x1434",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "古风/13366084821369138",
     "description": "节庆感很强的古城街景，两侧灯火通明，中间街道狭长笔直；人物适合放在街道中央靠前的位置。",
     "path": "./古风/13366084821369138.jpeg",
     "aspect_ratio": "2560x1434",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "古风/13366084823273982",
@@ -473,7 +493,8 @@
     "description": "低机位看古城门楼，屋檐向两侧展开，下方店铺和街口很热闹；人物适合放在下方街口中央。",
     "path": "./古风/13366084827586334.jpeg",
     "aspect_ratio": "2560x1434",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "古风/13366084829702126",
@@ -697,14 +718,16 @@
     "description": "另一张客厅正面图，沙发更靠近镜头，左边留白略多；人物适合坐在左侧沙发扶手边。",
     "path": "./建筑内/建筑内 (120).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑内/建筑内 (121)",
     "description": "偏暗的起居室，前景只剩茶几和沙发轮廓，后窗发出微弱冷光；人物适合放在窗前做剪影。",
     "path": "./建筑内/建筑内 (121).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑内/建筑内 (122)",
@@ -1187,7 +1210,8 @@
     "description": "俯拍式床铺或软垫特写，浅粉色床面和靠枕几乎占满画面；人物适合只放一个小半身人物在下缘。",
     "path": "./建筑内/建筑内 (184).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑内/建筑内 (185)",
@@ -1208,7 +1232,8 @@
     "description": "更暗的蓝色床铺特写，几乎只剩软垫轮廓和一点顶灯；人物适合放极小比例在下方。",
     "path": "./建筑内/建筑内 (187).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑内/建筑内 (188)",
@@ -1257,14 +1282,16 @@
     "description": "更亮的楼梯间版本，日光把扶手影子切在墙上和地面上；人物适合站在亮区中央。",
     "path": "./建筑内/建筑内 (193).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑内/建筑内 (194)",
     "description": "偏冷的楼梯间，台阶和平台更完整，透视往左后方延伸；人物适合站在平台拐角。",
     "path": "./建筑内/建筑内 (194).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑内/建筑内 (195)",
@@ -1313,14 +1340,16 @@
     "description": "绿色黑板正面近景，黑板占据大部分画面，下方粉笔槽很整齐；人物适合站在黑板前中央。",
     "path": "./建筑内/建筑内 (2).png",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑内/建筑内 (20)",
     "description": "普通教室，前景几张课桌，后方是黑板和窗户，布局很标准；人物适合站在讲台前。",
     "path": "./建筑内/建筑内 (20).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑内/建筑内 (200)",
@@ -1775,42 +1804,48 @@
     "description": "明亮长廊，右侧连续窗和地面阴影把透视拉得很长；人物适合站在走廊中央。",
     "path": "./建筑内/建筑内 (64).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑内/建筑内 (65)",
     "description": "夕阳版长廊，地面和栏杆被金光照亮，前景更暖；人物适合站在前景中间。",
     "path": "./建筑内/建筑内 (65).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑内/建筑内 (66)",
     "description": "蓝调长廊，窗边冷光更强，空间很安静；人物适合站在中段。",
     "path": "./建筑内/建筑内 (66).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑内/建筑内 (67)",
     "description": "更深蓝的长廊版本，前景几乎全暗，只剩窗带和门口；人物适合放远处小人物。",
     "path": "./建筑内/建筑内 (67).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑内/建筑内 (68)",
     "description": "明亮黑板教室，前排课桌和黑板都很清楚，结构稳定；人物适合站在讲台前。",
     "path": "./建筑内/建筑内 (68).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑内/建筑内 (69)",
     "description": "暖光黑板教室，桌面和地板都染上橙色，适合傍晚课堂感；人物适合站在中间过道。",
     "path": "./建筑内/建筑内 (69).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑内/建筑内 (7)",
@@ -2181,28 +2216,32 @@
     "description": "同样的高架道路视角，但光线更暖，地面和栏杆更清楚；人物适合站在桥下中央。",
     "path": "./建筑外/建筑外 (113).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑外/建筑外 (114)",
     "description": "公交车或房车停靠在路边，车身贴近右侧，左边是明亮天空和建筑；人物适合站在车门旁。",
     "path": "./建筑外/建筑外 (114).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑外/建筑外 (115)",
     "description": "夕阳透进来的狭窄外巷，左右墙体把视线夹向前方光源；人物适合站在巷口中央。",
     "path": "./建筑外/建筑外 (115).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑外/建筑外 (116)",
     "description": "夜间车旁通道，车身占据右侧，地面和墙面都偏蓝；人物适合靠车门站立。",
     "path": "./建筑外/建筑外 (116).jpg",
     "aspect_ratio": "900x506",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "建筑外/建筑外 (117)",
@@ -4106,7 +4145,8 @@
     "description": "粉白桌搭工位，屏幕文字很醒目，右侧收纳区更满；人物适合放在左下桌面空白处。",
     "path": "./实景--办公室/13369836232703498.jpeg",
     "aspect_ratio": "1920x2560",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836238483370",
@@ -4141,84 +4181,96 @@
     "description": "更近的经理室视角，桌面用品在前景，背景是横向灯带柜体；人物适合放在中央座位。",
     "path": "./实景--办公室/13369836278969499.jpeg",
     "aspect_ratio": "948x1264",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836291190441",
     "description": "侧向拍的办公室，右边展示架更完整，左侧桌面露出一角；人物适合站在右侧书架前。",
     "path": "./实景--办公室/13369836291190441.jpeg",
     "aspect_ratio": "2048x2560",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836294012470",
     "description": "明亮白色办公区，成排办公椅和显示器集中在中景，左侧留出走道；人物适合站在中间走道。",
     "path": "./实景--办公室/13369836294012470.jpeg",
     "aspect_ratio": "2048x2560",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836296862091",
     "description": "会议室或开放办公区，蓝色天花很醒目，桌椅整齐排开；人物适合站在中央通道，或坐在近处座位。",
     "path": "./实景--办公室/13369836296862091.jpeg",
     "aspect_ratio": "2560x1426",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836298121390",
     "description": "接待区或开放办公厅，左侧是沙发，右侧是长桌，纵深比较明显；人物适合站在中间过道。",
     "path": "./实景--办公室/13369836298121390.jpeg",
     "aspect_ratio": "2560x1552",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836302192404",
     "description": "开放式办公大厅，前景沙发和办公桌并存，右侧层架形成边界；人物适合站在中央留白位置。",
     "path": "./实景--办公室/13369836302192404.jpeg",
     "aspect_ratio": "2560x1446",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836304030071",
     "description": "从另一角度看开放办公区，蓝色天花与白色工位形成对比，前景空间较空；人物适合放在前景中央。",
     "path": "./实景--办公室/13369836304030071.jpeg",
     "aspect_ratio": "2560x1446",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836308130765",
     "description": "白色工位近景，椅背和桌腿占据前景，下方空间适合叠角色；人物适合站在下方中央。",
     "path": "./实景--办公室/13369836308130765.jpeg",
     "aspect_ratio": "2048x2560",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836314699980",
     "description": "洁白走廊或茶水区，右侧柜体连续排开，尽头透视很深；人物适合站在走廊中线。",
     "path": "./实景--办公室/13369836314699980.jpeg",
     "aspect_ratio": "2048x2560",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836317534486",
     "description": "米白色接待区，墙面和柜体非常简洁，中央几乎无杂物；人物适合放在中间靠前位置。",
     "path": "./实景--办公室/13369836317534486.jpeg",
     "aspect_ratio": "2560x1552",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836320200436",
     "description": "白色办公区远景，工位排在下方，蓝色顶棚把空间横向拉开；人物适合站在前景左侧，避免挡住工位。",
     "path": "./实景--办公室/13369836320200436.jpeg",
     "aspect_ratio": "3000x993",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836369437723",
     "description": "普通办公桌近景，双显示器和杂物在右侧更明显，左边有一道木色隔板；人物适合坐在右侧工位。",
     "path": "./实景--办公室/13369836369437723.jpeg",
     "aspect_ratio": "1920x2560",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836404034194",
@@ -4232,21 +4284,24 @@
     "description": "白色前台接待区，台面居中，左右是盆栽，画面干净对称；人物适合站在前台正前方。",
     "path": "./实景--办公室/13369836413229860.jpeg",
     "aspect_ratio": "1280x961",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836414949112",
     "description": "现代前台大厅，白色接待台在中央偏左，玻璃门和通道向后延伸；人物适合站在前台旁，或通道中央。",
     "path": "./实景--办公室/13369836414949112.jpeg",
     "aspect_ratio": "1280x960",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836416433042",
     "description": "宽阔办公大厅，右侧整面窗把自然光引进来，前景地毯区很空；人物适合站在前景中央偏右。",
     "path": "./实景--办公室/13369836416433042.jpeg",
     "aspect_ratio": "1280x960",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836419015922",
@@ -4260,35 +4315,40 @@
     "description": "会议室近景，白色会议桌横向铺开，椅子整齐排在两边；人物适合坐在桌边中央。",
     "path": "./实景--办公室/13369836420214976.jpeg",
     "aspect_ratio": "1280x960",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836421630494",
     "description": "经理室加会客区，前景是会议椅，右后方是沙发和办公桌，层次很丰富；人物适合坐在办公桌后，或站在沙发前。",
     "path": "./实景--办公室/13369836421630494.jpeg",
     "aspect_ratio": "1280x957",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836632575176",
     "description": "普通工位俯视角，显示器、文件和键盘堆在桌面上，右侧空椅子可用；人物适合放在椅子位置做办公姿态。",
     "path": "./实景--办公室/13369836632575176.jpeg",
     "aspect_ratio": "1440x1920",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836638853447",
     "description": "木色办公桌近景，两台显示器并排，背景是杂乱的办公室用品；人物适合坐在中间工位。",
     "path": "./实景--办公室/13369836638853447.jpeg",
     "aspect_ratio": "1920x1440",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--办公室/13369836641431108",
     "description": "会议桌和工位混合场景，桌上有水杯和设备，后方能看到更多桌椅；人物适合站在桌边，或坐在前景椅子上。",
     "path": "./实景--办公室/13369836641431108.jpeg",
     "aspect_ratio": "1440x1920",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--车内(1)/13369837789940717",
@@ -4372,7 +4432,8 @@
     "description": "现代电动车前排中控视角，方向盘在左，屏幕居中，仪表台线条很简洁；人物适合坐在驾驶位，或副驾位。",
     "path": "./实景--车内(1)/13369837901560931.jpeg",
     "aspect_ratio": "2560x1920",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--车内(1)/13369838121242387",
@@ -4435,14 +4496,16 @@
     "description": "抬头看全景天窗和四个白色座椅，镜头居中对称，顶部空间感很强；人物适合放在后排中央，做仰拍人物。",
     "path": "./实景--车内(1)/13369838262736785.jpeg",
     "aspect_ratio": "1920x2560",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--车内/13369837817506459",
     "description": "暖色房车客厅，左侧是长沙发，中央茶几摆着餐盘，后方大窗正对落日海景；人物适合坐在左侧沙发，或站在窗前。",
     "path": "./实景--车内/13369837817506459.jpeg",
     "aspect_ratio": "928x1232",
-    "common_level": 5
+    "common_level": 5,
+    "is_edited": true
   },
   {
     "title": "实景--城市/13369808338903671",
@@ -4792,35 +4855,40 @@
     "description": "两节车厢连接处视角，门框和地面把空间切成前后两层；人物适合站在连接处中央。",
     "path": "./实景--地铁 公交车 车站/13369836697238677.jpeg",
     "aspect_ratio": "1920x2560",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--地铁 公交车 车站/13369836698623014",
     "description": "低机位拍车门和地面，银色门板占据中景，下方地板反光明显；人物适合站在门前偏左。",
     "path": "./实景--地铁 公交车 车站/13369836698623014.jpeg",
     "aspect_ratio": "1920x1440",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--地铁 公交车 车站/13369836704669520",
     "description": "另一张车门区域近景，门缝与扶手更靠近镜头，构图更紧；人物适合靠门站立。",
     "path": "./实景--地铁 公交车 车站/13369836704669520.jpeg",
     "aspect_ratio": "1440x1920",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--地铁 公交车 车站/13369836738164830",
     "description": "有屏蔽门的地铁站台，整排彩色广告和黑色屏蔽门横向展开；人物适合站在屏蔽门前中央。",
     "path": "./实景--地铁 公交车 车站/13369836738164830.jpeg",
     "aspect_ratio": "1440x1920",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--地铁 公交车 车站/13369836740555673",
     "description": "另一张站台屏蔽门视角，站台更空，画面节奏更均匀；人物适合放在中间候车线位置。",
     "path": "./实景--地铁 公交车 车站/13369836740555673.jpeg",
     "aspect_ratio": "1920x1440",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--地铁 公交车 车站/13369836747276723",
@@ -4834,70 +4902,80 @@
     "description": "空车厢内景，橙色座椅沿两侧分布，中央过道很长；人物适合站在过道中间。",
     "path": "./实景--地铁 公交车 车站/13369836768206547.jpeg",
     "aspect_ratio": "1440x1920",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--地铁 公交车 车站/13369836771895160",
     "description": "车厢内部斜拍，左侧窗边一排橙色座椅更醒目，顶部扶手形成纵深；人物适合坐在左侧第二个座位。",
     "path": "./实景--地铁 公交车 车站/13369836771895160.jpeg",
     "aspect_ratio": "1920x2560",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--地铁 公交车 车站/13369836774042976",
     "description": "靠窗座位与城市高楼同框，窗外建筑占据右侧，大半视野都朝外；人物适合坐在窗边看向外面。",
     "path": "./实景--地铁 公交车 车站/13369836774042976.jpeg",
     "aspect_ratio": "1920x2560",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--地铁 公交车 车站/13369836775418099",
     "description": "橙色单座近景，窗户和城市外景在后方，画面适合单人独坐；人物适合直接坐在这张座位上。",
     "path": "./实景--地铁 公交车 车站/13369836775418099.jpeg",
     "aspect_ratio": "1920x2560",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--地铁 公交车 车站/13369836776775649",
     "description": "更低角度的窗边视角，高楼整齐排在外面，车窗边框切割得很利落；人物适合坐在下方靠窗位。",
     "path": "./实景--地铁 公交车 车站/13369836776775649.jpeg",
     "aspect_ratio": "1920x2560",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--地铁 公交车 车站/13369836779244084",
     "description": "车厢中央视角，过道从前景直通车厢深处，顶部线路屏在上方；人物适合站在中央过道。",
     "path": "./实景--地铁 公交车 车站/13369836779244084.jpeg",
     "aspect_ratio": "1920x2560",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--地铁 公交车 车站/13369836844953355",
     "description": "白色车厢内景，近景更靠近车门和扶手，整体显得很空；人物适合站在车门旁。",
     "path": "./实景--地铁 公交车 车站/13369836844953355.jpeg",
     "aspect_ratio": "1440x1920",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--地铁 公交车 车站/13369836864051930",
     "description": "另一张橙色座椅车厢，机位更靠近中部，左右扶手更清楚；人物适合站在过道中央靠前。",
     "path": "./实景--地铁 公交车 车站/13369836864051930.jpeg",
     "aspect_ratio": "1920x2560",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--地铁 公交车 车站/13369836868648899",
     "description": "靠窗座位局部，橙色座椅在右下，窗外高楼是背景；人物适合坐在右下座位。",
     "path": "./实景--地铁 公交车 车站/13369836868648899.jpeg",
     "aspect_ratio": "1920x2560",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--地铁 公交车 车站/13369836871709529",
     "description": "窗边长椅和高楼重复出现，但这张窗框更完整，外景占比更大；人物适合靠窗坐着做远望姿态。",
     "path": "./实景--地铁 公交车 车站/13369836871709529.jpeg",
     "aspect_ratio": "1920x2560",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--地铁 公交车 车站/13369836875834639",
@@ -5072,42 +5150,48 @@
     "description": "教学楼外走廊，左侧红砖墙和右侧栏杆把视线引向尽头，地面光影非常清楚；人物适合站在走廊中线。",
     "path": "./实景--学校/13369807445029098.jpeg",
     "aspect_ratio": "1466x1920",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--学校/13369808129790436",
     "description": "真实教室内景，黑板和讲台在前方，桌椅成排铺满画面；人物适合站在讲台前，或坐在前排中间。",
     "path": "./实景--学校/13369808129790436.jpeg",
     "aspect_ratio": "1080x1446",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--学校/13369808157897247",
     "description": "实验室或功能教室，长桌上摆着设备和器材，窗户在右后方；人物适合站在中间操作台旁。",
     "path": "./实景--学校/13369808157897247.jpeg",
     "aspect_ratio": "1080x1431",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--学校/13369808159220919",
     "description": "普通教室前视图，黑板在中间，课桌排布规整，光线从左侧窗户进来；人物适合站在讲台前中央。",
     "path": "./实景--学校/13369808159220919.jpeg",
     "aspect_ratio": "1280x959",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--学校/13369808188766275",
     "description": "白色走廊场景，右侧墙面和门框干净简洁，前方透视很深；人物适合站在中间过道。",
     "path": "./实景--学校/13369808188766275.jpeg",
     "aspect_ratio": "1280x1706",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--学校/13369808192981506",
     "description": "实训教室或医务室风格空间，桌椅和器械分散摆放，左侧窗帘和床位更醒目；人物适合站在中央空地。",
     "path": "./实景--学校/13369808192981506.jpeg",
     "aspect_ratio": "1280x1706",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--学校/13369808211333941",
@@ -5184,7 +5268,8 @@
     "description": "教室内景，前排桌椅近，后墙挂着横幅和黑板报，画面很有真实校园感；人物适合站在讲台前。",
     "path": "./实景--学校/13369808251542504.jpeg",
     "aspect_ratio": "1706x1280",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--学校/13369808252937182",
@@ -5219,14 +5304,16 @@
     "description": "第二间真实教室，窗在左，黑板报和横幅在后方，桌椅比前一张更靠近镜头；人物适合站在讲台前偏左。",
     "path": "./实景--学校/13369808292204592.jpeg",
     "aspect_ratio": "1706x1280",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--学校/13369808293491256",
     "description": "另一面后墙黑板报特写，主题色彩更重，墙面信息量很大；人物适合放小比例在下方桌椅之间。",
     "path": "./实景--学校/13369808293491256.jpeg",
     "aspect_ratio": "1706x1280",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--学校/13369808294690127",
@@ -5240,7 +5327,8 @@
     "description": "阳光更强的教学楼走廊，栏杆影子很长，适合做放学或独处感镜头；人物适合站在走廊中段。",
     "path": "./实景--学校/13369808312816729.jpeg",
     "aspect_ratio": "1360x1706",
-    "common_level": 5
+    "common_level": 1,
+    "is_edited": true
   },
   {
     "title": "实景--学校/13369808317934214",
@@ -5730,35 +5818,40 @@
     "description": "阳光下的教学楼外景，前景是草地，主楼坐落在画面中后部，整体开阔明亮；人物适合站在前景草地中央偏右。",
     "path": "./学校/13366084273881309.jpeg",
     "aspect_ratio": "1376x864",
-    "common_level": 5
+    "common_level": 3,
+    "is_edited": true
   },
   {
     "title": "学校/13366084289396612",
     "description": "现代校园连廊场景，两侧楼体围出中间通道，透视线直接指向远处；人物适合站在通道中央，或右侧栏杆边。",
     "path": "./学校/13366084289396612.jpeg",
     "aspect_ratio": "1376x864",
-    "common_level": 5
+    "common_level": 4,
+    "is_edited": true
   },
   {
     "title": "学校/13366084291424308",
     "description": "校园道路外景，教学楼和树木分列道路两旁，左侧还有停放车辆；人物适合站在路中央偏右，或左侧车旁。",
     "path": "./学校/13366084291424308.jpeg",
     "aspect_ratio": "1376x864",
-    "common_level": 5
+    "common_level": 5,
+    "is_edited": true
   },
   {
     "title": "学校/13366084292879441",
     "description": "校园小广场场景，长椅和树荫在前景，楼体退到后方，中心留白较多；人物适合坐在长椅附近，或站在中间空地。",
     "path": "./学校/13366084292879441.jpeg",
     "aspect_ratio": "1376x864",
-    "common_level": 5
+    "common_level": 3,
+    "is_edited": true
   },
   {
     "title": "野外/13366083820560501",
     "description": "草地上的小木屋场景，前景两侧木栅栏向中间收拢，把视线引向房子；人物适合站在栅栏缺口处。",
     "path": "./野外/13366083820560501.jpeg",
     "aspect_ratio": "1368x768",
-    "common_level": 5
+    "common_level": 2,
+    "is_edited": true
   },
   {
     "title": "野外/13366083832659449",
@@ -5786,7 +5879,8 @@
     "description": "乡间草地与小屋构图，右侧屋顶更显眼，前景是一片松散的草地；人物适合放在前景中央偏左。",
     "path": "./野外/13366083837425781.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 2,
+    "is_edited": true
   },
   {
     "title": "野外/13366083839025795",
@@ -5800,7 +5894,8 @@
     "description": "两栋小屋分散在画面两边，中间草地和树木形成天然舞台；人物适合放在中间空地。",
     "path": "./野外/13366083840627808.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 2,
+    "is_edited": true
   },
   {
     "title": "野外/13366083842314769",
@@ -5821,7 +5916,8 @@
     "description": "右侧农舍配远山，前景土路向内延伸，空间感比较明确；人物适合站在前景右侧，或路口。",
     "path": "./野外/13366083845406865.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 2,
+    "is_edited": true
   },
   {
     "title": "野外/13366083846975898",
@@ -5835,7 +5931,8 @@
     "description": "石墙别院入口，前景石板路直通院门，左右墙体很规整；人物适合站在路中央。",
     "path": "./野外/13366083848428004.jpeg",
     "aspect_ratio": "1368x768",
-    "common_level": 5
+    "common_level": 2,
+    "is_edited": true
   },
   {
     "title": "野外/13366083849892102",
@@ -5863,7 +5960,8 @@
     "description": "石墙围合的院外道路，左侧屋檐更近，石板路是最稳定的站位；人物适合站在道路中央。",
     "path": "./野外/13366083854717131.jpeg",
     "aspect_ratio": "1368x768",
-    "common_level": 5
+    "common_level": 2,
+    "is_edited": true
   },
   {
     "title": "野外/13366083856492038",
@@ -5884,21 +5982,24 @@
     "description": "山间溪流场景，水面从左下延伸到中景，远山占满背景；人物适合站在左下岸边。",
     "path": "./野外/13366083876720434.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 2,
+    "is_edited": true
   },
   {
     "title": "野外/13366083879388822",
     "description": "弯曲土路和草坡场景，远山横在后方，道路是最清晰的引导线；人物适合站在路中央偏右。",
     "path": "./野外/13366083879388822.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 2,
+    "is_edited": true
   },
   {
     "title": "野外/13366083880910884",
     "description": "山谷边的小路，左侧植被浓密，远处能看到零散屋顶；人物适合放在前景路口。",
     "path": "./野外/13366083880910884.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 2,
+    "is_edited": true
   },
   {
     "title": "野外/13366083882765743",
@@ -5912,14 +6013,16 @@
     "description": "草地小径通向远山，右侧山坡更近，适合做行走中的人物；人物适合沿小径中央放置。",
     "path": "./野外/13366083884792493.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 2,
+    "is_edited": true
   },
   {
     "title": "野外/13366083887319937",
     "description": "林间土路，树荫从上方罩下来，前景有明显斑驳光影；人物适合站在路中央。",
     "path": "./野外/13366083887319937.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 2,
+    "is_edited": true
   },
   {
     "title": "野外/13366083888804023",
@@ -5940,13 +6043,15 @@
     "description": "旷野草甸场景，左中是一棵较孤立的树，天空占比很大；人物适合站在树下，或中间田埂。",
     "path": "./野外/13366083893013244.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 2,
+    "is_edited": true
   },
   {
     "title": "野外/13366083895012014",
     "description": "金色田地横向铺满画面，前景草穗更近，整体适合做远景人物；人物适合站在下方中央。",
     "path": "./野外/13366083895012014.jpeg",
     "aspect_ratio": "1456x816",
-    "common_level": 5
+    "common_level": 2,
+    "is_edited": true
   }
 ]
