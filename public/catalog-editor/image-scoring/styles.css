@@ -341,6 +341,36 @@ button:disabled {
   color: #8d3f18;
 }
 
+.score-pill.score-1 {
+  background: #d84c3f;
+  color: #fff7f5;
+}
+
+.score-pill.score-2 {
+  background: #ec8a3c;
+  color: #fff8ef;
+}
+
+.score-pill.score-3 {
+  background: #d9b24c;
+  color: #4e390e;
+}
+
+.score-pill.score-4 {
+  background: #6ea969;
+  color: #f5fff2;
+}
+
+.score-pill.score-5 {
+  background: #2f7d57;
+  color: #f3fff8;
+}
+
+.score-pill.score-empty {
+  background: #e8dfd1;
+  color: #6f5b45;
+}
+
 .edited-pill {
   background: var(--success-soft);
   color: var(--success);
@@ -350,8 +380,30 @@ button:disabled {
   position: absolute;
   top: 12px;
   left: 12px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: rgba(47, 36, 23, 0.76);
   color: #fffaf2;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.select-pill.inactive {
+  background: rgba(47, 36, 23, 0.42);
+  color: rgba(255, 250, 242, 0.88);
+}
+
+.select-pill.editable {
+  background: rgba(47, 36, 23, 0.8);
+}
+
+.select-pill.selected {
+  background: rgba(37, 99, 72, 0.9);
 }
 
 .empty-state {

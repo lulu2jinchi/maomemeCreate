@@ -25,6 +25,10 @@ const hasManualBox = (style = {}) => {
   return ['x', 'y', 'width', 'height'].every((key) => typeof style[key] === 'number');
 };
 
+const hasManualTextPosition = (style = {}) => {
+  return typeof style.x === 'number' && typeof style.y === 'number';
+};
+
 const getTrackLayoutKind = (track) => {
   if (track.layout?.kind) {
     return track.layout.kind;
@@ -261,6 +265,90 @@ const getCharacterStyle = ({
   };
 };
 
+const estimateTextBlockHeight = ({
+  content,
+  width,
+  fontSize,
+  lineHeight,
+}) => {
+  const text = String(content ?? '').trim();
+  if (!text) {
+    return fontSize * lineHeight;
+  }
+
+  const explicitLines = text.split('\n');
+  const averageCharWidth = fontSize * 0.95;
+  const charsPerLine = Math.max(1, Math.floor(width / averageCharWidth));
+  const totalLines = explicitLines.reduce((sum, line) => {
+    const lineLength = Math.max(1, Array.from(line).length);
+    return sum + Math.max(1, Math.ceil(lineLength / charsPerLine));
+  }, 0);
+
+  return totalLines * fontSize * lineHeight;
+};
+
+const getSpeakerBoundTextStyle = ({
+  composition,
+  track,
+  allTracks,
+  characterGroups,
+}) => {
+  const speakerTrackId = track.speakerTrackId ?? track.layout?.speakerTrackId;
+  if (!speakerTrackId) {
+    return null;
+  }
+
+  const speakerIndex = allTracks.findIndex((item) => item.id === speakerTrackId);
+  if (speakerIndex < 0) {
+    return null;
+  }
+
+  const speakerTrack = allTracks[speakerIndex];
+  if (getTrackLayoutKind(speakerTrack) !== 'character') {
+    return null;
+  }
+
+  const speakerStyle = resolveTrackStyle({
+    composition,
+    track: speakerTrack,
+    allTracks,
+    trackIndex: speakerIndex,
+    characterGroups,
+  });
+
+  const fontSize = track.style?.fontSize ?? 56;
+  const lineHeight = track.style?.lineHeight ?? 1.08;
+  const bubbleWidth = clamp(
+    track.style?.width ?? track.style?.maxWidth ?? (speakerStyle.width ?? 280) * 1.28,
+    220,
+    Math.min(420, composition.width * 0.44),
+  );
+  const centerX = (speakerStyle.x ?? 0) + ((speakerStyle.width ?? bubbleWidth) / 2);
+  const estimatedHeight = estimateTextBlockHeight({
+    content: track.content,
+    width: bubbleWidth,
+    fontSize,
+    lineHeight,
+  });
+  const preferredTop = (speakerStyle.y ?? 0) - estimatedHeight - 28;
+  const maxTop = Math.max(140, (speakerStyle.y ?? 0) - 20);
+  let textAlign = 'center';
+  if (centerX <= composition.width * 0.36) {
+    textAlign = 'left';
+  } else if (centerX >= composition.width * 0.64) {
+    textAlign = 'right';
+  }
+
+  return {
+    x: clamp(centerX - (bubbleWidth / 2), 36, composition.width - bubbleWidth - 36),
+    y: clamp(preferredTop, 140, maxTop),
+    width: bubbleWidth,
+    maxWidth: bubbleWidth,
+    textAlign,
+    zIndex: (speakerStyle.zIndex ?? 20) + 30,
+  };
+};
+
 export const resolveTrackStyle = ({
   composition,
   track,
@@ -301,8 +389,18 @@ export const resolveTrackStyle = ({
   }
 
   if (track.type === 'text') {
+    const speakerBoundStyle = !hasManualTextPosition(style)
+      ? getSpeakerBoundTextStyle({
+        composition,
+        track,
+        allTracks,
+        characterGroups,
+      })
+      : null;
+
     return {
       zIndex: 100,
+      ...(speakerBoundStyle ?? {}),
       ...style,
     };
   }

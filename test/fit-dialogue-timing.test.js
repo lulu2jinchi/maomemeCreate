@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 
 const {
+  assertNoDuplicateCharacters,
   countReadableCharacters,
   getAutoSubtitleDuration,
   rebalanceDialogueTiming,
@@ -54,4 +55,29 @@ test('rebalanceDialogueTiming stretches dense dialogue scenes and shifts later s
   assert.equal(bg2.from, scene2Video.from);
   assert.equal(track.composition.durationInFrames, Math.max(...track.tracks.map((item) => item.from + item.duration)));
   assert.match(track.meta.notes, /按字数自动延长/);
+});
+
+test('assertNoDuplicateCharacters rejects duplicate roles in the same shot', () => {
+  assert.throws(() => {
+    assertNoDuplicateCharacters([
+      {
+        id: 'scene_9_drive_1',
+        type: 'video',
+        assetId: 'drive',
+        from: 0,
+        duration: 120,
+        layout: {kind: 'character', groupId: 'scene_9_cast'},
+        characterLabel: '我',
+      },
+      {
+        id: 'scene_9_dance_2',
+        type: 'video',
+        assetId: 'dance',
+        from: 0,
+        duration: 120,
+        layout: {kind: 'character', groupId: 'scene_9_cast'},
+        characterLabel: '我',
+      },
+    ]);
+  }, /Duplicate character in the same scene/);
 });

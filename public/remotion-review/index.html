@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remotion 审片台</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="editor-pane">
+        <div class="hero-card">
+          <p class="eyebrow">Preview Before Render</p>
+          <h1>Remotion 审片台</h1>
+          <p class="hero-copy">先改文案和时间线，再看右侧实时预览。确认后再点正式导出 MP4。</p>
+          <div class="status-grid">
+            <div class="status-pill">
+              <span>保存状态</span>
+              <strong id="save-state">载入中</strong>
+            </div>
+            <div class="status-pill">
+              <span>Studio</span>
+              <strong id="studio-state">未启动</strong>
+            </div>
+            <div class="status-pill">
+              <span>导出</span>
+              <strong id="render-state">空闲</strong>
+            </div>
+          </div>
+          <div class="action-row">
+            <button id="save-button" class="primary-button" disabled>保存改动</button>
+            <button id="reload-button" class="ghost-button">重新载入</button>
+          </div>
+          <div class="action-row">
+            <button id="start-studio-button" class="secondary-button">启动预览</button>
+            <button id="refresh-preview-button" class="ghost-button">刷新预览</button>
+            <button id="stop-studio-button" class="ghost-button">停止预览</button>
+          </div>
+          <div class="action-row">
+            <button id="render-button" class="primary-button accent-button">确认导出 MP4</button>
+            <button id="stop-render-button" class="ghost-button">停止导出</button>
+          </div>
+        </div>
+
+        <section class="panel-card meta-card">
+          <div class="section-header">
+            <h2>项目信息</h2>
+            <span id="track-path" class="meta-tag">track.json</span>
+          </div>
+          <label class="field">
+            <span>标题</span>
+            <input id="meta-title-input" type="text" placeholder="输入视频标题" />
+          </label>
+          <label class="field">
+            <span>备注</span>
+            <textarea id="meta-notes-input" rows="4" placeholder="输入本次版本说明"></textarea>
+          </label>
+        </section>
+
+        <section class="panel-card scene-card">
+          <div class="section-header">
+            <h2>逐场修改</h2>
+            <span id="scene-count" class="meta-tag">0 场</span>
+          </div>
+          <div id="scene-list" class="scene-list">
+            <div class="placeholder-card">
+              <strong>场景载入中</strong>
+              <span>读取 `track.json` 后会在这里列出可编辑内容。</span>
+            </div>
+          </div>
+        </section>
+
+        <details class="panel-card advanced-card">
+          <summary>
+            <span>高级 JSON</span>
+            <span class="summary-hint">用于直接改完整 `track.json`</span>
+          </summary>
+          <div class="advanced-actions">
+            <button id="sync-json-button" class="ghost-button" type="button">从表单生成 JSON</button>
+            <button id="apply-json-button" class="secondary-button" type="button">应用 JSON 覆盖表单</button>
+          </div>
+          <textarea id="raw-json-input" class="raw-json-input" spellcheck="false"></textarea>
+        </details>
+      </aside>
+
+      <main class="preview-pane">
+        <section class="panel-card preview-card">
+          <div class="section-header">
+            <h2>实时预览</h2>
+            <a id="studio-link" class="inline-link" href="#" target="_blank" rel="noreferrer">新窗口打开 Studio</a>
+          </div>
+          <div class="preview-frame-wrap">
+            <iframe
+              id="preview-frame"
+              class="preview-frame"
+              title="Remotion Studio Preview"
+              loading="lazy"
+            ></iframe>
+            <div id="preview-placeholder" class="placeholder-card preview-placeholder">
+              <strong>还没启动 Remotion Studio</strong>
+              <span>点左侧“启动预览”后，右边会嵌入 Remotion Studio。</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel-card log-card">
+          <div class="section-header">
+            <h2>进度与日志</h2>
+            <a id="output-link" class="inline-link hidden" href="#" target="_blank" rel="noreferrer">打开最新 MP4</a>
+          </div>
+          <div class="log-grid">
+            <div class="log-panel">
+              <div class="log-panel-head">
+                <strong>Studio 日志</strong>
+                <span id="studio-meta">等待启动</span>
+              </div>
+              <pre id="studio-log" class="log-output">等待启动 Remotion Studio...</pre>
+            </div>
+            <div class="log-panel">
+              <div class="log-panel-head">
+                <strong>导出日志</strong>
+                <span id="render-meta">还没开始</span>
+              </div>
+              <pre id="render-log" class="log-output">确认版本后，点“确认导出 MP4”。</pre>
+            </div>
+          </div>
+          <div id="output-preview" class="output-preview hidden">
+            <video id="output-video" controls preload="metadata"></video>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

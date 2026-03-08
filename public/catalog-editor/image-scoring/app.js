@@ -184,12 +184,12 @@
       });
       frame.append(image);
 
-      if (state.editMode) {
-        const selectPill = document.createElement('span');
-        selectPill.className = 'select-pill';
-        selectPill.textContent = isSelected ? '已选' : '可选';
-        frame.append(selectPill);
-      }
+      const selectPill = document.createElement('span');
+      selectPill.className = `select-pill ${isSelected ? 'selected' : ''} ${state.editMode ? 'editable' : 'inactive'}`;
+      selectPill.textContent = isSelected ? '✓' : '○';
+      selectPill.setAttribute('aria-label', isSelected ? '已选中' : state.editMode ? '可选择' : '未进入编辑模式');
+      selectPill.title = isSelected ? '已选中' : state.editMode ? '可选择' : '未进入编辑模式';
+      frame.append(selectPill);
 
       const meta = document.createElement('div');
       meta.className = 'card-meta';
@@ -201,9 +201,10 @@
       const footer = document.createElement('div');
       footer.className = 'card-footer';
 
+      const effectiveScore = getEffectiveScore(item);
       const score = document.createElement('span');
-      score.className = 'score-pill';
-      score.textContent = `${getEffectiveScore(item) ?? '-'} 分`;
+      score.className = `score-pill ${Number.isInteger(effectiveScore) ? `score-${effectiveScore}` : 'score-empty'}`;
+      score.textContent = `${effectiveScore ?? '-'} 分`;
 
       const edited = document.createElement('span');
       edited.className = 'edited-pill';

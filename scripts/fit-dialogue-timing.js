@@ -20,10 +20,12 @@ const FRAME_CONSTANTS = {
 const getTrackStart = (track) => Number(track.from || 0);
 const getTrackDuration = (track) => Math.max(1, Number(track.duration || 1));
 const getTrackEnd = (track) => getTrackStart(track) + getTrackDuration(track);
+const getTrackOverlap = (left, right) => Math.max(0, Math.min(getTrackEnd(left), getTrackEnd(right)) - Math.max(getTrackStart(left), getTrackStart(right)));
 
 const isBackgroundTrack = (track) => track?.type === 'image' && track?.layout?.kind === 'background';
 const isTitleTrack = (track) => track?.type === 'text' && /(^|_)title(_|$)/.test(track.id || '');
 const isSubtitleTrack = (track) => track?.type === 'text' && !isTitleTrack(track);
+const isCharacterTrack = (track) => track?.type === 'video' && (track?.layout?.kind === 'character' || Boolean(track?.characterLabel));
 
 const extractSceneNumber = (trackId) => {
   if (!trackId) {
@@ -97,6 +99,66 @@ const buildSceneMap = (tracks) => {
   return [...scenes.values()]
     .filter((scene) => Number.isFinite(scene.oldStart) && scene.tracks.length > 0)
     .sort((left, right) => left.sceneNumber - right.sceneNumber);
+};
+
+const getCharacterGroupKey = (track, index) => {
+  if (track?.layout?.groupId) {
+    return track.layout.groupId;
+  }
+
+  const sceneNumber = extractSceneNumber(track?.id);
+  if (sceneNumber !== null) {
+    return `scene_${sceneNumber}`;
+  }
+
+  return `${getTrackStart(track)}:${getTrackDuration(track)}:${index}`;
+};
+
+const getCharacterIdentityKey = (track) => {
+  const label = String(track?.characterLabel || '').trim();
+  if (label) {
+    return `label:${label}`;
+  }
+
+  const assetId = String(track?.assetId || '').trim();
+  if (assetId) {
+    return `asset:${assetId}`;
+  }
+
+  return null;
+};
+
+const assertNoDuplicateCharacters = (tracks) => {
+  const characters = tracks
+    .map((track, index) => ({track, index}))
+    .filter(({track}) => isCharacterTrack(track));
+
+  for (let index = 0; index < characters.length; index += 1) {
+    const left = characters[index];
+    const leftIdentity = getCharacterIdentityKey(left.track);
+    if (!leftIdentity) {
+      continue;
+    }
+
+    for (let inner = index + 1; inner < characters.length; inner += 1) {
+      const right = characters[inner];
+      const rightIdentity = getCharacterIdentityKey(right.track);
+      if (!rightIdentity || rightIdentity !== leftIdentity) {
+        continue;
+      }
+
+      const sameGroup = getCharacterGroupKey(left.track, left.index) === getCharacterGroupKey(right.track, right.index);
+      if (!sameGroup) {
+        continue;
+      }
+
+      if (getTrackOverlap(left.track, right.track) <= 0) {
+        continue;
+      }
+
+      throw new Error(`Duplicate character in the same scene: "${left.track.characterLabel || left.track.assetId || left.track.id}" appears in both ${left.track.id} and ${right.track.id}. Use different roles or split the shot.`);
+    }
+  }
 };
 
 const buildSceneShiftResolver = (scenes) => {
@@ -232,6 +294,7 @@ const appendMetaNote = (data) => {
 
 const rebalanceDialogueTiming = (data) => {
   const tracks = Array.isArray(data?.tracks) ? data.tracks : [];
+  assertNoDuplicateCharacters(tracks);
   const scenes = buildSceneMap(tracks);
 
   if (scenes.length === 0) {
@@ -278,6 +341,7 @@ if (require.main === module) {
 
 module.exports = {
   FRAME_CONSTANTS,
+  assertNoDuplicateCharacters,
   buildSceneMap,
   countReadableCharacters,
   extractSceneNumber,

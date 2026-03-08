@@ -9,6 +9,7 @@
   "scripts": {
     "test": "node --test",
     "studio": "remotion studio src/index.jsx",
+    "review:app": "node scripts/remotion-review-server.js",
     "track:fit-dialogue": "node scripts/fit-dialogue-timing.js track.json",
     "render:track": "npm run track:fit-dialogue && remotion render src/index.jsx CatMemeMain out/track-preview.mp4",
     "export:fcpxml": "npm run track:fit-dialogue && node scripts/export-fcpxml.mjs track.json",
