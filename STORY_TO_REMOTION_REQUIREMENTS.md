@@ -33,6 +33,9 @@
 - `aspect_ratio`
 - `common_level`
 
+其中透明 `webm` 的 `path` 可以是 R2 公网地址，当前固定前缀为：
+- `https://pub-106c609ea4b3466bb7f36e436478f58e.r2.dev/webm/`
+
 ### 3.2 img-describe.json 结构
 `img-describe.json` 每项至少包含：
 - `title`
@@ -42,20 +45,27 @@
 - `common_level`
 
 ### 3.3 路径规则
-- `describe.json` 中的人物素材路径相对 `public/lib`。
-  - 例：`"./webm/可爱猫.webm"` 输出为 `lib/webm/可爱猫.webm`
+- `describe.json` 中的人物素材路径可能是相对 `public/lib` 的子路径，也可能是透明 `webm` 的 R2 公网地址。
+  - 本地例：`"./webm/可爱猫.webm"` 输出为 `lib/webm/可爱猫.webm`
+  - 远端例：`"https://pub-106c609ea4b3466bb7f36e436478f58e.r2.dev/webm/可爱猫.webm"` 下载到 `public/lib/webm/可爱猫.webm` 后，输出仍为 `lib/webm/可爱猫.webm`
 - `img-describe.json` 中的背景素材路径相对 `public/img`。
   - 例：`"./办公室/13366084965613911.jpeg"` 输出为 `img/办公室/13366084965613911.jpeg`
 - 输出到 `assets.video` 时统一写 `lib/...`
 - 输出到 `assets.image` 时统一写 `img/...`
 
-### 3.4 素材优先级
+### 3.4 透明 WebM 本地同步规则
+- 生成或修改 `track.json` 前，若选中的透明素材 `path` 是 `https://pub-106c609ea4b3466bb7f36e436478f58e.r2.dev/webm/` 下的公网地址，必须先检查本地 `public/lib/webm/<文件名>` 是否已存在。
+- 本地已存在时，直接复用，不要重复下载。
+- 本地不存在时，才从该公网地址下载到 `public/lib/webm/<文件名>`。
+- 下载完成后，`track.json` 里仍然只能写 `lib/webm/<文件名>`，不要写远端 URL。
+
+### 3.5 素材优先级
 - 人物素材优先使用透明 `.webm`
 - 其次使用透明 `.mov`
 - 最后才回退到普通 `.mp4`
 - 背景素材优先选择静态图片，默认使用 `img-describe.json`
 
-### 3.5 透明 WebM 规格
+### 3.6 透明 WebM 规格
 - `public/lib/webm` 下的人物透明素材默认应满足 Remotion 使用规格，不得随意更换编码方案。
 - 机器可读规格文件固定为：`public/lib/webm/format-spec.json`
 - 默认规格：
@@ -89,7 +99,9 @@
 - 对每个人物位，在 `describe.json` 的 `title + description` 上做语义匹配。
 - 默认按分数选 Top1，允许回退 Top2/Top3。
 - 过滤规则：
-  - 忽略不存在的文件
+  - 若选中的透明 `webm` 是 R2 公网地址，先检查本地 `public/lib/webm/<文件名>` 是否已存在；不存在时先下载再继续
+  - 本地已经下载过的透明 `webm` 不要重复下载
+  - 只有下载后仍不存在，或本地文件损坏时，才视为不存在的文件
   - 忽略 `.qkdownloading`
   - 忽略无法播放的损坏文件
 - 同一素材默认最多使用 2 次，超出时在 `meta.notes` 记录原因。
@@ -325,6 +337,7 @@
 - 输出结构兼容 `remotion-data-template.json`
 - 至少 1 条背景轨来自 `img-describe.json`
 - 至少 1 条人物轨来自 `describe.json`
+- 若人物轨命中了 R2 公网透明素材，渲染前必须已同步到本地 `public/lib/webm/`
 - 多人物 scene 支持 1-4 人自动布局
 - 人物不得明显越出画面边界
 - 人物脚下角色名必须是具体角色身份，不能是抽象概念或系统概念

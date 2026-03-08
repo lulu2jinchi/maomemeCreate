@@ -24,7 +24,9 @@
 - `describe.json`
   - 素材目录。
   - 每项至少包含 `title`、`description`、`path`、`aspect_ratio`、`common_level`。
-  - `path` 应写成相对 `public/lib` 的子路径，例如 `./original/xxx.mp4`、`./trimMp4/xxx.mp4`、`./webm/xxx.webm`。
+  - `path` 可能是相对 `public/lib` 的子路径，例如 `./original/xxx.mp4`、`./trimMp4/xxx.mp4`，也可能是透明 `webm` 的 R2 公网地址。
+  - 当前透明 `webm` 的远端来源前缀固定为 `https://pub-106c609ea4b3466bb7f36e436478f58e.r2.dev/webm/`。
+  - 如果 `path` 是这个 R2 前缀下的 `.webm`，生成视频前必须先确认同名文件是否已存在于 `public/lib/webm/`；本地已有就直接复用，本地没有才下载到 `public/lib/webm/`。
   - `common_level` 表示素材常用等级，`1` 为最常用，`5` 为最不常用；做素材筛选、推荐或自动编排时，默认优先考虑等级更高的素材。
 - `img-describe.json`
   - 图片素材目录。
@@ -75,11 +77,17 @@
 
 不要保留开头的 `./`，也不要写成绝对路径。
 
+即使 `describe.json` 中选中的透明素材 `path` 是 R2 公网地址，写入 `track.json` 时也仍然必须落到本地 `lib/webm/<文件名>.webm`，不要把远端 URL 直接写进 `track.json`。
+
 ### 3. 素材存在性优先于“语义上看起来合理”
 
 如果任务涉及素材匹配或轨道生成：
 
 - 先检查文件是否真的存在于 `public/lib`
+- 若选中的透明 `webm` 来自 `https://pub-106c609ea4b3466bb7f36e436478f58e.r2.dev/webm/`，先检查 `public/lib/webm/<文件名>`
+- 本地已存在时禁止重复下载
+- 本地不存在时，才从对应的 R2 公网地址下载到 `public/lib/webm/<文件名>`
+- 下载完成后再继续写 `track.json` 或执行渲染
 - 忽略不存在的素材
 - 忽略 `.qkdownloading` 未完成文件
 - 忽略 `.part.mov` 或隐藏临时透明素材
@@ -89,6 +97,7 @@
 如果用户要求透明人物叠加效果：
 
 - 优先扫描 `public/lib/webm`
+- 若命中的透明素材只在 `describe.json` 里提供了 R2 URL，先同步到本地 `public/lib/webm`，再参与后续匹配和渲染
 - 优先使用 `.webm`，其次才是 `public/lib/original` 中少量透明 `.mov`
 - 视频轨默认优先用 `fit: "contain"`，避免透明主体被裁掉
 - `composition.backgroundColor` 要显式设置

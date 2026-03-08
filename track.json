@@ -1,76 +1,57 @@
 {
   "schema": "remotion-timeline/v1",
-  "name": "workers-alliance-takes-over",
+  "name": "poached-intern-revenge",
   "composition": {
     "id": "CatMemeMain",
     "fps": 30,
     "width": 1080,
     "height": 1920,
-    "durationInFrames": 1962,
+    "durationInFrames": 2348,
     "backgroundColor": "#11151c"
   },
   "meta": {
-    "title": "受害者联盟公司反杀记",
+    "title": "背锅实习生，反手被客户挖走",
     "author": "Codex",
     "assetCatalog": "describe.json",
     "imageCatalog": "img-describe.json",
-    "notes": "进一步拉长对白阅读窗口，尤其是多人物多句对白场景会整段延长，避免第三句刚出现就切走。背景按剧情段落共用，默认每幕只保留 1 条主声，字幕不做渐入渐出，并尽量贴近对应人物。 对白字幕会按字数自动延长；多人连续对白时会自动把 scene 撑开。"
+    "notes": "按 common_level 越低越优先挑角色和背景；主线是抢功背锅、客户单独确认、会议揭发、现场挖人。对白字幕会按字数自动延长；多人连续对白时会自动把 scene 撑开。"
   },
   "assets": {
     "image": {
-      "bg_office_a": "img/办公室/13366084965613911.jpeg",
-      "bg_office_b": "img/办公室/13366085050712563.jpeg",
-      "bg_office_c": "img/办公室/13366085102984929.jpeg",
-      "bg_city_a": "img/城市/13366084202467725.jpeg",
-      "bg_city_b": "img/城市/13366084207661470.jpeg"
+      "bg_office_open": "img/实景--办公室/13369836294012470.jpeg",
+      "bg_manager_room": "img/实景--办公室/13369836278969499.jpeg",
+      "bg_corridor": "img/实景--办公室/13369836314699980.jpeg",
+      "bg_reception": "img/实景--办公室/13369836317534486.jpeg",
+      "bg_night_city": "img/城市/13366084176108742.jpeg",
+      "bg_car": "img/实景--车内(1)/13369837901560931.jpeg"
     },
     "video": {
-      "boss": "lib/webm/G116 痞老板.webm",
-      "worker": "lib/webm/工作猫猫（有声）.webm",
-      "worker_cry": "lib/webm/【高清】委屈猫哭泣猫meme绿幕素材30秒.webm",
-      "sycophant": "lib/webm/【高清】坏笑猫奸笑猫meme绿幕素材30秒.webm",
-      "union_rep": "lib/webm/敲碗猫猫（有声）.webm",
-      "worker_angry": "lib/webm/愤怒猫猫（有声）.webm",
-      "founder": "lib/webm/【高清无水印】霸气走路大佬猫猫meme绿幕素材30秒.webm",
-      "beggar_boss": "lib/webm/磕头求饶香蕉猫.webm",
-      "success_laugh": "lib/webm/大笑仓鼠.webm",
-      "success_smile": "lib/webm/【高清】大司马猫meme绿幕素材30秒.webm",
-      "milk_tea": "lib/webm/香蕉猫喝奶茶.webm"
+      "intern_work": "lib/webm/工作猫猫（有声）.webm",
+      "intern_focus": "lib/webm/酷酷小猫敲键盘（有声）.webm",
+      "boss_smug": "lib/webm/【高清无水印】修复版黑猫磨指甲猫meme绿幕素材1分钟.webm",
+      "lackey": "lib/webm/【高清】坏笑猫奸笑猫meme绿幕素材30秒.webm",
+      "boss_point": "lib/webm/质问猫咪（有声）.webm",
+      "intern_cry": "lib/webm/【高清】委屈猫哭泣猫meme绿幕素材30秒.webm",
+      "client_call": "lib/webm/【高清无水印】打电话猫新鲜哥猫meme绿幕素材20秒.webm",
+      "turnaround": "lib/webm/逆转猫将大局逆转吧.webm",
+      "shock": "lib/webm/目瞪口呆猫（有声）.webm",
+      "confused": "lib/webm/huh猫（有声）.webm",
+      "confirm": "lib/webm/【高清无水印】oi猫meme绿幕素材30秒.webm",
+      "backpack": "lib/webm/背包小猫（有声）.webm",
+      "drive": "lib/webm/开车猫（有声）.webm",
+      "dance": "lib/webm/劲爆肥猫跳舞（有声）.webm"
     }
   },
   "tracks": [
     {
-      "id": "bg_block_1",
+      "id": "bg_scene_1",
       "type": "image",
-      "assetId": "bg_office_a",
+      "assetId": "bg_office_open",
       "from": 0,
-      "duration": 484,
+      "duration": 260,
       "layout": {
         "kind": "background",
-        "aspectRatio": "2560x1434",
-        "characterZones": [
-          {
-            "centerX": 0.18,
-            "baselineY": 0.83,
-            "widthRatio": 0.28,
-            "maxHeightRatio": 0.34,
-            "zIndex": 18
-          },
-          {
-            "centerX": 0.48,
-            "baselineY": 0.77,
-            "widthRatio": 0.22,
-            "maxHeightRatio": 0.3,
-            "zIndex": 16
-          },
-          {
-            "centerX": 0.8,
-            "baselineY": 0.85,
-            "widthRatio": 0.29,
-            "maxHeightRatio": 0.35,
-            "zIndex": 20
-          }
-        ]
+        "aspectRatio": "2048x2560"
       },
       "animation": {
         "enter": "fadeIn",
@@ -78,60 +59,21 @@
       }
     },
     {
-      "id": "scene_1_boss",
+      "id": "scene_1_intern_focus_1",
       "type": "video",
-      "assetId": "boss",
+      "assetId": "intern_focus",
       "from": 0,
-      "duration": 234,
+      "duration": 260,
       "transparent": true,
       "muted": false,
       "layout": {
         "kind": "character",
         "groupId": "scene_1_cast",
-        "slotCount": 3,
-        "slotIndex": 0
+        "slotCount": 1,
+        "slotIndex": 0,
+        "aspectRatio": "1228x1406"
       },
-      "characterLabel": "大领导",
-      "animation": {
-        "enter": "fadeIn",
-        "exit": "fadeOut"
-      }
-    },
-    {
-      "id": "scene_1_sycophant",
-      "type": "video",
-      "assetId": "sycophant",
-      "from": 0,
-      "duration": 234,
-      "transparent": true,
-      "muted": true,
-      "layout": {
-        "kind": "character",
-        "groupId": "scene_1_cast",
-        "slotCount": 3,
-        "slotIndex": 1
-      },
-      "characterLabel": "老板亲信",
-      "animation": {
-        "enter": "fadeIn",
-        "exit": "fadeOut"
-      }
-    },
-    {
-      "id": "scene_1_worker",
-      "type": "video",
-      "assetId": "worker",
-      "from": 0,
-      "duration": 234,
-      "transparent": true,
-      "muted": true,
-      "layout": {
-        "kind": "character",
-        "groupId": "scene_1_cast",
-        "slotCount": 3,
-        "slotIndex": 2
-      },
-      "characterLabel": "能干打工人",
+      "characterLabel": "实习生",
       "animation": {
         "enter": "fadeIn",
         "exit": "fadeOut"
@@ -140,15 +82,15 @@
     {
       "id": "title_scene_1",
       "type": "text",
-      "from": 10,
-      "duration": 78,
-      "content": "《大公司压人那点事》",
+      "from": 8,
+      "duration": 72,
+      "content": "《背锅实习生，反手被客户挖走》",
       "style": {
         "x": 72,
         "y": 88,
         "maxWidth": 936,
         "fontFamily": "PingFang SC",
-        "fontSize": 92,
+        "fontSize": 86,
         "fontWeight": 900,
         "lineHeight": 1.08,
         "color": "#ffd426",
@@ -159,19 +101,19 @@
       }
     },
     {
-      "id": "subtitle_scene_1_a",
+      "id": "subtitle_scene_1_1",
       "type": "text",
-      "from": 36,
-      "duration": 96,
-      "content": "活你干，功劳写亲信。",
+      "from": 28,
+      "duration": 108,
+      "content": "这个方案，我改到凌晨三点。",
       "style": {
-        "x": 36,
-        "y": 770,
-        "maxWidth": 310,
+        "x": 92,
+        "y": 730,
+        "maxWidth": 390,
         "fontFamily": "PingFang SC",
-        "fontSize": 52,
+        "fontSize": 56,
         "fontWeight": 900,
-        "lineHeight": 1.1,
+        "lineHeight": 1.08,
         "color": "#ffffff",
         "textAlign": "left",
         "strokeColor": "#000000",
@@ -180,19 +122,19 @@
       }
     },
     {
-      "id": "subtitle_scene_1_b",
+      "id": "subtitle_scene_1_2",
       "type": "text",
-      "from": 122,
-      "duration": 100,
-      "content": "我熬夜做完，锅还我背？",
+      "from": 126,
+      "duration": 112,
+      "content": "结果汇报第一页，署名不是我。",
       "style": {
-        "x": 704,
-        "y": 802,
-        "maxWidth": 332,
+        "x": 620,
+        "y": 820,
+        "maxWidth": 370,
         "fontFamily": "PingFang SC",
-        "fontSize": 48,
+        "fontSize": 56,
         "fontWeight": 900,
-        "lineHeight": 1.1,
+        "lineHeight": 1.08,
         "color": "#ffffff",
         "textAlign": "right",
         "strokeColor": "#000000",
@@ -201,40 +143,78 @@
       }
     },
     {
-      "id": "scene_2_sycophant",
-      "type": "video",
-      "assetId": "sycophant",
-      "from": 234,
-      "duration": 250,
-      "transparent": true,
-      "muted": false,
+      "id": "bg_scene_2",
+      "type": "image",
+      "assetId": "bg_manager_room",
+      "from": 260,
+      "duration": 260,
       "layout": {
-        "kind": "character",
-        "groupId": "scene_2_cast",
-        "slotCount": 2,
-        "slotIndex": 0
+        "kind": "background",
+        "aspectRatio": "948x1264"
       },
-      "characterLabel": "老板亲信",
       "animation": {
         "enter": "fadeIn",
         "exit": "fadeOut"
       }
     },
     {
-      "id": "scene_2_worker_cry",
+      "id": "scene_2_boss_smug_1",
       "type": "video",
-      "assetId": "worker_cry",
-      "from": 234,
-      "duration": 250,
+      "assetId": "boss_smug",
+      "from": 260,
+      "duration": 260,
+      "transparent": true,
+      "muted": false,
+      "layout": {
+        "kind": "character",
+        "groupId": "scene_2_cast",
+        "slotCount": 3,
+        "slotIndex": 0,
+        "aspectRatio": "562x782"
+      },
+      "characterLabel": "主管",
+      "animation": {
+        "enter": "fadeIn",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "scene_2_lackey_2",
+      "type": "video",
+      "assetId": "lackey",
+      "from": 260,
+      "duration": 260,
       "transparent": true,
       "muted": true,
       "layout": {
         "kind": "character",
         "groupId": "scene_2_cast",
-        "slotCount": 2,
-        "slotIndex": 1
+        "slotCount": 3,
+        "slotIndex": 1,
+        "aspectRatio": "532x678"
       },
-      "characterLabel": "能干打工人",
+      "characterLabel": "跟班",
+      "animation": {
+        "enter": "fadeIn",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "scene_2_intern_work_3",
+      "type": "video",
+      "assetId": "intern_work",
+      "from": 260,
+      "duration": 260,
+      "transparent": true,
+      "muted": true,
+      "layout": {
+        "kind": "character",
+        "groupId": "scene_2_cast",
+        "slotCount": 3,
+        "slotIndex": 2,
+        "aspectRatio": "1552x1238"
+      },
+      "characterLabel": "实习生",
       "animation": {
         "enter": "fadeIn",
         "exit": "fadeOut"
@@ -243,15 +223,15 @@
     {
       "id": "title_scene_2",
       "type": "text",
-      "from": 244,
-      "duration": 76,
-      "content": "媚上欺下的，反而混得最顺",
+      "from": 268,
+      "duration": 72,
+      "content": "主管最会的，不是做事，是抢功",
       "style": {
         "x": 72,
         "y": 88,
         "maxWidth": 936,
         "fontFamily": "PingFang SC",
-        "fontSize": 84,
+        "fontSize": 86,
         "fontWeight": 900,
         "lineHeight": 1.08,
         "color": "#ffd426",
@@ -262,19 +242,19 @@
       }
     },
     {
-      "id": "subtitle_scene_2_a",
+      "id": "subtitle_scene_2_1",
       "type": "text",
-      "from": 274,
+      "from": 288,
       "duration": 108,
-      "content": "领导放心，我替你压着他们。",
+      "content": "主管：汇报我来，你别插嘴。",
       "style": {
-        "x": 52,
+        "x": 70,
         "y": 720,
-        "maxWidth": 360,
+        "maxWidth": 320,
         "fontFamily": "PingFang SC",
-        "fontSize": 46,
+        "fontSize": 56,
         "fontWeight": 900,
-        "lineHeight": 1.1,
+        "lineHeight": 1.08,
         "color": "#ffffff",
         "textAlign": "left",
         "strokeColor": "#000000",
@@ -283,19 +263,19 @@
       }
     },
     {
-      "id": "subtitle_scene_2_b",
+      "id": "subtitle_scene_2_2",
       "type": "text",
-      "from": 372,
-      "duration": 100,
-      "content": "我真能干，可我也真惨。",
+      "from": 386,
+      "duration": 116,
+      "content": "跟班：干活的是你，露脸得是他。",
       "style": {
-        "x": 680,
-        "y": 760,
-        "maxWidth": 330,
+        "x": 630,
+        "y": 820,
+        "maxWidth": 360,
         "fontFamily": "PingFang SC",
-        "fontSize": 48,
+        "fontSize": 56,
         "fontWeight": 900,
-        "lineHeight": 1.1,
+        "lineHeight": 1.08,
         "color": "#ffffff",
         "textAlign": "right",
         "strokeColor": "#000000",
@@ -304,37 +284,14 @@
       }
     },
     {
-      "id": "bg_block_2",
+      "id": "bg_scene_3",
       "type": "image",
-      "assetId": "bg_office_c",
-      "from": 484,
-      "duration": 458,
+      "assetId": "bg_corridor",
+      "from": 520,
+      "duration": 260,
       "layout": {
         "kind": "background",
-        "aspectRatio": "1280x719",
-        "characterZones": [
-          {
-            "centerX": 0.22,
-            "baselineY": 0.86,
-            "widthRatio": 0.27,
-            "maxHeightRatio": 0.35,
-            "zIndex": 19
-          },
-          {
-            "centerX": 0.52,
-            "baselineY": 0.79,
-            "widthRatio": 0.24,
-            "maxHeightRatio": 0.32,
-            "zIndex": 17
-          },
-          {
-            "centerX": 0.8,
-            "baselineY": 0.84,
-            "widthRatio": 0.28,
-            "maxHeightRatio": 0.34,
-            "zIndex": 18
-          }
-        ]
+        "aspectRatio": "2048x2560"
       },
       "animation": {
         "enter": "fadeIn",
@@ -342,20 +299,42 @@
       }
     },
     {
-      "id": "scene_3_worker_cry",
+      "id": "scene_3_boss_point_1",
       "type": "video",
-      "assetId": "worker_cry",
-      "from": 484,
-      "duration": 166,
+      "assetId": "boss_point",
+      "from": 520,
+      "duration": 260,
       "transparent": true,
       "muted": false,
       "layout": {
         "kind": "character",
         "groupId": "scene_3_cast",
-        "slotCount": 1,
-        "slotIndex": 0
+        "slotCount": 2,
+        "slotIndex": 0,
+        "aspectRatio": "1090x2106"
       },
-      "characterLabel": "能干打工人",
+      "characterLabel": "主管",
+      "animation": {
+        "enter": "fadeIn",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "scene_3_intern_cry_2",
+      "type": "video",
+      "assetId": "intern_cry",
+      "from": 520,
+      "duration": 260,
+      "transparent": true,
+      "muted": true,
+      "layout": {
+        "kind": "character",
+        "groupId": "scene_3_cast",
+        "slotCount": 2,
+        "slotIndex": 1,
+        "aspectRatio": "806x1008"
+      },
+      "characterLabel": "实习生",
       "animation": {
         "enter": "fadeIn",
         "exit": "fadeOut"
@@ -364,15 +343,15 @@
     {
       "id": "title_scene_3",
       "type": "text",
-      "from": 494,
+      "from": 528,
       "duration": 72,
-      "content": "真正有能力的，被欺负哭了",
+      "content": "一出问题，第一个被推出去的就是我",
       "style": {
         "x": 72,
         "y": 88,
         "maxWidth": 936,
         "fontFamily": "PingFang SC",
-        "fontSize": 84,
+        "fontSize": 86,
         "fontWeight": 900,
         "lineHeight": 1.08,
         "color": "#ffd426",
@@ -383,81 +362,99 @@
       }
     },
     {
-      "id": "subtitle_scene_3_a",
+      "id": "subtitle_scene_3_1",
       "type": "text",
-      "from": 534,
-      "duration": 104,
-      "content": "我只是想好好干活啊...",
+      "from": 548,
+      "duration": 112,
+      "content": "客户刚皱眉，他就指着我开骂。",
       "style": {
-        "x": 286,
-        "y": 520,
-        "maxWidth": 510,
+        "x": 78,
+        "y": 710,
+        "maxWidth": 360,
         "fontFamily": "PingFang SC",
         "fontSize": 56,
         "fontWeight": 900,
-        "lineHeight": 1.1,
+        "lineHeight": 1.08,
         "color": "#ffffff",
-        "textAlign": "center",
+        "textAlign": "left",
         "strokeColor": "#000000",
         "strokeWidth": 8,
         "textShadow": "0 3px 8px rgba(0, 0, 0, 0.35)"
       }
     },
     {
-      "id": "scene_4_worker",
-      "type": "video",
-      "assetId": "worker",
+      "id": "subtitle_scene_3_2",
+      "type": "text",
       "from": 650,
-      "duration": 292,
-      "transparent": true,
-      "muted": true,
+      "duration": 112,
+      "content": "我站那一秒，真的想当场辞职。",
+      "style": {
+        "x": 628,
+        "y": 830,
+        "maxWidth": 360,
+        "fontFamily": "PingFang SC",
+        "fontSize": 56,
+        "fontWeight": 900,
+        "lineHeight": 1.08,
+        "color": "#ffffff",
+        "textAlign": "right",
+        "strokeColor": "#000000",
+        "strokeWidth": 8,
+        "textShadow": "0 3px 8px rgba(0, 0, 0, 0.35)"
+      }
+    },
+    {
+      "id": "bg_scene_4",
+      "type": "image",
+      "assetId": "bg_reception",
+      "from": 780,
+      "duration": 260,
       "layout": {
-        "kind": "character",
-        "groupId": "scene_4_cast",
-        "slotCount": 3,
-        "slotIndex": 0
+        "kind": "background",
+        "aspectRatio": "2560x1552"
       },
-      "characterLabel": "打工人甲",
       "animation": {
         "enter": "fadeIn",
         "exit": "fadeOut"
       }
     },
     {
-      "id": "scene_4_union_rep",
+      "id": "scene_4_client_call_1",
       "type": "video",
-      "assetId": "union_rep",
-      "from": 650,
-      "duration": 292,
+      "assetId": "client_call",
+      "from": 780,
+      "duration": 260,
       "transparent": true,
       "muted": false,
       "layout": {
         "kind": "character",
         "groupId": "scene_4_cast",
-        "slotCount": 3,
-        "slotIndex": 1
+        "slotCount": 2,
+        "slotIndex": 0,
+        "aspectRatio": "592x826"
       },
-      "characterLabel": "工友代表",
+      "characterLabel": "客户",
       "animation": {
         "enter": "fadeIn",
         "exit": "fadeOut"
       }
     },
     {
-      "id": "scene_4_worker_angry",
+      "id": "scene_4_intern_cry_2",
       "type": "video",
-      "assetId": "worker_angry",
-      "from": 650,
-      "duration": 292,
+      "assetId": "intern_cry",
+      "from": 780,
+      "duration": 260,
       "transparent": true,
       "muted": true,
       "layout": {
         "kind": "character",
         "groupId": "scene_4_cast",
-        "slotCount": 3,
-        "slotIndex": 2
+        "slotCount": 2,
+        "slotIndex": 1,
+        "aspectRatio": "806x1008"
       },
-      "characterLabel": "打工人乙",
+      "characterLabel": "实习生",
       "animation": {
         "enter": "fadeIn",
         "exit": "fadeOut"
@@ -466,15 +463,15 @@
     {
       "id": "title_scene_4",
       "type": "text",
-      "from": 658,
+      "from": 788,
       "duration": 72,
-      "content": "后来，受害者们站到了一起",
+      "content": "半夜，客户单独把电话打给了我",
       "style": {
         "x": 72,
         "y": 88,
         "maxWidth": 936,
         "fontFamily": "PingFang SC",
-        "fontSize": 84,
+        "fontSize": 86,
         "fontWeight": 900,
         "lineHeight": 1.08,
         "color": "#ffd426",
@@ -485,19 +482,19 @@
       }
     },
     {
-      "id": "subtitle_scene_4_a",
+      "id": "subtitle_scene_4_1",
       "type": "text",
-      "from": 686,
-      "duration": 80,
-      "content": "你也被坑过？",
+      "from": 808,
+      "duration": 128,
+      "content": "客户：这项目从头到尾，都是你在改吧？",
       "style": {
-        "x": 56,
-        "y": 860,
-        "maxWidth": 250,
+        "x": 70,
+        "y": 710,
+        "maxWidth": 380,
         "fontFamily": "PingFang SC",
-        "fontSize": 50,
+        "fontSize": 56,
         "fontWeight": 900,
-        "lineHeight": 1.1,
+        "lineHeight": 1.08,
         "color": "#ffffff",
         "textAlign": "left",
         "strokeColor": "#000000",
@@ -506,40 +503,19 @@
       }
     },
     {
-      "id": "subtitle_scene_4_b",
+      "id": "subtitle_scene_4_2",
       "type": "text",
-      "from": 756,
-      "duration": 100,
-      "content": "那就抱团，自己开公司。",
+      "from": 926,
+      "duration": 96,
+      "content": "我：……对，都是我。",
       "style": {
-        "x": 328,
-        "y": 740,
-        "maxWidth": 420,
+        "x": 654,
+        "y": 828,
+        "maxWidth": 280,
         "fontFamily": "PingFang SC",
-        "fontSize": 50,
+        "fontSize": 56,
         "fontWeight": 900,
-        "lineHeight": 1.1,
-        "color": "#ffffff",
-        "textAlign": "center",
-        "strokeColor": "#000000",
-        "strokeWidth": 8,
-        "textShadow": "0 3px 8px rgba(0, 0, 0, 0.35)"
-      }
-    },
-    {
-      "id": "subtitle_scene_4_c",
-      "type": "text",
-      "from": 846,
-      "duration": 84,
-      "content": "专帮工友维权！",
-      "style": {
-        "x": 772,
-        "y": 844,
-        "maxWidth": 248,
-        "fontFamily": "PingFang SC",
-        "fontSize": 48,
-        "fontWeight": 900,
-        "lineHeight": 1.1,
+        "lineHeight": 1.08,
         "color": "#ffffff",
         "textAlign": "right",
         "strokeColor": "#000000",
@@ -548,30 +524,14 @@
       }
     },
     {
-      "id": "bg_block_3",
+      "id": "bg_scene_5",
       "type": "image",
-      "assetId": "bg_city_a",
-      "from": 942,
-      "duration": 512,
+      "assetId": "bg_office_open",
+      "from": 1040,
+      "duration": 262,
       "layout": {
         "kind": "background",
-        "aspectRatio": "1920x1080",
-        "characterZones": [
-          {
-            "centerX": 0.28,
-            "baselineY": 0.82,
-            "widthRatio": 0.28,
-            "maxHeightRatio": 0.34,
-            "zIndex": 18
-          },
-          {
-            "centerX": 0.74,
-            "baselineY": 0.88,
-            "widthRatio": 0.31,
-            "maxHeightRatio": 0.38,
-            "zIndex": 21
-          }
-        ]
+        "aspectRatio": "2048x2560"
       },
       "animation": {
         "enter": "fadeIn",
@@ -579,40 +539,42 @@
       }
     },
     {
-      "id": "scene_5_founder",
+      "id": "scene_5_turnaround_1",
       "type": "video",
-      "assetId": "founder",
-      "from": 942,
-      "duration": 252,
+      "assetId": "turnaround",
+      "from": 1040,
+      "duration": 262,
       "transparent": true,
       "muted": true,
       "layout": {
         "kind": "character",
         "groupId": "scene_5_cast",
         "slotCount": 2,
-        "slotIndex": 0
+        "slotIndex": 0,
+        "aspectRatio": "584x736"
       },
-      "characterLabel": "联盟发起人",
+      "characterLabel": "实习生",
       "animation": {
         "enter": "fadeIn",
         "exit": "fadeOut"
       }
     },
     {
-      "id": "scene_5_worker_angry",
+      "id": "scene_5_confirm_2",
       "type": "video",
-      "assetId": "worker_angry",
-      "from": 942,
-      "duration": 252,
+      "assetId": "confirm",
+      "from": 1040,
+      "duration": 262,
       "transparent": true,
       "muted": false,
       "layout": {
         "kind": "character",
         "groupId": "scene_5_cast",
         "slotCount": 2,
-        "slotIndex": 1
+        "slotIndex": 1,
+        "aspectRatio": "478x702"
       },
-      "characterLabel": "维权顾问",
+      "characterLabel": "客户",
       "animation": {
         "enter": "fadeIn",
         "exit": "fadeOut"
@@ -621,15 +583,15 @@
     {
       "id": "title_scene_5",
       "type": "text",
-      "from": 952,
-      "duration": 76,
-      "content": "受害者联盟公司，正式成立",
+      "from": 1048,
+      "duration": 72,
+      "content": "我没再忍，把证据一张张发了过去",
       "style": {
         "x": 72,
         "y": 88,
         "maxWidth": 936,
         "fontFamily": "PingFang SC",
-        "fontSize": 84,
+        "fontSize": 86,
         "fontWeight": 900,
         "lineHeight": 1.08,
         "color": "#ffd426",
@@ -640,19 +602,19 @@
       }
     },
     {
-      "id": "subtitle_scene_5_a",
+      "id": "subtitle_scene_5_1",
       "type": "text",
-      "from": 984,
-      "duration": 100,
-      "content": "谁被侵权，我们就帮谁。",
+      "from": 1068,
+      "duration": 116,
+      "content": "聊天记录、版本号、回执，我全发了。",
       "style": {
-        "x": 74,
-        "y": 770,
-        "maxWidth": 320,
+        "x": 82,
+        "y": 715,
+        "maxWidth": 380,
         "fontFamily": "PingFang SC",
-        "fontSize": 48,
+        "fontSize": 56,
         "fontWeight": 900,
-        "lineHeight": 1.1,
+        "lineHeight": 1.08,
         "color": "#ffffff",
         "textAlign": "left",
         "strokeColor": "#000000",
@@ -661,19 +623,19 @@
       }
     },
     {
-      "id": "subtitle_scene_5_b",
+      "id": "subtitle_scene_5_2",
       "type": "text",
-      "from": 1074,
-      "duration": 108,
-      "content": "顺手把老东家的业务也接了。",
+      "from": 1174,
+      "duration": 116,
+      "content": "客户：明天开会，你一句都别怕。",
       "style": {
-        "x": 644,
-        "y": 800,
-        "maxWidth": 360,
+        "x": 626,
+        "y": 820,
+        "maxWidth": 370,
         "fontFamily": "PingFang SC",
-        "fontSize": 44,
+        "fontSize": 56,
         "fontWeight": 900,
-        "lineHeight": 1.1,
+        "lineHeight": 1.08,
         "color": "#ffffff",
         "textAlign": "right",
         "strokeColor": "#000000",
@@ -682,40 +644,78 @@
       }
     },
     {
-      "id": "scene_6_founder",
-      "type": "video",
-      "assetId": "founder",
-      "from": 1194,
-      "duration": 260,
-      "transparent": true,
-      "muted": true,
+      "id": "bg_scene_6",
+      "type": "image",
+      "assetId": "bg_manager_room",
+      "from": 1302,
+      "duration": 266,
       "layout": {
-        "kind": "character",
-        "groupId": "scene_6_cast",
-        "slotCount": 2,
-        "slotIndex": 0
+        "kind": "background",
+        "aspectRatio": "948x1264"
       },
-      "characterLabel": "联盟老板",
       "animation": {
         "enter": "fadeIn",
         "exit": "fadeOut"
       }
     },
     {
-      "id": "scene_6_worker",
+      "id": "scene_6_boss_smug_1",
       "type": "video",
-      "assetId": "worker",
-      "from": 1194,
-      "duration": 260,
+      "assetId": "boss_smug",
+      "from": 1302,
+      "duration": 266,
+      "transparent": true,
+      "muted": true,
+      "layout": {
+        "kind": "character",
+        "groupId": "scene_6_cast",
+        "slotCount": 3,
+        "slotIndex": 0,
+        "aspectRatio": "562x782"
+      },
+      "characterLabel": "主管",
+      "animation": {
+        "enter": "fadeIn",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "scene_6_shock_2",
+      "type": "video",
+      "assetId": "shock",
+      "from": 1302,
+      "duration": 266,
       "transparent": true,
       "muted": false,
       "layout": {
         "kind": "character",
         "groupId": "scene_6_cast",
-        "slotCount": 2,
-        "slotIndex": 1
+        "slotCount": 3,
+        "slotIndex": 1,
+        "aspectRatio": "1068x1730"
       },
-      "characterLabel": "业务骨干",
+      "characterLabel": "同事",
+      "animation": {
+        "enter": "fadeIn",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "scene_6_intern_work_3",
+      "type": "video",
+      "assetId": "intern_work",
+      "from": 1302,
+      "duration": 266,
+      "transparent": true,
+      "muted": true,
+      "layout": {
+        "kind": "character",
+        "groupId": "scene_6_cast",
+        "slotCount": 3,
+        "slotIndex": 2,
+        "aspectRatio": "1552x1238"
+      },
+      "characterLabel": "实习生",
       "animation": {
         "enter": "fadeIn",
         "exit": "fadeOut"
@@ -724,15 +724,15 @@
     {
       "id": "title_scene_6",
       "type": "text",
-      "from": 1204,
-      "duration": 74,
-      "content": "做大做强，原有业务全被包了",
+      "from": 1310,
+      "duration": 72,
+      "content": "第二天会议，主管当场翻车",
       "style": {
         "x": 72,
         "y": 88,
         "maxWidth": 936,
         "fontFamily": "PingFang SC",
-        "fontSize": 80,
+        "fontSize": 86,
         "fontWeight": 900,
         "lineHeight": 1.08,
         "color": "#ffd426",
@@ -743,19 +743,19 @@
       }
     },
     {
-      "id": "subtitle_scene_6_a",
+      "id": "subtitle_scene_6_1",
       "type": "text",
-      "from": 1240,
-      "duration": 104,
-      "content": "客户、项目、口碑，全过来了。",
+      "from": 1330,
+      "duration": 128,
+      "content": "客户：私改方案拿回扣的人，是你主管。",
       "style": {
         "x": 66,
-        "y": 786,
-        "maxWidth": 340,
+        "y": 702,
+        "maxWidth": 390,
         "fontFamily": "PingFang SC",
-        "fontSize": 44,
+        "fontSize": 56,
         "fontWeight": 900,
-        "lineHeight": 1.1,
+        "lineHeight": 1.08,
         "color": "#ffffff",
         "textAlign": "left",
         "strokeColor": "#000000",
@@ -764,19 +764,19 @@
       }
     },
     {
-      "id": "subtitle_scene_6_b",
+      "id": "subtitle_scene_6_2",
       "type": "text",
-      "from": 1334,
+      "from": 1448,
       "duration": 108,
-      "content": "以前压人的公司，只剩空壳。",
+      "content": "整个会议室，一秒全安静了。",
       "style": {
-        "x": 676,
-        "y": 806,
-        "maxWidth": 330,
+        "x": 650,
+        "y": 822,
+        "maxWidth": 340,
         "fontFamily": "PingFang SC",
-        "fontSize": 44,
+        "fontSize": 56,
         "fontWeight": 900,
-        "lineHeight": 1.1,
+        "lineHeight": 1.08,
         "color": "#ffffff",
         "textAlign": "right",
         "strokeColor": "#000000",
@@ -785,30 +785,14 @@
       }
     },
     {
-      "id": "bg_block_4",
+      "id": "bg_scene_7",
       "type": "image",
-      "assetId": "bg_office_b",
-      "from": 1454,
-      "duration": 244,
+      "assetId": "bg_reception",
+      "from": 1568,
+      "duration": 260,
       "layout": {
         "kind": "background",
-        "aspectRatio": "2560x1434",
-        "characterZones": [
-          {
-            "centerX": 0.26,
-            "baselineY": 0.86,
-            "widthRatio": 0.29,
-            "maxHeightRatio": 0.36,
-            "zIndex": 20
-          },
-          {
-            "centerX": 0.78,
-            "baselineY": 0.78,
-            "widthRatio": 0.22,
-            "maxHeightRatio": 0.3,
-            "zIndex": 16
-          }
-        ]
+        "aspectRatio": "2560x1552"
       },
       "animation": {
         "enter": "fadeIn",
@@ -816,40 +800,42 @@
       }
     },
     {
-      "id": "scene_7_old_boss",
+      "id": "scene_7_client_call_1",
       "type": "video",
-      "assetId": "beggar_boss",
-      "from": 1454,
-      "duration": 244,
-      "transparent": true,
-      "muted": false,
-      "layout": {
-        "kind": "character",
-        "groupId": "scene_7_cast",
-        "slotCount": 2,
-        "slotIndex": 0
-      },
-      "characterLabel": "原老板",
-      "animation": {
-        "enter": "fadeIn",
-        "exit": "fadeOut"
-      }
-    },
-    {
-      "id": "scene_7_sycophant",
-      "type": "video",
-      "assetId": "sycophant",
-      "from": 1454,
-      "duration": 244,
+      "assetId": "client_call",
+      "from": 1568,
+      "duration": 260,
       "transparent": true,
       "muted": true,
       "layout": {
         "kind": "character",
         "groupId": "scene_7_cast",
         "slotCount": 2,
-        "slotIndex": 1
+        "slotIndex": 0,
+        "aspectRatio": "592x826"
       },
-      "characterLabel": "老板亲信",
+      "characterLabel": "客户",
+      "animation": {
+        "enter": "fadeIn",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "scene_7_confused_2",
+      "type": "video",
+      "assetId": "confused",
+      "from": 1568,
+      "duration": 260,
+      "transparent": true,
+      "muted": false,
+      "layout": {
+        "kind": "character",
+        "groupId": "scene_7_cast",
+        "slotCount": 2,
+        "slotIndex": 1,
+        "aspectRatio": "2156x1722"
+      },
+      "characterLabel": "主管",
       "animation": {
         "enter": "fadeIn",
         "exit": "fadeOut"
@@ -858,15 +844,15 @@
     {
       "id": "title_scene_7",
       "type": "text",
-      "from": 1464,
-      "duration": 74,
-      "content": "原老板破产，气得当场昏过去",
+      "from": 1576,
+      "duration": 72,
+      "content": "更狠的是，客户没骂完就开始挖人",
       "style": {
         "x": 72,
         "y": 88,
         "maxWidth": 936,
         "fontFamily": "PingFang SC",
-        "fontSize": 82,
+        "fontSize": 86,
         "fontWeight": 900,
         "lineHeight": 1.08,
         "color": "#ffd426",
@@ -877,19 +863,19 @@
       }
     },
     {
-      "id": "subtitle_scene_7_a",
+      "id": "subtitle_scene_7_1",
       "type": "text",
-      "from": 1500,
-      "duration": 88,
-      "content": "钱怎么都没了？！",
+      "from": 1596,
+      "duration": 120,
+      "content": "客户：你来我这边，薪资我给你翻。",
       "style": {
-        "x": 94,
-        "y": 760,
-        "maxWidth": 250,
+        "x": 78,
+        "y": 714,
+        "maxWidth": 360,
         "fontFamily": "PingFang SC",
-        "fontSize": 50,
+        "fontSize": 56,
         "fontWeight": 900,
-        "lineHeight": 1.1,
+        "lineHeight": 1.08,
         "color": "#ffffff",
         "textAlign": "left",
         "strokeColor": "#000000",
@@ -898,19 +884,19 @@
       }
     },
     {
-      "id": "subtitle_scene_7_b",
+      "id": "subtitle_scene_7_2",
       "type": "text",
-      "from": 1578,
+      "from": 1706,
       "duration": 108,
-      "content": "老板，这回真没人替你扛了。",
+      "content": "主管那张脸，当场就僵住了。",
       "style": {
-        "x": 664,
-        "y": 790,
+        "x": 642,
+        "y": 822,
         "maxWidth": 340,
         "fontFamily": "PingFang SC",
-        "fontSize": 42,
+        "fontSize": 56,
         "fontWeight": 900,
-        "lineHeight": 1.1,
+        "lineHeight": 1.08,
         "color": "#ffffff",
         "textAlign": "right",
         "strokeColor": "#000000",
@@ -919,37 +905,14 @@
       }
     },
     {
-      "id": "bg_block_5",
+      "id": "bg_scene_8",
       "type": "image",
-      "assetId": "bg_city_b",
-      "from": 1698,
-      "duration": 264,
+      "assetId": "bg_night_city",
+      "from": 1828,
+      "duration": 260,
       "layout": {
         "kind": "background",
-        "aspectRatio": "1920x1080",
-        "characterZones": [
-          {
-            "centerX": 0.18,
-            "baselineY": 0.86,
-            "widthRatio": 0.24,
-            "maxHeightRatio": 0.3,
-            "zIndex": 18
-          },
-          {
-            "centerX": 0.52,
-            "baselineY": 0.8,
-            "widthRatio": 0.26,
-            "maxHeightRatio": 0.33,
-            "zIndex": 17
-          },
-          {
-            "centerX": 0.82,
-            "baselineY": 0.88,
-            "widthRatio": 0.28,
-            "maxHeightRatio": 0.35,
-            "zIndex": 20
-          }
-        ]
+        "aspectRatio": "1920x1080"
       },
       "animation": {
         "enter": "fadeIn",
@@ -957,60 +920,42 @@
       }
     },
     {
-      "id": "scene_8_success_laugh",
+      "id": "scene_8_backpack_1",
       "type": "video",
-      "assetId": "success_laugh",
-      "from": 1698,
-      "duration": 264,
-      "transparent": true,
-      "muted": true,
-      "layout": {
-        "kind": "character",
-        "groupId": "scene_8_cast",
-        "slotCount": 3,
-        "slotIndex": 0
-      },
-      "characterLabel": "工友甲",
-      "animation": {
-        "enter": "fadeIn",
-        "exit": "fadeOut"
-      }
-    },
-    {
-      "id": "scene_8_success_smile",
-      "type": "video",
-      "assetId": "success_smile",
-      "from": 1698,
-      "duration": 264,
+      "assetId": "backpack",
+      "from": 1828,
+      "duration": 260,
       "transparent": true,
       "muted": false,
       "layout": {
         "kind": "character",
         "groupId": "scene_8_cast",
-        "slotCount": 3,
-        "slotIndex": 1
+        "slotCount": 2,
+        "slotIndex": 0,
+        "aspectRatio": "988x912"
       },
-      "characterLabel": "工友乙",
+      "characterLabel": "实习生",
       "animation": {
         "enter": "fadeIn",
         "exit": "fadeOut"
       }
     },
     {
-      "id": "scene_8_milk_tea",
+      "id": "scene_8_confused_2",
       "type": "video",
-      "assetId": "milk_tea",
-      "from": 1698,
-      "duration": 264,
+      "assetId": "confused",
+      "from": 1828,
+      "duration": 260,
       "transparent": true,
       "muted": true,
       "layout": {
         "kind": "character",
         "groupId": "scene_8_cast",
-        "slotCount": 3,
-        "slotIndex": 2
+        "slotCount": 2,
+        "slotIndex": 1,
+        "aspectRatio": "2156x1722"
       },
-      "characterLabel": "工友丙",
+      "characterLabel": "前主管",
       "animation": {
         "enter": "fadeIn",
         "exit": "fadeOut"
@@ -1019,15 +964,15 @@
     {
       "id": "title_scene_8",
       "type": "text",
-      "from": 1708,
-      "duration": 74,
-      "content": "以前被压的，现在开心数钱",
+      "from": 1836,
+      "duration": 72,
+      "content": "我收拾背包下楼，头都没回一下",
       "style": {
         "x": 72,
         "y": 88,
         "maxWidth": 936,
         "fontFamily": "PingFang SC",
-        "fontSize": 84,
+        "fontSize": 86,
         "fontWeight": 900,
         "lineHeight": 1.08,
         "color": "#ffd426",
@@ -1038,42 +983,156 @@
       }
     },
     {
-      "id": "subtitle_scene_8_a",
+      "id": "subtitle_scene_8_1",
       "type": "text",
-      "from": 1744,
-      "duration": 112,
-      "content": "维权做成事业，钱一摞一摞来。",
+      "from": 1856,
+      "duration": 96,
+      "content": "这破班，谁爱上谁上。",
       "style": {
-        "x": 324,
-        "y": 742,
-        "maxWidth": 430,
+        "x": 92,
+        "y": 720,
+        "maxWidth": 320,
         "fontFamily": "PingFang SC",
-        "fontSize": 46,
+        "fontSize": 56,
         "fontWeight": 900,
-        "lineHeight": 1.1,
+        "lineHeight": 1.08,
         "color": "#ffffff",
-        "textAlign": "center",
+        "textAlign": "left",
         "strokeColor": "#000000",
         "strokeWidth": 8,
         "textShadow": "0 3px 8px rgba(0, 0, 0, 0.35)"
       }
     },
     {
-      "id": "subtitle_scene_8_b",
+      "id": "subtitle_scene_8_2",
       "type": "text",
-      "from": 1846,
-      "duration": 104,
-      "content": "这回轮到我们笑着数钱了。",
+      "from": 1950,
+      "duration": 112,
+      "content": "他们追到楼下，我连头都没回。",
       "style": {
-        "x": 680,
-        "y": 836,
-        "maxWidth": 318,
+        "x": 628,
+        "y": 826,
+        "maxWidth": 360,
         "fontFamily": "PingFang SC",
-        "fontSize": 44,
+        "fontSize": 56,
         "fontWeight": 900,
-        "lineHeight": 1.1,
+        "lineHeight": 1.08,
         "color": "#ffffff",
         "textAlign": "right",
+        "strokeColor": "#000000",
+        "strokeWidth": 8,
+        "textShadow": "0 3px 8px rgba(0, 0, 0, 0.35)"
+      }
+    },
+    {
+      "id": "bg_scene_9",
+      "type": "image",
+      "assetId": "bg_car",
+      "from": 2088,
+      "duration": 260,
+      "layout": {
+        "kind": "background",
+        "aspectRatio": "2560x1920"
+      },
+      "animation": {
+        "enter": "fadeIn",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "scene_9_drive_1",
+      "type": "video",
+      "assetId": "drive",
+      "from": 2088,
+      "duration": 260,
+      "transparent": true,
+      "muted": true,
+      "layout": {
+        "kind": "character",
+        "groupId": "scene_9_cast",
+        "slotCount": 2,
+        "slotIndex": 0,
+        "aspectRatio": "1852x1990"
+      },
+      "characterLabel": "我",
+      "animation": {
+        "enter": "fadeIn",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "scene_9_dance_2",
+      "type": "video",
+      "assetId": "dance",
+      "from": 2088,
+      "duration": 260,
+      "transparent": true,
+      "muted": false,
+      "layout": {
+        "kind": "character",
+        "groupId": "scene_9_cast",
+        "slotCount": 2,
+        "slotIndex": 1,
+        "aspectRatio": "1016x1712"
+      },
+      "characterLabel": "新同事",
+      "animation": {
+        "enter": "fadeIn",
+        "exit": "fadeOut"
+      }
+    },
+    {
+      "id": "title_scene_9",
+      "type": "text",
+      "from": 2096,
+      "duration": 72,
+      "content": "新公司报到，旧主管去配合审计",
+      "style": {
+        "x": 72,
+        "y": 88,
+        "maxWidth": 936,
+        "fontFamily": "PingFang SC",
+        "fontSize": 86,
+        "fontWeight": 900,
+        "lineHeight": 1.08,
+        "color": "#ffd426",
+        "textAlign": "center",
+        "strokeColor": "#000000",
+        "strokeWidth": 9,
+        "textShadow": "0 3px 10px rgba(0, 0, 0, 0.32)"
+      }
+    },
+    {
+      "id": "subtitle_scene_9_1",
+      "type": "text",
+      "from": 2116,
+      "duration": 112,
+      "speakerTrackId": "scene_9_drive_1",
+      "content": "这工牌一挂，我都想笑了。",
+      "style": {
+        "fontFamily": "PingFang SC",
+        "fontSize": 56,
+        "fontWeight": 900,
+        "lineHeight": 1.08,
+        "color": "#ffffff",
+        "strokeColor": "#000000",
+        "strokeWidth": 8,
+        "textShadow": "0 3px 8px rgba(0, 0, 0, 0.35)"
+      }
+    },
+    {
+      "id": "subtitle_scene_9_2",
+      "type": "text",
+      "from": 2218,
+      "duration": 112,
+      "speakerTrackId": "scene_9_dance_2",
+      "content": "听说没？你前主管在查回扣。",
+      "style": {
+        "fontFamily": "PingFang SC",
+        "fontSize": 56,
+        "fontWeight": 900,
+        "lineHeight": 1.08,
+        "color": "#ffffff",
         "strokeColor": "#000000",
         "strokeWidth": 8,
         "textShadow": "0 3px 8px rgba(0, 0, 0, 0.35)"
@@ -1081,7 +1140,7 @@
     }
   ],
   "render": {
-    "output": "out/workers-alliance-takes-over.mp4",
+    "output": "out/poached-intern-revenge.mp4",
     "imageFormat": "jpeg",
     "crf": 18,
     "pixelFormat": "yuv420p"
