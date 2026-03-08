@@ -2,4 +2,8 @@ node_modules
 .DS_Store
 public/lib/original
 public/lib/trimMp4
+public/lib/webm
+public/lib/*.mp4
+public/lib/去绿幕裁剪/
 *.mp4
+.venv-imgdesc
