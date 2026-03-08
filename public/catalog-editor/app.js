@@ -12,6 +12,8 @@
   };
 
   const treeRoot = document.getElementById('tree-root');
+  const progressRatio = document.getElementById('progress-ratio');
+  const progressRemaining = document.getElementById('progress-remaining');
   const previewRoot = document.getElementById('preview-root');
   const saveState = document.getElementById('save-state');
   const saveButton = document.getElementById('save-button');
@@ -33,6 +35,17 @@
   };
 
   const flattenItems = (catalogs) => catalogs.flatMap((catalog) => catalog.items);
+
+  const getProgressStats = (items) => {
+    const total = items.length;
+    const edited = items.filter((item) => item.is_edited === true).length;
+
+    return {
+      total,
+      edited,
+      remaining: total - edited,
+    };
+  };
 
   const getItemByKey = (key) => flattenItems(state.catalogs).find((item) => getItemKey(item) === key) || null;
 
@@ -225,14 +238,18 @@
 
   const renderTree = () => {
     treeRoot.innerHTML = '';
+    const overallStats = getProgressStats(flattenItems(state.catalogs));
+    progressRatio.textContent = `${overallStats.edited} / ${overallStats.total}`;
+    progressRemaining.textContent = `还有 ${overallStats.remaining} 个没改`;
 
     state.catalogs.forEach((catalog) => {
+      const catalogStats = getProgressStats(catalog.items);
       const details = document.createElement('details');
       details.className = 'tree-catalog';
       details.open = true;
 
       const summary = document.createElement('summary');
-      summary.textContent = catalog.label;
+      summary.textContent = `${catalog.label} (${catalogStats.edited}/${catalogStats.total})`;
       details.append(summary);
 
       const branch = document.createElement('div');

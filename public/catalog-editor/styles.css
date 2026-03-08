@@ -82,6 +82,18 @@ textarea {
   color: var(--muted);
 }
 
+.mode-link {
+  display: inline-flex;
+  margin-top: 10px;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.mode-link:hover {
+  text-decoration: underline;
+}
+
 .progress-summary {
   display: grid;
   gap: 4px;
