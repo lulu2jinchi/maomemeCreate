@@ -61,6 +61,7 @@
 - 所有 `tracks[].assetId` 必须能在 `assets` 中解析到
 - `tracks[].from >= 0`
 - `tracks[].duration > 0`
+- 同一 `layout.groupId` 的同一时段内，不允许出现两个重复的同一个人物；不要生成两个相同的 `characterLabel`
 - `render.output` 输出到 `out/*.mp4`
 - `meta.assetCatalog` 固定为 `describe.json`
 
@@ -83,6 +84,7 @@
 - 忽略 `.qkdownloading` 未完成文件
 - 忽略 `.part.mov` 或隐藏临时透明素材
 - 在素材不够时允许复用，但应在 `meta.notes` 说明原因
+- 但“复用”指跨 scene 复用，不是把同一个角色在同一个画面里摆两次
 
 如果用户要求透明人物叠加效果：
 
@@ -90,6 +92,7 @@
 - 优先使用 `.webm`，其次才是 `public/lib/original` 中少量透明 `.mov`
 - 视频轨默认优先用 `fit: "contain"`，避免透明主体被裁掉
 - `composition.backgroundColor` 要显式设置
+- 人物对白文本轨若属于某个具体角色，默认补 `speakerTrackId` 指向对应人物轨，让字幕自动贴在人物上方
 
 ### 3.0 透明 WebM 生成规格
 
