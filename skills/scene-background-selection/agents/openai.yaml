@@ -1,0 +1,4 @@
+interface:
+  display_name: "选图助手"
+  short_description: "按剧情地点、构图与氛围规则为 scene 选择背景图"
+  default_prompt: "Use $scene-background-selection to choose backgrounds from img-describe.json for my story scenes."

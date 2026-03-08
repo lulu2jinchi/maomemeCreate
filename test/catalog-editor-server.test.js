@@ -9,6 +9,7 @@ const {
   loadCatalogData,
   resolveMediaFilePath,
   updateCatalogItem,
+  updateCatalogItemsCommonLevelBatch,
 } = require('../scripts/catalog-editor-lib');
 const {createCatalogEditorServer} = require('../scripts/catalog-editor-server');
 
@@ -109,6 +110,40 @@ test('updateCatalogItem only changes description and common_level', () => {
   assert.equal(saved[0].path, './办公室/001.jpeg');
 });
 
+test('updateCatalogItemsCommonLevelBatch updates multiple image scores and keeps other fields', () => {
+  const repoRoot = createTempRepo();
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'img-describe.json'), 'utf8'));
+  raw.push({
+    title: '办公室/002',
+    description: '第二张图片',
+    path: './办公室/002.jpeg',
+    aspect_ratio: '1280x720',
+    common_level: 5,
+    keep: 'image-extra-b',
+  });
+  fs.writeFileSync(path.join(repoRoot, 'img-describe.json'), `${JSON.stringify(raw, null, 2)}\n`, 'utf8');
+
+  const updated = updateCatalogItemsCommonLevelBatch({
+    catalogId: 'image',
+    updates: [
+      {index: 0, common_level: 1},
+      {index: 1, common_level: 2},
+    ],
+    repoRoot,
+  });
+
+  assert.equal(updated.length, 2);
+  assert.equal(updated[0].common_level, 1);
+  assert.equal(updated[1].common_level, 2);
+
+  const saved = JSON.parse(fs.readFileSync(path.join(repoRoot, 'img-describe.json'), 'utf8'));
+  assert.equal(saved[0].common_level, 1);
+  assert.equal(saved[1].common_level, 2);
+  assert.equal(saved[0].is_edited, true);
+  assert.equal(saved[1].is_edited, true);
+  assert.equal(saved[1].keep, 'image-extra-b');
+});
+
 test('loadCatalogData exposes edited state for tree rendering', () => {
   const repoRoot = createTempRepo();
   const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'describe.json'), 'utf8'));
@@ -197,6 +232,18 @@ test('server returns 4xx for invalid catalogId, index, and common_level', async 
       }),
     });
     assert.equal(invalidDelete.status, 400);
+
+    const invalidBatch = await fetch(`http://127.0.0.1:${port}/api/image-score-batch`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        updates: [
+          {index: 0, common_level: 2},
+          {index: 0, common_level: 3},
+        ],
+      }),
+    });
+    assert.equal(invalidBatch.status, 400);
   } finally {
     await new Promise((resolve, reject) => server.close((error) => (error ? reject(error) : resolve())));
   }

@@ -202,6 +202,59 @@ const updateCatalogItem = ({
   return normalizeCatalogItem(currentItem, index, catalog);
 };
 
+const updateCatalogItemsCommonLevelBatch = ({
+  catalogId,
+  updates,
+  repoRoot = REPO_ROOT,
+  catalogs = DEFAULT_CATALOGS,
+}) => {
+  const {catalog, filePath, items} = readCatalogFile({catalogId, repoRoot, catalogs});
+
+  if (catalog.type !== 'image') {
+    const error = new Error('batch score only supports image catalog');
+    error.statusCode = 400;
+    throw error;
+  }
+
+  if (!Array.isArray(updates) || updates.length === 0) {
+    const error = new Error('updates must be a non-empty array');
+    error.statusCode = 400;
+    throw error;
+  }
+
+  const seenIndexes = new Set();
+  const nextItems = [...items];
+
+  updates.forEach((update) => {
+    if (!update || typeof update !== 'object') {
+      const error = new Error('each update must be an object');
+      error.statusCode = 400;
+      throw error;
+    }
+
+    const {index, common_level: commonLevel} = update;
+    assertValidIndex(items, index);
+    assertValidCommonLevel(commonLevel);
+
+    if (seenIndexes.has(index)) {
+      const error = new Error('duplicate indexes are not allowed');
+      error.statusCode = 400;
+      throw error;
+    }
+
+    seenIndexes.add(index);
+
+    const currentItem = {...nextItems[index]};
+    currentItem.common_level = commonLevel;
+    currentItem.is_edited = true;
+    nextItems[index] = currentItem;
+  });
+
+  fs.writeFileSync(filePath, `${JSON.stringify(nextItems, null, 2)}\n`, 'utf8');
+
+  return updates.map((update) => normalizeCatalogItem(nextItems[update.index], update.index, catalog));
+};
+
 const deleteCatalogItem = ({
   catalogId,
   index,
@@ -273,4 +326,5 @@ module.exports = {
   readCatalogFile,
   resolveMediaFilePath,
   updateCatalogItem,
+  updateCatalogItemsCommonLevelBatch,
 };

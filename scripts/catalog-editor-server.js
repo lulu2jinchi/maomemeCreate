@@ -9,6 +9,7 @@ const {
   loadCatalogData,
   resolveMediaFilePath,
   updateCatalogItem,
+  updateCatalogItemsCommonLevelBatch,
 } = require('./catalog-editor-lib');
 
 const STATIC_ROOT = path.join(REPO_ROOT, 'public', 'catalog-editor');
@@ -48,7 +49,8 @@ const sendFile = (response, filePath) => {
 
 const serveStaticFile = (response, pathname) => {
   const requestedPath = pathname === '/catalog-editor/' ? 'index.html' : pathname.replace(/^\/catalog-editor\//, '');
-  const resolvedPath = path.resolve(STATIC_ROOT, requestedPath);
+  const targetPath = requestedPath.endsWith('/') ? `${requestedPath}index.html` : requestedPath;
+  const resolvedPath = path.resolve(STATIC_ROOT, targetPath);
   const relativeToRoot = path.relative(STATIC_ROOT, resolvedPath);
 
   if (relativeToRoot.startsWith('..') || path.isAbsolute(relativeToRoot)) {
@@ -102,6 +104,18 @@ const createCatalogEditorServer = ({repoRoot = REPO_ROOT} = {}) => {
         });
 
         sendJson(response, 200, {item: updatedItem});
+        return;
+      }
+
+      if (method === 'POST' && pathname === '/api/image-score-batch') {
+        const body = await readJsonBody(request);
+        const updatedItems = updateCatalogItemsCommonLevelBatch({
+          catalogId: 'image',
+          updates: body.updates,
+          repoRoot,
+        });
+
+        sendJson(response, 200, {items: updatedItems});
         return;
       }
 
