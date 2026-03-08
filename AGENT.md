@@ -24,7 +24,7 @@
 - `describe.json`
   - 素材目录。
   - 每项至少包含 `title`、`description`、`path`、`aspect_ratio`、`common_level`。
-  - `path` 应写成相对 `public/lib` 的子路径，例如 `./original/xxx.mp4`、`./trimMp4/xxx_去绿幕裁剪.mp4`、`./webm/xxx_去绿幕裁剪.webm`。
+  - `path` 应写成相对 `public/lib` 的子路径，例如 `./original/xxx.mp4`、`./trimMp4/xxx.mp4`、`./webm/xxx.webm`。
   - `common_level` 表示素材常用等级，`1` 为最常用，`5` 为最不常用；做素材筛选、推荐或自动编排时，默认优先考虑等级更高的素材。
 - `img-describe.json`
   - 图片素材目录。
@@ -45,6 +45,7 @@
   - 实际素材目录。
   - 当前按子目录区分素材类型：`original/`、`trimMp4/`、`webm/`。
   - `track.json` 中引用素材时，路径应写成 `lib/...`，不要写 `public/lib/...`。
+  - `public/lib/webm/format-spec.json` 记录透明人物 `webm` 的标准生成规格；后续程序如果需要从 `trimMp4` 补齐或重建 `webm`，默认应读取并遵守这份规格。
 - `STORY_TO_REMOTION_REQUIREMENTS.md`
   - 当前项目最重要的业务约束文档。
   - 涉及故事拆分、素材匹配、路径规则、时间轴规则、降级策略和验收标准。
@@ -68,8 +69,8 @@
 从 `describe.json` 或透明素材目录匹配到素材后，写入 `track.json` 时应转换成：
 
 - `lib/original/foo.mp4`
-- `lib/trimMp4/foo_去绿幕裁剪.mp4`
-- `lib/webm/foo_去绿幕裁剪.webm`
+- `lib/trimMp4/foo.mp4`
+- `lib/webm/foo.webm`
 
 不要保留开头的 `./`，也不要写成绝对路径。
 
@@ -89,6 +90,26 @@
 - 优先使用 `.webm`，其次才是 `public/lib/original` 中少量透明 `.mov`
 - 视频轨默认优先用 `fit: "contain"`，避免透明主体被裁掉
 - `composition.backgroundColor` 要显式设置
+
+### 3.0 透明 WebM 生成规格
+
+`public/lib/webm` 下的人物透明素材默认不是任意 `webm`，而是供 Remotion 使用的透明人物规格：
+
+- 容器：`webm`
+- 视频编码：`vp9`
+- 像素格式：`yuva420p`
+- 音频编码：`opus`
+- 源目录默认来自：`public/lib/trimMp4`
+- 目标目录默认写入：`public/lib/webm`
+- 机器可读规格文件：`public/lib/webm/format-spec.json`
+
+默认抠绿幕滤镜应使用：
+
+```bash
+format=rgba,colorkey=0x00FF00:0.36:0.08,despill=type=green:mix=0.7:expand=0.25,format=yuva420p
+```
+
+如果后续代理补齐 `public/lib/webm` 缺失项，除非用户明确要求更改，否则应沿用这套规格，不要自行更换成别的编码参数。
 
 ### 3.1 新增素材时同步维护 `describe.json`
 

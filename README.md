@@ -102,6 +102,7 @@ npm run export:jianying
 ## 工作流
 
 1. 在素材目录里维护透明角色视频、原始 meme 视频和背景图片。
+   透明素材命名已统一为不带 `_去绿幕裁剪` 的最终文件名，例如 `public/lib/webm/可爱猫.webm`。
 2. 通过 `catalog-editor` 给视频写 `description`、给图片批量打 `common_level`。
 3. 在 [`track.json`](./track.json) 里配置 composition、assets 和 tracks。
 4. 执行 `npm run track:fit-dialogue` 让对白节奏自动拉齐。

@@ -43,7 +43,7 @@
 
 ### 3.3 路径规则
 - `describe.json` 中的人物素材路径相对 `public/lib`。
-  - 例：`"./webm/可爱猫_去绿幕裁剪.webm"` 输出为 `lib/webm/可爱猫_去绿幕裁剪.webm`
+  - 例：`"./webm/可爱猫.webm"` 输出为 `lib/webm/可爱猫.webm`
 - `img-describe.json` 中的背景素材路径相对 `public/img`。
   - 例：`"./办公室/13366084965613911.jpeg"` 输出为 `img/办公室/13366084965613911.jpeg`
 - 输出到 `assets.video` 时统一写 `lib/...`
@@ -54,6 +54,20 @@
 - 其次使用透明 `.mov`
 - 最后才回退到普通 `.mp4`
 - 背景素材优先选择静态图片，默认使用 `img-describe.json`
+
+### 3.5 透明 WebM 规格
+- `public/lib/webm` 下的人物透明素材默认应满足 Remotion 使用规格，不得随意更换编码方案。
+- 机器可读规格文件固定为：`public/lib/webm/format-spec.json`
+- 默认规格：
+  - 容器：`webm`
+  - 视频编码：`vp9`
+  - 像素格式：`yuva420p`
+  - 音频编码：`opus`
+  - 源目录：`public/lib/trimMp4`
+  - 目标目录：`public/lib/webm`
+- 默认抠绿幕滤镜：
+  - `format=rgba,colorkey=0x00FF00:0.36:0.08,despill=type=green:mix=0.7:expand=0.25,format=yuva420p`
+- 如果后续程序发现 `trimMp4` 有而 `webm` 缺失，默认应按这份规格补齐，而不是生成其他编码或像素格式的透明视频。
 
 ## 4. 核心流程要求
 

@@ -25,17 +25,17 @@
       "bg_city_b": "img/城市/13366084207661470.jpeg"
     },
     "video": {
-      "boss": "lib/webm/G116 痞老板_去绿幕裁剪.webm",
-      "worker": "lib/webm/工作猫猫（有声）_去绿幕裁剪.webm",
-      "worker_cry": "lib/webm/【高清】委屈猫哭泣猫meme绿幕素材30秒_去绿幕裁剪.webm",
-      "sycophant": "lib/webm/【高清】坏笑猫奸笑猫meme绿幕素材30秒_去绿幕裁剪.webm",
-      "union_rep": "lib/webm/敲碗猫猫（有声）_去绿幕裁剪.webm",
-      "worker_angry": "lib/webm/愤怒猫猫（有声）_去绿幕裁剪.webm",
-      "founder": "lib/webm/【高清无水印】霸气走路大佬猫猫meme绿幕素材30秒_去绿幕裁剪.webm",
-      "beggar_boss": "lib/webm/磕头求饶香蕉猫_去绿幕裁剪.webm",
-      "success_laugh": "lib/webm/大笑仓鼠_去绿幕裁剪.webm",
-      "success_smile": "lib/webm/【高清】大司马猫meme绿幕素材30秒_去绿幕裁剪.webm",
-      "milk_tea": "lib/webm/香蕉猫喝奶茶_去绿幕裁剪.webm"
+      "boss": "lib/webm/G116 痞老板.webm",
+      "worker": "lib/webm/工作猫猫（有声）.webm",
+      "worker_cry": "lib/webm/【高清】委屈猫哭泣猫meme绿幕素材30秒.webm",
+      "sycophant": "lib/webm/【高清】坏笑猫奸笑猫meme绿幕素材30秒.webm",
+      "union_rep": "lib/webm/敲碗猫猫（有声）.webm",
+      "worker_angry": "lib/webm/愤怒猫猫（有声）.webm",
+      "founder": "lib/webm/【高清无水印】霸气走路大佬猫猫meme绿幕素材30秒.webm",
+      "beggar_boss": "lib/webm/磕头求饶香蕉猫.webm",
+      "success_laugh": "lib/webm/大笑仓鼠.webm",
+      "success_smile": "lib/webm/【高清】大司马猫meme绿幕素材30秒.webm",
+      "milk_tea": "lib/webm/香蕉猫喝奶茶.webm"
     }
   },
   "tracks": [
