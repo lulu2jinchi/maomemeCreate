@@ -14,7 +14,7 @@
     "author": "your-name",
     "assetCatalog": "describe.json",
     "imageCatalog": "img-describe.json",
-    "notes": "标题用黄字黑边；对白用白字黑边；人物脚下必须有黄字黑边角色名；角色名必须是具体身份，不能是抽象概念；默认保留部分原素材音效；文字轨默认直接出现和消失，不做渐入渐出；对白字幕按字数自动延长；多句对白场景要主动延长 scene，不能把每句字幕压得一闪而过。"
+    "notes": "标题用黄字黑边；对白用白字黑边；人物脚下必须有黄字黑边角色名；角色名必须是具体身份，不能是抽象概念；同一画面里不能摆两个重复的同一个人物；默认保留部分原素材音效；文字轨默认直接出现和消失，不做渐入渐出；对白字幕按字数自动延长；多句对白场景要主动延长 scene，不能把每句字幕压得一闪而过；人物对白默认写 speakerTrackId，自动贴到人物上方。"
   },
   "assets": {
     "image": {
@@ -128,17 +128,14 @@
       "type": "text",
       "from": 20,
       "duration": 180,
-      "content": "领导：今年起，改十三薪。",
+      "speakerTrackId": "char_left",
+      "content": "今年起，改十三薪。",
       "style": {
-        "x": 84,
-        "y": 424,
-        "maxWidth": 360,
         "fontFamily": "PingFang SC",
         "fontSize": 60,
         "fontWeight": 900,
         "lineHeight": 1.08,
         "color": "#ffffff",
-        "textAlign": "left",
         "strokeColor": "#000000",
         "strokeWidth": 8,
         "textShadow": "0 3px 8px rgba(0, 0, 0, 0.35)"
