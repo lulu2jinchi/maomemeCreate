@@ -1,0 +1,31 @@
+{
+  "schema": "remotion-timeline/v1",
+  "name": "cat-meme-starter",
+  "composition": {
+    "id": "CatMemeMain",
+    "fps": 30,
+    "width": 1080,
+    "height": 1920,
+    "durationInFrames": 150,
+    "backgroundColor": "#111111"
+  },
+  "meta": {
+    "title": "猫meme视频草稿",
+    "author": "replace-with-your-name",
+    "assetCatalog": "describe.json",
+    "imageCatalog": "img-describe.json",
+    "notes": "把素材放进 public/lib 和 public/img，维护 describe.json 与 img-describe.json，再让代理根据故事生成 tracks。"
+  },
+  "assets": {
+    "image": {},
+    "video": {},
+    "audio": {}
+  },
+  "tracks": [],
+  "render": {
+    "output": "out/track-preview.mp4",
+    "imageFormat": "jpeg",
+    "crf": 18,
+    "pixelFormat": "yuv420p"
+  }
+}

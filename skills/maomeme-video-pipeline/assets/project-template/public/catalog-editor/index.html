@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>素材标注编辑器</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h1>素材目录</h1>
+          <p>左侧选素材，右侧预览并编辑描述。</p>
+          <a class="mode-link" href="./image-scoring/">去图片批量打分页</a>
+          <div id="progress-summary" class="progress-summary" aria-live="polite">
+            <strong id="progress-ratio">0 / 0</strong>
+            <span id="progress-remaining">还有 0 个没改</span>
+          </div>
+        </div>
+        <div id="tree-root" class="tree-root" aria-live="polite"></div>
+      </aside>
+
+      <main class="content">
+        <section class="preview-card">
+          <div class="section-header">
+            <h2>预览</h2>
+            <span id="save-state" class="save-state">未选择素材</span>
+          </div>
+          <div id="preview-root" class="preview-root">
+            <div class="placeholder">
+              <strong>请选择左侧素材</strong>
+              <span>支持图片预览，视频文件缺失时会显示占位信息。</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="editor-card">
+          <div class="section-header">
+            <h2>编辑</h2>
+            <div class="action-row">
+              <button id="delete-button" class="delete-button" disabled>删除</button>
+              <button id="save-button" class="save-button" disabled>保存</button>
+            </div>
+          </div>
+
+          <form id="editor-form" class="editor-form">
+            <fieldset class="level-fieldset" disabled>
+              <legend>common_level</legend>
+              <p class="helper-text">1 最常用，5 最不常用</p>
+              <div id="level-options" class="level-options"></div>
+            </fieldset>
+
+            <label class="field">
+              <span>description</span>
+              <textarea
+                id="description-input"
+                rows="8"
+                placeholder="输入素材描述"
+                disabled
+              ></textarea>
+            </label>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

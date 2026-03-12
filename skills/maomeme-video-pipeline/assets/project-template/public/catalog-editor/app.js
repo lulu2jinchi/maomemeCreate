@@ -1,0 +1,568 @@
+(function () {
+  const state = {
+    catalogs: [],
+    selectedKey: null,
+    selectedItem: null,
+    form: {
+      description: '',
+      common_level: null,
+    },
+    isDirty: false,
+    isSaving: false,
+  };
+
+  const treeRoot = document.getElementById('tree-root');
+  const progressRatio = document.getElementById('progress-ratio');
+  const progressRemaining = document.getElementById('progress-remaining');
+  const previewRoot = document.getElementById('preview-root');
+  const saveState = document.getElementById('save-state');
+  const saveButton = document.getElementById('save-button');
+  const deleteButton = document.getElementById('delete-button');
+  const descriptionInput = document.getElementById('description-input');
+  const editorForm = document.getElementById('editor-form');
+  const levelOptions = document.getElementById('level-options');
+  const levelFieldset = editorForm.querySelector('fieldset');
+
+  const levelValues = [1, 2, 3, 4, 5];
+
+  const normalizePath = (value) => (value || '').replace(/\\/g, '/').replace(/^\.\//, '');
+
+  const getItemKey = (item) => `${item.catalogId}:${item.index}`;
+
+  const getMediaUrl = (item) => {
+    const encoded = encodeURIComponent(normalizePath(item.path));
+    return item.type === 'image' ? `/media/image/${encoded}` : `/media/video/${encoded}`;
+  };
+
+  const flattenItems = (catalogs) => catalogs.flatMap((catalog) => catalog.items);
+
+  const getProgressStats = (items) => {
+    const total = items.length;
+    const edited = items.filter((item) => item.is_edited === true).length;
+
+    return {
+      total,
+      edited,
+      remaining: total - edited,
+    };
+  };
+
+  const getItemByKey = (key) => flattenItems(state.catalogs).find((item) => getItemKey(item) === key) || null;
+
+  const getNextItemKey = (currentKey) => {
+    const items = flattenItems(state.catalogs);
+    const currentIndex = items.findIndex((item) => getItemKey(item) === currentKey);
+    if (currentIndex < 0 || currentIndex >= items.length - 1) {
+      return null;
+    }
+
+    return getItemKey(items[currentIndex + 1]);
+  };
+
+  const getDeleteSelectionKey = (currentItem) => {
+    const items = flattenItems(state.catalogs);
+    const currentKey = getItemKey(currentItem);
+    const currentIndex = items.findIndex((item) => getItemKey(item) === currentKey);
+    if (currentIndex < 0) {
+      return null;
+    }
+
+    const nextCandidate = items[currentIndex + 1];
+    if (nextCandidate) {
+      const adjustedIndex =
+        nextCandidate.catalogId === currentItem.catalogId && nextCandidate.index > currentItem.index
+          ? nextCandidate.index - 1
+          : nextCandidate.index;
+      return `${nextCandidate.catalogId}:${adjustedIndex}`;
+    }
+
+    const previousCandidate = items[currentIndex - 1];
+    if (!previousCandidate) {
+      return null;
+    }
+
+    return getItemKey(previousCandidate);
+  };
+
+  const setSaveState = (text, tone) => {
+    saveState.textContent = text;
+    saveState.dataset.tone = tone || 'neutral';
+  };
+
+  const updateFormAvailability = () => {
+    const disabled = !state.selectedItem || state.isSaving;
+    const canDelete =
+      !!state.selectedItem &&
+      (state.selectedItem.type === 'video' || state.selectedItem.catalogId === 'describe');
+    descriptionInput.disabled = disabled;
+    levelFieldset.disabled = disabled;
+    saveButton.disabled = disabled || !state.isDirty;
+    deleteButton.disabled = disabled || !canDelete;
+  };
+
+  const syncFormFromSelected = () => {
+    if (!state.selectedItem) {
+      state.form.description = '';
+      state.form.common_level = null;
+      descriptionInput.value = '';
+      updateLevelInputs();
+      updateFormAvailability();
+      return;
+    }
+
+    state.form.description = state.selectedItem.description || '';
+    state.form.common_level = state.selectedItem.common_level;
+    descriptionInput.value = state.form.description;
+    updateLevelInputs();
+    updateFormAvailability();
+  };
+
+  const renderMissingPreview = (item, message) => {
+    previewRoot.innerHTML = '';
+
+    const wrap = document.createElement('div');
+    wrap.className = 'placeholder missing';
+
+    const title = document.createElement('strong');
+    title.textContent = message;
+
+    const pathNode = document.createElement('code');
+    pathNode.textContent = item.path;
+
+    const hint = document.createElement('span');
+    hint.textContent = '当前无法预览，请确认素材文件是否存在。';
+
+    wrap.append(title, pathNode, hint);
+    previewRoot.append(wrap);
+  };
+
+  const renderPreview = () => {
+    previewRoot.innerHTML = '';
+
+    if (!state.selectedItem) {
+      const empty = document.createElement('div');
+      empty.className = 'placeholder';
+      empty.innerHTML = '<strong>请选择左侧素材</strong><span>选中后会在这里显示图片或视频。</span>';
+      previewRoot.append(empty);
+      return;
+    }
+
+    const item = state.selectedItem;
+    const mediaUrl = getMediaUrl(item);
+
+    if (item.type === 'image') {
+      const image = document.createElement('img');
+      image.className = 'preview-media';
+      image.alt = item.title || item.path;
+      image.src = mediaUrl;
+      image.addEventListener('error', () => renderMissingPreview(item, '图片文件缺失'));
+      previewRoot.append(image);
+      return;
+    }
+
+    const video = document.createElement('video');
+    video.className = 'preview-media';
+    video.controls = true;
+    video.preload = 'metadata';
+    video.src = mediaUrl;
+    video.addEventListener('error', () => renderMissingPreview(item, '视频文件缺失'));
+    previewRoot.append(video);
+  };
+
+  const updateDirtyState = (isDirty) => {
+    state.isDirty = isDirty;
+    updateFormAvailability();
+
+    if (!state.selectedItem) {
+      setSaveState('未选择素材');
+      return;
+    }
+
+    if (state.isSaving) {
+      setSaveState('保存中...', 'saving');
+      return;
+    }
+
+    if (isDirty) {
+      setSaveState('有未保存修改', 'dirty');
+    } else {
+      setSaveState('已同步到 JSON', 'saved');
+    }
+  };
+
+  const updateLevelInputs = () => {
+    const radios = levelOptions.querySelectorAll('input[name="common_level"]');
+    radios.forEach((radio) => {
+      radio.checked = Number(radio.value) === Number(state.form.common_level);
+    });
+  };
+
+  const handleSelectItem = (key, options = {}) => {
+    const {skipDirtyConfirm = false} = options;
+
+    if (state.isDirty && !skipDirtyConfirm) {
+      const confirmed = window.confirm('当前条目有未保存修改，确认切换并丢弃吗？');
+      if (!confirmed) {
+        return;
+      }
+    }
+
+    state.selectedKey = key;
+    state.selectedItem = getItemByKey(key);
+    syncFormFromSelected();
+    renderTree();
+    renderPreview();
+    updateDirtyState(false);
+  };
+
+  const createTreeButton = (label, className, onClick, isEdited) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = className;
+    button.addEventListener('click', onClick);
+
+    const text = document.createElement('span');
+    text.className = 'tree-item-label';
+    text.textContent = isEdited ? `✓ ${label}` : label;
+    button.append(text);
+    if (isEdited) {
+      const badge = document.createElement('span');
+      badge.className = 'tree-item-check';
+      badge.textContent = '✓';
+      badge.setAttribute('aria-label', '已修改');
+      button.append(badge);
+    }
+
+    return button;
+  };
+
+  const renderTree = () => {
+    treeRoot.innerHTML = '';
+    const overallStats = getProgressStats(flattenItems(state.catalogs));
+    progressRatio.textContent = `${overallStats.edited} / ${overallStats.total}`;
+    progressRemaining.textContent = `还有 ${overallStats.remaining} 个没改`;
+
+    state.catalogs.forEach((catalog) => {
+      const catalogStats = getProgressStats(catalog.items);
+      const details = document.createElement('details');
+      details.className = 'tree-catalog';
+      details.open = true;
+
+      const summary = document.createElement('summary');
+      summary.textContent = `${catalog.label} (${catalogStats.edited}/${catalogStats.total})`;
+      details.append(summary);
+
+      const branch = document.createElement('div');
+      branch.className = 'tree-branch';
+
+      if (catalog.type === 'video') {
+        catalog.items.forEach((item) => {
+          const key = getItemKey(item);
+          const button = createTreeButton(
+            item.title || item.normalizedPath,
+            `tree-item ${state.selectedKey === key ? 'active' : ''}`,
+            () => handleSelectItem(key),
+            item.is_edited
+          );
+          branch.append(button);
+        });
+      } else {
+        catalog.tree.children.forEach((groupNode) => {
+          const groupDetails = document.createElement('details');
+          groupDetails.className = 'tree-group';
+          groupDetails.open = true;
+
+          const groupSummary = document.createElement('summary');
+          groupSummary.textContent = `${groupNode.label} (${groupNode.children.length})`;
+          groupDetails.append(groupSummary);
+
+          const groupBranch = document.createElement('div');
+          groupBranch.className = 'tree-branch';
+
+          groupNode.children.forEach((itemNode) => {
+            const item = catalog.items[itemNode.itemIndex];
+            const key = getItemKey(item);
+            const button = createTreeButton(
+              itemNode.label,
+              `tree-item ${state.selectedKey === key ? 'active' : ''}`,
+              () => handleSelectItem(key),
+              item.is_edited
+            );
+            groupBranch.append(button);
+          });
+
+          groupDetails.append(groupBranch);
+          branch.append(groupDetails);
+        });
+      }
+
+      details.append(branch);
+      treeRoot.append(details);
+    });
+  };
+
+  const renderLevelOptions = () => {
+    levelOptions.innerHTML = '';
+
+    levelValues.forEach((value) => {
+      const label = document.createElement('label');
+      label.className = 'level-option';
+
+      const radio = document.createElement('input');
+      radio.type = 'radio';
+      radio.name = 'common_level';
+      radio.value = String(value);
+      radio.addEventListener('change', () => {
+        state.form.common_level = value;
+        updateDirtyState(true);
+      });
+
+      const text = document.createElement('span');
+      text.textContent = String(value);
+
+      label.append(radio, text);
+      levelOptions.append(label);
+    });
+  };
+
+  const replaceItemInState = (updatedItem) => {
+    state.catalogs = state.catalogs.map((catalog) => {
+      if (catalog.id !== updatedItem.catalogId) {
+        return catalog;
+      }
+
+      const items = catalog.items.map((item) => (item.index === updatedItem.index ? updatedItem : item));
+      return {
+        ...catalog,
+        items,
+        tree: catalog.tree.kind ? buildTreeForCatalog(catalog.id, catalog.label, catalog.type, items) : catalog.tree,
+      };
+    });
+  };
+
+  const removeItemFromState = (removedItem) => {
+    state.catalogs = state.catalogs.map((catalog) => {
+      if (catalog.id !== removedItem.catalogId) {
+        return catalog;
+      }
+
+      const items = catalog.items
+        .filter((item) => item.index !== removedItem.index)
+        .map((item) => ({
+          ...item,
+          index: item.index > removedItem.index ? item.index - 1 : item.index,
+        }));
+
+      return {
+        ...catalog,
+        items,
+        tree: buildTreeForCatalog(catalog.id, catalog.label, catalog.type, items),
+      };
+    });
+  };
+
+  const buildTreeForCatalog = (catalogId, label, type, items) => {
+    if (type === 'video') {
+      return {
+        id: catalogId,
+        label,
+        kind: 'catalog',
+        children: items.map((item) => ({
+          id: `${catalogId}:${item.index}`,
+          label: item.title || item.normalizedPath || `条目 ${item.index + 1}`,
+          kind: 'item',
+          itemIndex: item.index,
+          isEdited: item.is_edited === true,
+        })),
+      };
+    }
+
+    const groups = new Map();
+    items.forEach((item) => {
+      const groupName = item.group || '未分组';
+      const groupItems = groups.get(groupName) || [];
+      groupItems.push({
+        id: `${catalogId}:${item.index}`,
+        label: item.normalizedPath.split('/').pop() || item.title || `条目 ${item.index + 1}`,
+        kind: 'item',
+        itemIndex: item.index,
+        isEdited: item.is_edited === true,
+      });
+      groups.set(groupName, groupItems);
+    });
+
+    return {
+      id: catalogId,
+      label,
+      kind: 'catalog',
+      children: Array.from(groups.entries())
+        .sort((left, right) => left[0].localeCompare(right[0], 'zh-Hans-CN'))
+        .map(([groupName, children]) => ({
+          id: `${catalogId}:group:${groupName}`,
+          label: groupName,
+          kind: 'group',
+          children,
+        })),
+    };
+  };
+
+  const saveCurrentItem = async () => {
+    if (!state.selectedItem || !state.isDirty || state.isSaving) {
+      return;
+    }
+
+    state.isSaving = true;
+    let savedSuccessfully = false;
+    let savedMessage = '';
+    updateDirtyState(state.isDirty);
+    saveButton.disabled = true;
+
+    try {
+      const response = await fetch('/api/catalog-item', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          catalogId: state.selectedItem.catalogId,
+          index: state.selectedItem.index,
+          description: state.form.description,
+          common_level: Number(state.form.common_level),
+        }),
+      });
+
+      const payload = await response.json();
+      if (!response.ok) {
+        throw new Error(payload.error || '保存失败');
+      }
+
+      replaceItemInState(payload.item);
+      state.selectedItem = payload.item;
+      syncFormFromSelected();
+      renderTree();
+      renderPreview();
+      savedSuccessfully = true;
+
+      const nextKey = getNextItemKey(getItemKey(payload.item));
+      if (nextKey) {
+        state.isDirty = false;
+        handleSelectItem(nextKey, {skipDirtyConfirm: true});
+        savedMessage = '已保存，已切换到下一个资源';
+      }
+    } catch (error) {
+      setSaveState(error.message || '保存失败', 'error');
+    } finally {
+      state.isSaving = false;
+      if (savedSuccessfully) {
+        updateDirtyState(false);
+        if (savedMessage) {
+          setSaveState(savedMessage, 'saved');
+        }
+      }
+      updateFormAvailability();
+    }
+  };
+
+  const deleteCurrentItem = async () => {
+    if (
+      !state.selectedItem ||
+      state.isSaving ||
+      (state.selectedItem.type !== 'video' && state.selectedItem.catalogId !== 'describe')
+    ) {
+      return;
+    }
+
+    const confirmed = window.confirm(`确认删除“${state.selectedItem.title || state.selectedItem.path}”吗？这会把它从 JSON 里移除。`);
+    if (!confirmed) {
+      return;
+    }
+
+    state.isSaving = true;
+    const currentItem = state.selectedItem;
+    const nextKey = getDeleteSelectionKey(currentItem);
+    updateFormAvailability();
+    setSaveState('删除中...', 'saving');
+
+    try {
+      const response = await fetch('/api/catalog-item', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          catalogId: currentItem.catalogId,
+          index: currentItem.index,
+        }),
+      });
+
+      const payload = await response.json();
+      if (!response.ok) {
+        throw new Error(payload.error || '删除失败');
+      }
+
+      removeItemFromState(payload.deletedItem);
+      state.isDirty = false;
+
+      if (nextKey) {
+        handleSelectItem(nextKey, {skipDirtyConfirm: true});
+        setSaveState('已删除，已切换到下一个资源', 'saved');
+      } else {
+        state.selectedKey = null;
+        state.selectedItem = null;
+        syncFormFromSelected();
+        renderTree();
+        renderPreview();
+        setSaveState('已删除当前资源', 'saved');
+      }
+    } catch (error) {
+      setSaveState(error.message || '删除失败', 'error');
+    } finally {
+      state.isSaving = false;
+      updateFormAvailability();
+    }
+  };
+
+  descriptionInput.addEventListener('input', (event) => {
+    state.form.description = event.target.value;
+    updateDirtyState(true);
+  });
+
+  saveButton.addEventListener('click', () => {
+    saveCurrentItem();
+  });
+
+  deleteButton.addEventListener('click', () => {
+    deleteCurrentItem();
+  });
+
+  window.addEventListener('beforeunload', (event) => {
+    if (!state.isDirty) {
+      return;
+    }
+
+    event.preventDefault();
+    event.returnValue = '';
+  });
+
+  const init = async () => {
+    renderLevelOptions();
+
+    try {
+      const response = await fetch('/api/catalog-data');
+      const payload = await response.json();
+      if (!response.ok) {
+        throw new Error(payload.error || '加载目录失败');
+      }
+
+      state.catalogs = payload.catalogs;
+      renderTree();
+      renderPreview();
+      updateFormAvailability();
+    } catch (error) {
+      treeRoot.innerHTML = `<div class="placeholder missing"><strong>加载失败</strong><span>${error.message}</span></div>`;
+      setSaveState('加载失败', 'error');
+    }
+  };
+
+  init();
+})();

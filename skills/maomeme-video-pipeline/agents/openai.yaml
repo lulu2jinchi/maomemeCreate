@@ -1,0 +1,4 @@
+interface:
+  display_name: "猫meme视频流水线"
+  short_description: "把故事、素材目录和 Remotion 流水线组装成猫 meme 短视频项目"
+  default_prompt: "Use $maomeme-video-pipeline to scaffold or operate a cat meme Remotion video pipeline in this workspace."

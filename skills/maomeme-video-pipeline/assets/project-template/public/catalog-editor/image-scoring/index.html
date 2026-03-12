@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片批量打分</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h1>图片批量打分</h1>
+          <p>先选目录，再进入编辑模式，多选图片后一键打 1-5 分。</p>
+          <a class="mode-link" href="../">返回素材编辑器</a>
+          <div class="progress-summary" aria-live="polite">
+            <strong id="progress-ratio">0 / 0</strong>
+            <span id="progress-remaining">还有 0 张没改</span>
+            <span id="pending-count">未保存 0 张</span>
+          </div>
+        </div>
+        <div id="group-list" class="group-list" aria-live="polite"></div>
+      </aside>
+
+      <main class="content">
+        <section class="toolbar-card">
+          <div class="toolbar-header">
+            <div>
+              <p class="eyebrow">当前目录</p>
+              <h2 id="group-title">未选择</h2>
+              <p id="group-meta" class="toolbar-meta">请选择左侧目录</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="edit-toggle" class="secondary-button" type="button">进入编辑</button>
+              <button id="clear-selection" class="ghost-button" type="button" disabled>清空选择</button>
+              <button id="save-button" class="primary-button" type="button" disabled>保存到 JSON</button>
+            </div>
+          </div>
+
+          <div class="score-toolbar">
+            <span id="selection-status" class="selection-status">未进入编辑模式</span>
+            <div id="score-actions" class="score-actions"></div>
+            <span id="save-state" class="save-state">未加载数据</span>
+          </div>
+        </section>
+
+        <section class="grid-card">
+          <div id="grid-root" class="grid-root">
+            <div class="empty-state">
+              <strong>正在加载图片目录</strong>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

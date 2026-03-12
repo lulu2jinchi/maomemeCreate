@@ -1,0 +1,42 @@
+{
+  "name": "remotion-transparent-character-webm",
+  "container": "webm",
+  "video_codec": "vp9",
+  "pixel_format": "yuva420p",
+  "audio_codec": "opus",
+  "alpha_expected": true,
+  "source_dir": "public/lib/trimMp4",
+  "target_dir": "public/lib/webm",
+  "ffmpeg_filter": "format=rgba,colorkey=0x00FF00:0.36:0.08,despill=type=green:mix=0.7:expand=0.25,format=yuva420p",
+  "ffmpeg_video_args": [
+    "-c:v",
+    "libvpx-vp9",
+    "-pix_fmt",
+    "yuva420p",
+    "-auto-alt-ref",
+    "0",
+    "-row-mt",
+    "1",
+    "-tile-columns",
+    "2",
+    "-b:v",
+    "0",
+    "-crf",
+    "32",
+    "-deadline",
+    "good",
+    "-cpu-used",
+    "4"
+  ],
+  "ffmpeg_audio_args": [
+    "-c:a",
+    "libopus",
+    "-b:a",
+    "96k"
+  ],
+  "notes": [
+    "用于 Remotion 人物透明素材。",
+    "源文件优先来自 public/lib/trimMp4。",
+    "未来程序如果需要补齐 webm，默认应遵守这份规格。"
+  ]
+}
